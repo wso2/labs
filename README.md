@@ -1,7 +1,7 @@
 # WSO2 Labs for Webinars and Workshops
 This repository holds all the samples and tutorials that we will be using during WSO2 events like webinars and workshops. We will update this repo at least a week prior to any event with the relevant material so that you have the necessary information to prepare.
 
-Tutorials will be named according to the event date, topic, and tutorial number, i.e. https://github.com/wso2/labs/<date>/<topic>/<tutorial-number>. Each tutorial will have its own README file with information on how to set up. We will use these tutorials during our events to help you deep-dive into WSO2 product features and technical scenarios.
+Tutorials will be named according to the event date, topic, and tutorial number, i.e. `https://github.com/wso2/labs/<date>/<topic>/<tutorial-number>`. Each tutorial will have its own README file with information on how to set up. We will use these tutorials during our events to help you deep-dive into WSO2 product features and technical scenarios.
 
 If you’d like to sign up for a webinar or a workshop you can do so at the WSO2 events page:
  - [https://wso2.com/events/](https://wso2.com/events/)
