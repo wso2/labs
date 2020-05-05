@@ -1,0 +1,95 @@
+<unit-test>
+    <artifacts>
+        <test-artifact>
+            <artifact>/SampleServices/src/main/synapse-config/api/HealthcareAPI.xml</artifact>
+        </test-artifact>
+        <supportive-artifacts>
+            <artifact>/SampleServices/src/main/synapse-config/endpoints/ChannelingFeeEP.xml</artifact>
+            <artifact>/SampleServices/src/main/synapse-config/endpoints/QueryDoctorEP.xml</artifact>
+            <artifact>/SampleServices/src/main/synapse-config/endpoints/PineValleyEP.xml</artifact>
+            <artifact>/SampleServices/src/main/synapse-config/api/TestMocky.xml</artifact>
+            <artifact>/SampleServices/src/main/synapse-config/endpoints/SettlePaymentEP.xml</artifact>
+            <artifact>/SampleServices/src/main/synapse-config/endpoints/GrandOakEP.xml</artifact>
+            <artifact>/SampleServices/src/main/synapse-config/endpoints/ClemencyEP.xml</artifact>
+        </supportive-artifacts>
+        <registry-resources>
+            <registry-resource>
+                <file-name>RequestMapping_outputSchema.json</file-name>
+                <artifact>/SampleServicesRegistry/RequestMapping_outputSchema.json</artifact>
+                <registry-path>/_system/governance/datamapper</registry-path>
+                <media-type>text/plain</media-type>
+            </registry-resource>
+            <registry-resource>
+                <file-name>RequestMapping.dmc</file-name>
+                <artifact>/SampleServicesRegistry/RequestMapping.dmc</artifact>
+                <registry-path>/_system/governance/datamapper</registry-path>
+                <media-type>text/plain</media-type>
+            </registry-resource>
+            <registry-resource>
+                <file-name>RequestMapping_inputSchema.json</file-name>
+                <artifact>/SampleServicesRegistry/RequestMapping_inputSchema.json</artifact>
+                <registry-path>/_system/governance/datamapper</registry-path>
+                <media-type>text/plain</media-type>
+            </registry-resource>
+        </registry-resources>
+        <connector-resources/>
+    </artifacts>
+    <test-cases>
+        <test-case name="SurgicalReservation">
+            <input>
+                <request-path>/categories/surgery/reserve</request-path>
+                <request-method>POST</request-method>
+                <payload><![CDATA[{
+ "name": "John Doe",
+ "dob": "1940-03-19",
+ "ssn": "234-23-525",
+ "address": "California",
+ "phone": "8770586755",
+ "email": "johndoe@gmail.com",
+ "doctor": "thomas collins",
+ "hospital": "grand oak community hospital",
+ "cardNo": "7844481124110331",
+ "appointment_date": "2025-04-02"
+}]]></payload>
+                <properties>
+                    <property name="Content-Type" scope="transport" value="application/json"/>
+                </properties>
+            </input>
+            <assertions>
+                <assertEquals>
+                    <actual>$body</actual>
+                    <expected><![CDATA[{"patient":"John Doe","actualFee":7000.0,"discount":20,"discounted":5600.0,"paymentID":"30c2f6df-a838-4d41-bb9b-2e1a3e02547d","status":"Settled"}]]></expected>
+                    <message>Error getting expected response</message>
+                </assertEquals>
+            </assertions>
+        </test-case>
+        <test-case name="SurgicalReservation2">
+            <input>
+                <request-path>/categories/surgery/reserve</request-path>
+                <request-method>POST</request-method>
+                <payload><![CDATA[{
+ "name": "John Doe",
+ "dob": "1940-03-19",
+ "ssn": "234-23-525",
+ "address": "California",
+ "phone": "8770586755",
+ "email": "johndoe@gmail.com",
+ "doctor": "thomas collins",
+ "hospital": "grand oak community hospital",
+ "cardNo": "7844481124110331",
+ "appointment_date": "2025-04-02"
+}]]></payload>
+                <properties>
+                    <property name="Content-Type" scope="transport" value="application/json"/>
+                </properties>
+            </input>
+            <assertions>
+                <assertNotNull>
+                    <actual>$body</actual>
+                    <message>Response is null</message>
+                </assertNotNull>
+            </assertions>
+        </test-case>
+    </test-cases>
+    <mock-services/>
+</unit-test>
