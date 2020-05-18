@@ -60,13 +60,15 @@ You should have following installed if you're following along the workshop. This
 4. kubectl - https://kubernetes.io/docs/tasks/tools/install-kubectl/
 5. Start minikube - ```minikube start --cpus=4 --memory=6144m```
 
+Note: During the demo I mentioned you have to have WSL2 for a similar setup. That's not strictly true. You can have a working kubernetes cluster with WSL. [Follow this blog to setup WSL](https://dev.to/wxyz/playing-with-windows-subsystem-for-linux-wsl-hio). Install Docker for Windows after that.
+
 At this point you should have a working kubernetes cluster. Following steps should be executed once you have a working kubernetes cluster. Minikube provide a great, repeatable way to create a kubernetes cluster if you're just starting up. I'll be using WSL 2 in Windows 10 during the demo.
 
-6. Install WSO2 Integration Studio - https://wso2.com/integration/integration-studio/. We'll be using Integration Studio to demonstrate building complex integration services
+1. Install WSO2 Integration Studio - https://wso2.com/integration/integration-studio/. We'll be using Integration Studio to demonstrate building complex integration services
 
-7. Install EI Kubernetes Operator https://ei.docs.wso2.com/en/latest/micro-integrator/setup/deployment/kubernetes_deployment/
+2. Install EI Kubernetes Operator https://ei.docs.wso2.com/en/latest/micro-integrator/setup/deployment/kubernetes_deployment/
 
-8. Install APIM Kubernetes Operator - https://apim.docs.wso2.com/en/latest/learn/kubernetes-operators/k8s-api-operator/
+3. Install APIM Kubernetes Operator - https://apim.docs.wso2.com/en/latest/learn/kubernetes-operators/k8s-api-operator/
 
 ## Part 1 - Developing backend services
 
@@ -81,6 +83,7 @@ We'll be using Integration Studio to create some services and demonstrate develo
     * Invoke healthcare service
     * Testing a complex integration
     * Building the maven multi-module project - The entire integration can be built using maven. Can easily be automated through Jenkins
+    * For testing to work, setup a hosts entry in your local machine - hospitalsvc
 
 ## Part 2 - Deploying services (microservices and integration services) into a kubernetes cluster
 
