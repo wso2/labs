@@ -1,0 +1,56 @@
+{
+  "transport.mail.listener.enable": {
+    "true": {
+      "transport.mail.listener.name": "mailto"
+    }
+  },
+  "transport.sap.listener.enable": {
+    "true": {
+      "transport.sap.listener.idoc.enable": true,
+      "transport.sap.listener.idoc.class": "org.wso2.carbon.transports.sap.SAPTransportListener"
+    }
+  },
+  "transport.sap.listener.bapi.enable": {
+    "true": {
+      "transport.sap.listener.bapi.class": "org.wso2.carbon.transports.sap.SAPTransportListener"
+    }
+  },
+  "transport.sap.sender.enable": {
+    "true": {
+      "transport.sap.sender.idoc.enable": true,
+      "transport.sap.sender.idoc.class": "org.wso2.carbon.transports.sap.SAPTransportSender"
+    }
+  },
+  "transport.sap.sender.bapi.enable": {
+    "true": {
+      "transport.sap.sender.bapi.class": "org.wso2.carbon.transports.sap.SAPTransportSender"
+    }
+  },
+  "transport.ws.sender.enable": {
+    "true": {
+      "transport.ws.sender.parameter.'ws.outflow.dispatch.sequence'": "outflowDispatchSeq",
+      "transport.ws.sender.parameter.'ws.outflow.dispatch.fault.sequence'": "outflowFaultSeq"
+    }
+  },
+  "transport.wss.sender.enable": {
+    "true": {
+      "transport.wss.sender.parameter.'ws.outflow.dispatch.sequence'": "outflowDispatchSeq",
+      "transport.wss.sender.parameter.'ws.outflow.dispatch.fault.sequence'": "outflowFaultSeq",
+      "transport.wss.sender.truststore_location": "$ref{truststore.file_name}",
+      "transport.wss.sender.truststore_password": "$ref{truststore.tls.password}"
+    }
+  },
+  "transport.http.listener.certificate_revocation_verifier_enable": {
+    "true": {
+      "transport.http.listener.certificate_revocation_cache_size": "1024",
+      "transport.http.listener.certificate_revocation_cache_delay": "1000"
+    }
+  },
+  "transport.http.sender.certificate_revocation_verifier_enable": {
+    "true": {
+      "transport.http.sender.certificate_revocation_cache_size": "1024",
+      "transport.http.sender.certificate_revocation_cache_delay": "1000"
+    }
+  }
+
+}

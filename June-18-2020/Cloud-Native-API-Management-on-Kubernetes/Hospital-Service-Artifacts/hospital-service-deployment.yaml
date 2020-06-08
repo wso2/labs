@@ -1,0 +1,49 @@
+apiVersion: "v1"
+kind: "Service"
+metadata:
+  labels:
+    app: "hospitalsvc"
+    version: "2.0.0"
+  name: "hospitalsvc"
+spec:
+  ports:
+    - port: 9091
+      protocol: "TCP"
+      targetPort: 9091
+      name: "http"
+  selector:
+    app: "hospitalsvc"
+    version: "2.0.0"
+---
+apiVersion: "apps/v1"
+kind: "Deployment"
+metadata:
+  labels:
+    version: "2.0.0"
+    app: "hospitalsvc"
+  name: "hospitalsvc-deployment"
+spec:
+  replicas: 1
+  selector:
+    matchLabels:
+      version: "2.0.0"
+      app: "hospitalsvc"
+  template:
+    metadata:
+      annotations: {}
+      labels:
+        version: "2.0.0"
+        app: "hospitalsvc"
+    spec:
+      containers:
+        - image: "pubudu/hospitalsvc:2.0.0"
+          imagePullPolicy: "IfNotPresent"
+          livenessProbe:
+            initialDelaySeconds: 3
+            periodSeconds: 5
+            tcpSocket:
+              port: 9091
+          name: "products-deployment"
+          ports:
+            - containerPort: 9091
+              protocol: "TCP"

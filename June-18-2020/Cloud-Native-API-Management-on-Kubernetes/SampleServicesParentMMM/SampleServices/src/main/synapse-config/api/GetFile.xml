@@ -1,0 +1,32 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<api context="/getfile" name="GetFile" xmlns="http://ws.apache.org/ns/synapse">
+    <resource methods="POST" uri-template="/info">
+        <inSequence>
+            <log description="identifier log" level="custom">
+                <property name="message" value="getting information from amazon S3"/>
+            </log>
+            <property expression="$axis2:ContentType" name="contentType" scope="default" type="STRING"/>
+            <property expression="//bucketName/text()" name="targetBucketName" scope="default" type="STRING"/>
+            <property expression="//objectName/text()" name="objectName" scope="default" type="STRING"/>
+            <property expression="fn:concat('http://',get-property('targetBucketName'),'.s3-eu-west-1.amazonaws.com')" name="bucketUrl" scope="default" type="STRING"/>
+            <property expression="fn:concat(get-property('targetBucketName'),'.s3-eu-west-1.amazonaws.com')" name="host" scope="default" type="STRING"/>
+            <amazons3.init>
+                <accessKeyId>XXXXX</accessKeyId>
+                <secretAccessKey>XXXX</secretAccessKey>
+                <region>eu-west-1</region>
+                <methodType>GET</methodType>
+                <contentType>{$ctx:contentType}</contentType>
+                <addCharset>false</addCharset>
+                <host>{$ctx:host}</host>
+                <isXAmzDate>true</isXAmzDate>
+            </amazons3.init>
+            <amazons3.getObject>
+                <bucketUrl>{$ctx:bucketUrl}</bucketUrl>
+                <objectName>{$ctx:objectName}</objectName>
+            </amazons3.getObject>
+            <respond/>
+        </inSequence>
+        <outSequence/>
+        <faultSequence/>
+    </resource>
+</api>
