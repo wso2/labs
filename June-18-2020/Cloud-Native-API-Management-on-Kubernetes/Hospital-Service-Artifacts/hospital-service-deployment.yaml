@@ -21,7 +21,7 @@ metadata:
   labels:
     version: "2.0.0"
     app: "hospitalsvc"
-  name: "hospitalsvc-deployment"
+  name: "hospitalsvc"
 spec:
   replicas: 1
   selector:
@@ -30,13 +30,12 @@ spec:
       app: "hospitalsvc"
   template:
     metadata:
-      annotations: {}
       labels:
         version: "2.0.0"
         app: "hospitalsvc"
     spec:
       containers:
-        - image: "pubudu/hospitalsvc:2.0.0"
+        - image: "pubudu/hospitalsvc:2.0.01"
           imagePullPolicy: "IfNotPresent"
           livenessProbe:
             initialDelaySeconds: 3

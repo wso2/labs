@@ -17,8 +17,8 @@
   </properties>
   <dependencies>
     <dependency>
-      <groupId>com.example.SampleServices</groupId>
-      <artifactId>SampleServicesCompositeApplication</artifactId>
+      <groupId>com.example.CompositeApp</groupId>
+      <artifactId>CompositeApp</artifactId>
       <version>1.0.0</version>
       <type>car</type>
     </dependency>
@@ -112,7 +112,7 @@
             <configuration>
               <username>${username}</username>
               <password>${password}</password>
-              <repository>chintana/myintegration</repository>
+              <repository>pubudu/myintegration</repository>
               <tag>latest</tag>
             </configuration>
           </execution>
