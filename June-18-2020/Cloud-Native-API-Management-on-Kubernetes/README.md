@@ -90,7 +90,7 @@ We'll be using Integration Studio to create some services and demonstrate develo
 1. Deploy backend services into K8S
    ```
    $ kubectl apply -f Hospital-Service-Artifacts/hospital-service-deployment.yaml
-   $ kubectl expose deployment hospitalsvc --type=LoadBalancer --name=hospitalsvc
+   $ kubectl port-forward svc/hospitalsvc 9091:9091
    ```
 2. Deploy integration service into K8s (EI Operator)
    ```

@@ -8,12 +8,12 @@
             <property expression="$axis2:ContentType" name="contentType" scope="default" type="STRING"/>
             <property expression="//bucketName/text()" name="targetBucketName" scope="default" type="STRING"/>
             <property expression="//objectName/text()" name="objectName" scope="default" type="STRING"/>
-            <property expression="fn:concat('http://',get-property('targetBucketName'),'.s3-eu-west-1.amazonaws.com')" name="bucketUrl" scope="default" type="STRING"/>
-            <property expression="fn:concat(get-property('targetBucketName'),'.s3-eu-west-1.amazonaws.com')" name="host" scope="default" type="STRING"/>
+            <property expression="fn:concat('http://',get-property('targetBucketName'),'.s3-ap-south-1.amazonaws.com')" name="bucketUrl" scope="default" type="STRING"/>
+            <property expression="fn:concat(get-property('targetBucketName'),'.s3-ap-south-1.amazonaws.com')" name="host" scope="default" type="STRING"/>
             <amazons3.init>
-                <accessKeyId>XXXXX</accessKeyId>
-                <secretAccessKey>XXXX</secretAccessKey>
-                <region>eu-west-1</region>
+                <accessKeyId>XXXX</accessKeyId>
+                <secretAccessKey>XXX</secretAccessKey>
+                <region>ap-south-1</region>
                 <methodType>GET</methodType>
                 <contentType>{$ctx:contentType}</contentType>
                 <addCharset>false</addCharset>
