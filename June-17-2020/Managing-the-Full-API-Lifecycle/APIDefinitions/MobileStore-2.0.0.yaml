@@ -1,0 +1,605 @@
+  openapi: "3.0.0"
+  info: 
+    title: "MobileStore"
+    description: "This is the API used for MobilePioneer Inc"
+    termsOfService: "http://mobilepioneer.io/terms/"
+    contact: 
+      email: "apiteam@mobilepioneer.io"
+    license: 
+      name: "Apache 2.0"
+      url: "http://www.apache.org/licenses/LICENSE-2.0.html"
+    version: "0.9"
+  externalDocs: 
+    description: "Find out more about Swagger"
+    url: "http://swagger.io"
+  servers: 
+    - 
+      url: "https://localhost/mobile-store"
+  tags: 
+    - 
+      name: "devices"
+      description: "Mobile devices"
+      externalDocs: 
+        description: "Find out more"
+        url: "http://mobilepioneer.io"
+    - 
+      name: "orders"
+      description: "Access to Mobile Device orders"
+      externalDocs: 
+        description: "Find out more about our store"
+        url: "http://mobilepioneer.io"
+  paths: 
+    /mobile-devices: 
+      get: 
+        tags: 
+          - "devices"
+        summary: "Get all mobile devices in the store"
+        operationId: "getAllDevices"
+        responses: 
+          200: 
+            description: "Succesfully returned the devices"
+            content: 
+              application/json: 
+                schema: 
+                  $ref: "#/components/schemas/DeviceList"
+                  
+          405: 
+            description: "Invalid input"
+        security: 
+          - 
+            default: 
+              - "write:devices"
+        x-auth-type: null
+        x-throttling-tier: null
+        x-wso2-application-security: 
+          security-types: 
+            - "oauth2"
+          optional: false
+      post: 
+        tags: 
+          - "devices"
+        summary: "Add a new mobile device to the store"
+        operationId: "addDevice"
+        requestBody: 
+          description: "Mobile Device object that needs to be added to the store"
+          content: 
+            application/json: 
+              schema: 
+                $ref: "#/components/schemas/Device"
+          required: true
+        responses: 
+          201: 
+            description: "Sucessfully created the device"
+            content: 
+              application/json: 
+                schema: 
+                  $ref: "#/components/schemas/Device"
+          405: 
+            description: "Invalid input"
+        security: 
+          - 
+            default: 
+              - "write:devices"
+        x-auth-type: null
+        x-throttling-tier: null
+        x-wso2-application-security: 
+          security-types: 
+            - "oauth2"
+          optional: false
+    /mobile-devices/{deviceId}: 
+      get: 
+        tags: 
+          - "devices"
+        summary: "Find Mobile Device by ID"
+        description: "Returns a single mobile device represented by the ID"
+        operationId: "getDeviceById"
+        parameters: 
+          - 
+            $ref: "#/components/parameters/deviceId"
+        responses: 
+          200: 
+            description: "successful operation"
+            content: 
+              application/json: 
+                schema: 
+                  $ref: "#/components/schemas/Device"
+          400: 
+            description: "Invalid ID supplied"
+          404: 
+            description: "Device not found"
+        security: 
+          - 
+            default: 
+              - "read:devices"
+        x-auth-type: null
+        x-throttling-tier: null
+        x-wso2-application-security: 
+          security-types: 
+            - "oauth2"
+          optional: false
+      put: 
+        tags: 
+          - "devices"
+        summary: "Updates a Device in the store"
+        operationId: "updateDeviceById"
+        parameters: 
+          - 
+            $ref: "#/components/parameters/deviceId"
+        requestBody: 
+          description: "Mobile Device object that needs to be updated in the store"
+          content: 
+            application/json: 
+              schema: 
+                $ref: "#/components/schemas/Device"
+          required: true
+        responses: 
+          405: 
+            description: "Invalid input"
+        security: 
+          - 
+            default: 
+              - "write:devices"
+        x-auth-type: null
+        x-throttling-tier: null
+        x-wso2-application-security: 
+          security-types: 
+            - "oauth2"
+          optional: false
+      delete: 
+        tags: 
+          - "devices"
+        summary: "Deletes a device"
+        operationId: "deleteDeviceById"
+        parameters: 
+          - 
+            $ref: "#/components/parameters/deviceId"
+        responses: 
+          200: 
+            description: "Successfully deleted the device"
+          400: 
+            description: "Invalid ID supplied"
+          404: 
+            description: "Device not found"
+        security: 
+          - 
+            default: 
+              - "write:devices"
+        x-auth-type: null
+        x-throttling-tier: null
+        x-wso2-application-security: 
+          security-types: 
+            - "oauth2"
+          optional: false
+    /mobile-devices/{deviceId}/uploadImage: 
+      post: 
+        tags: 
+          - "devices"
+        summary: "uploads an image to the device"
+        operationId: "uploadFile"
+        parameters: 
+          - 
+            $ref: "#/components/parameters/deviceId"
+        responses: 
+          200: 
+            description: "successful operation"
+            content: 
+              application/json: 
+                schema: 
+                  $ref: "#/components/schemas/ApiResponse"
+        security: 
+          - 
+            default: 
+              - "write:devices"
+        x-auth-type: null
+        x-throttling-tier: null
+        x-wso2-application-security: 
+          security-types: 
+            - "oauth2"
+          optional: false
+    /accessories: 
+      get: 
+        tags: 
+          - "accessories"
+        summary: "Get all accessories in the store"
+        operationId: "getAllAccessories"
+        responses: 
+          200: 
+            description: "Succesfully returned the Accessories"
+            content: 
+              application/json: 
+                schema: 
+                  $ref: "#/components/schemas/AccessoryList"
+                  
+          405: 
+            description: "Invalid input"
+        security: 
+          - 
+            default: 
+              - "manage:accessories"
+        x-auth-type: null
+        x-throttling-tier: null
+        x-wso2-application-security: 
+          security-types: 
+            - "oauth2"
+          optional: false
+      post: 
+        tags: 
+          - "accessories"
+        summary: "Add a new accessory to the store"
+        operationId: "addAccessory"
+        requestBody: 
+          description: "Accessory object that needs to be added to the store"
+          content: 
+            application/json: 
+              schema: 
+                $ref: "#/components/schemas/Accessory"
+          required: true
+        responses: 
+          201: 
+            description: "Sucessfully created the Accessory"
+            content: 
+              application/json: 
+                schema: 
+                  $ref: "#/components/schemas/Accessory"
+          405: 
+            description: "Invalid input"
+        security: 
+          - 
+            default: 
+              - "manage:accessories"
+        x-auth-type: null
+        x-throttling-tier: null
+        x-wso2-application-security: 
+          security-types: 
+            - "oauth2"
+          optional: false
+    /orders: 
+      post: 
+        tags: 
+          - "orders"
+        summary: "Place an order for a device"
+        operationId: "placeOrder"
+        requestBody: 
+          description: "order placed for purchasing the device"
+          content: 
+            application/json: 
+              schema: 
+                $ref: "#/components/schemas/Order"
+          required: true
+        responses: 
+          201: 
+            description: "successfully created the order"
+            content: 
+              application/json: 
+                schema: 
+                  $ref: "#/components/schemas/Order"
+          400: 
+            description: "Invalid Order"
+        security: 
+          - 
+            default: 
+              - "place:orders"
+        x-auth-type: null
+        x-throttling-tier: null
+        x-wso2-application-security: 
+          security-types: 
+            - "oauth2"
+          optional: false
+    /orders/{orderId}: 
+      get: 
+        tags: 
+          - "orders"
+        summary: "Find purchase order by ID"
+        operationId: "getOrderById"
+        parameters: 
+          - 
+            name: "orderId"
+            in: "path"
+            description: "ID of the order that needs to be fetched"
+            required: true
+            style: "simple"
+            explode: false
+            schema: 
+              type: "integer"
+              format: "int64"
+        responses: 
+          200: 
+            description: "successful operation"
+            content: 
+              application/json: 
+                schema: 
+                  $ref: "#/components/schemas/Order"
+          400: 
+            description: "Invalid ID supplied"
+          404: 
+            description: "Order not found"
+        security: 
+          - 
+            default: 
+              - "place:orders"
+        x-auth-type: null
+        x-throttling-tier: null
+        x-wso2-application-security: 
+          security-types: 
+            - "oauth2"
+          optional: false
+      delete: 
+        tags: 
+          - "orders"
+        summary: "Delete purchase order by ID"
+        operationId: "deleteOrder"
+        parameters: 
+          - 
+            name: "orderId"
+            in: "path"
+            description: "ID of the order that needs to be deleted"
+            required: true
+            style: "simple"
+            explode: false
+            schema: 
+              type: "integer"
+              format: "int64"
+        responses: 
+          200: 
+            description: "successfully deleted the order"
+          400: 
+            description: "Invalid ID supplied"
+          404: 
+            description: "Order not found"
+        security: 
+          - 
+            default: 
+              - "place:orders"
+        x-auth-type: null
+        x-throttling-tier: null
+        x-wso2-application-security: 
+          security-types: 
+            - "oauth2"
+          optional: false
+  components: 
+    schemas: 
+      Order: 
+        properties: 
+          id: 
+            type: "integer"
+            format: "int64"
+          deviceId: 
+            type: "integer"
+            format: "int64"
+          quantity: 
+            type: "integer"
+            format: "int32"
+          shipDate: 
+            type: "string"
+            format: "date-time"
+          status: 
+            type: "string"
+            description: "Order Status"
+            enum: 
+              - "placed"
+              - "approved"
+              - "delivered"
+          complete: 
+            type: "boolean"
+            default: false
+        example:
+          id: 1
+          deviceId: 1
+          quantity: 5
+          shipDate: '2020-06-17T04:40:55.605Z'
+          status: placed
+          complete: false
+      Category: 
+        properties: 
+          id: 
+            type: "integer"
+            format: "int64"
+          name: 
+            type: "string"
+      Tag: 
+        type: "object"
+        properties: 
+          id: 
+            type: "integer"
+            format: "int64"
+          name: 
+            type: "string"
+      DeviceList:
+        properties: 
+          count: 
+            type: "integer"
+            format: "int64"
+          list:
+            type: "array"
+            items:
+              $ref: "#/components/schemas/Device"
+        example: 
+          count: 3
+          list:
+            - id: 1
+              category:
+                id: 10
+                name: phone
+              name: IPhone 11
+              manufacturer: Apple Inc.
+              model: QQ123Q
+              price: $2000
+              tags:
+                - id: 1
+                  name: dual-camera
+              status: available
+            - id: 3
+              category:
+                id: 10
+                name: phone
+              name: Nova 2i
+              manufacturer: Huawei Inc.
+              model: QQT23Q
+              price: $250
+              tags:
+                - id: 1
+                  name: dual-camera
+              status: available
+            - id: 12
+              category:
+                id: 10
+                name: phone
+              name: Nokia 7
+              manufacturer: Nokia Inc.
+              model: WFF123S
+              price: $320
+              status: out-of-stock
+      Device: 
+        required: 
+          - "name"
+        properties: 
+          id: 
+            type: "integer"
+            format: "int64"
+          category: 
+            $ref: "#/components/schemas/Category"
+          name: 
+            type: "string"
+          manufacturer:
+            type: "string"
+          model:
+            type: "string"
+          price:
+            type: string
+          tags: 
+            type: "array"
+            items: 
+              $ref: "#/components/schemas/Tag"
+          status: 
+            type: "string"
+            description: "device status in the store"
+            enum: 
+              - "available"
+              - "out-of-stock"
+        example:
+          id: 1
+          category:
+            id: 10
+            name: phone
+          name: IPhone 11
+          manufacturer: Apple Inc.
+          model: QQ123Q
+          price: $2000
+          tags:
+            - id: 1
+              name: dual-camera
+          status: available
+      AccessoryList:
+        properties: 
+          count: 
+            type: "integer"
+            format: "int64"
+          list:
+            type: "array"
+            items:
+              $ref: "#/components/schemas/Accessory"
+        example:
+          count: 2
+          list:
+            - id: 22
+              name: Head Set
+              manufacturer: Samsung Inc
+              model: QQAR1266
+              price: $10
+              status: available
+            - id: 12
+              name: Charger
+              manufacturer: Samsung Inc
+              model: QGGTW24
+              price: $15
+              status: available
+      Accessory:
+        properties: 
+          id: 
+            type: "integer"
+            format: "int64"
+          name: 
+            type: "string"
+          manufacturer:
+            type: "string"
+          model:
+            type: "string"
+          price:
+            type: string
+          status: 
+            type: "string"
+            description: "device status in the store"
+            enum: 
+              - "available"
+              - "out-of-stock"
+        example:
+          id: 22
+          name: Head Set
+          manufacturer: Samsung Inc
+          model: QQAR12$
+          price: $10
+          status: available
+      ApiResponse: 
+        type: "object"
+        properties: 
+          code: 
+            type: "integer"
+            format: "int32"
+          type: 
+            type: "string"
+          message: 
+            type: "string"
+    parameters: 
+      deviceId: 
+        name: "deviceId"
+        in: "path"
+        description: "ID of the device to return"
+        required: true
+        style: "simple"
+        explode: false
+        schema: 
+          type: "integer"
+          format: "int64"
+    securitySchemes: 
+      default: 
+        type: "oauth2"
+        flows: 
+          implicit: 
+            authorizationUrl: "https://test.com"
+            scopes: 
+              place:orders: "place/read orders"
+              write:devices: "add/modify mobile device entries in the store"
+              read:devices: "read mobile device entries in the store"
+              manage:accessories: "add/modify/read accessory store"
+            x-scopes-bindings: 
+              place:orders: ""
+              write:devices: ""
+              read:devices: ""
+              manage:accessories: ""
+  x-wso2-auth-header: "Authorization"
+  x-wso2-cors: 
+    corsConfigurationEnabled: false
+    accessControlAllowOrigins: 
+      - "*"
+    accessControlAllowCredentials: false
+    accessControlAllowHeaders: 
+      - "authorization"
+      - "Access-Control-Allow-Origin"
+      - "Content-Type"
+      - "SOAPAction"
+      - "apikey"
+    accessControlAllowMethods: 
+      - "GET"
+      - "PUT"
+      - "POST"
+      - "DELETE"
+      - "PATCH"
+      - "OPTIONS"
+  x-wso2-basePath: "/mobile-store/0.9"
+  x-wso2-transports: 
+    - "http"
+    - "https"
+  x-wso2-response-cache: 
+    enabled: false
+    cacheTimeoutInSeconds: 300
+
