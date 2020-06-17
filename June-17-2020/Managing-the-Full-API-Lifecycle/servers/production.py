@@ -5,7 +5,7 @@ import socketserver
 import ssl
 import datetime
 import uuid
-
+import time
 
 class EndpointHandler(server.BaseHTTPRequestHandler):
     def do_GET(self):
@@ -15,12 +15,14 @@ class EndpointHandler(server.BaseHTTPRequestHandler):
         self.common_handler()
 
     def common_handler(self):
+        time.sleep(1)
+        
         response = {
             "count": 2,
             "list": [
                 {
                     "id": str(uuid.uuid4()),
-                    "name": "Head Set",
+                    "name": "Handset",
                     "manufacturer": "Samsung Inc",
                     "model": "QQAR1266",
                     "price": "$10",
@@ -36,6 +38,28 @@ class EndpointHandler(server.BaseHTTPRequestHandler):
                 }
             ]
         }
+        if "accessories" in self.path:
+            response = {
+                    "count": 2,
+                    "list": [
+                        {
+                            "id": str(uuid.uuid4()),
+                            "name": "Charger Unit",
+                            "manufacturer": "Power Gator",
+                            "model": "PA-200mah",
+                            "price": "$5",
+                            "status": "available"
+                        },
+                        {
+                            "id": str(uuid.uuid4()),
+                            "name": "USB Cable",
+                            "manufacturer": "Generic RPC",
+                            "model": "USBCA124",
+                            "price": "$1",
+                            "status": "available"
+                        }
+                    ]
+                }
         # response = {"uuid": str(uuid.uuid4()), "time": datetime.datetime.now(
         # ).strftime("%A, %d. %B %Y %I:%M:%S %p")}
         wire_data_byte = json.dumps(response).encode()
