@@ -5,6 +5,7 @@ import socketserver
 import ssl
 import datetime
 import uuid
+import time
 
 class EndpointHandler(server.BaseHTTPRequestHandler):
     def do_GET(self):
@@ -14,6 +15,7 @@ class EndpointHandler(server.BaseHTTPRequestHandler):
         self.common_handler()
 
     def common_handler(self):
+        time.sleep(1)
         response = {
             "count": 2,
             "list": [
