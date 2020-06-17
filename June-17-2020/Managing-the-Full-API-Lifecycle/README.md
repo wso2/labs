@@ -60,3 +60,15 @@ We will demonstrate the following scenario during the webinar
 - Open the Developer portal window
     - Click *Applications* -> *Add New Application*
         - Give the name as `Altronica Mobile Store App`
+    - Go back to the API
+        - Click on `Try-Out` menu
+        - And try out the API request and lets keep it running for a while
+- Now the API is running smoothly and every thing seems good
+    - But just like in our lives, There are ups and down in the API's life as well
+    - It's not like sailing in the deep quite see
+    - So in the Altronica environment also , They found a major security vulnerability and their security department urges API Manager team to shutdown the API for all the users
+    - That means, They need to block incoming API request from the Mobile application and they should block new subscriptions for new Applications in the developer portal
+    - We have a API lifecycle state to manage this kind of crisis situation
+    - API Developer can put the API into `BLOCKED` state to prevent API request forwarding to backend and block new subscriptions as well
+    - Once the issue is fixed we can revers the state back to `PUBLISHED` state
+- 
