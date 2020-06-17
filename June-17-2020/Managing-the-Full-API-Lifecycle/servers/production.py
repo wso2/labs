@@ -6,6 +6,7 @@ import ssl
 import datetime
 import uuid
 
+
 class EndpointHandler(server.BaseHTTPRequestHandler):
     def do_GET(self):
         self.common_handler()
@@ -14,13 +15,35 @@ class EndpointHandler(server.BaseHTTPRequestHandler):
         self.common_handler()
 
     def common_handler(self):
-        response = {"uuid": str(uuid.uuid4()), "time": datetime.datetime.now().strftime("%A, %d. %B %Y %I:%M:%S %p")}
+        response = {
+            "count": 2,
+            "list": [
+                {
+                    "id": str(uuid.uuid4()),
+                    "name": "Head Set",
+                    "manufacturer": "Samsung Inc",
+                    "model": "QQAR1266",
+                    "price": "$10",
+                    "status": "available"
+                },
+                {
+                    "id": str(uuid.uuid4()),
+                    "name": "Charger",
+                    "manufacturer": "Samsung Inc",
+                    "model": "QGGTW24",
+                    "price": "$15",
+                    "status": "available"
+                }
+            ]
+        }
+        # response = {"uuid": str(uuid.uuid4()), "time": datetime.datetime.now(
+        # ).strftime("%A, %d. %B %Y %I:%M:%S %p")}
         wire_data_byte = json.dumps(response).encode()
 
         self.send_response(HTTPStatus.OK)
         self.send_header("Content-type", "application/json")
         self.send_header("Content-length", len(wire_data_byte))
-        
+
         self.end_headers()
         self.wfile.write(wire_data_byte)
 
@@ -28,7 +51,7 @@ class EndpointHandler(server.BaseHTTPRequestHandler):
     def run():
         port = EndpointHandler.port
         print('INFO: (Secured: {})Sample Server listening on localhost:{}...'.format(EndpointHandler.secured,
-                                                                                            port))
+                                                                                     port))
         socketserver.TCPServer.allow_reuse_address = True
         httpd = socketserver.TCPServer(('', port), EndpointHandler)
         cert_path = 'yourpemfile.pem'
@@ -41,6 +64,7 @@ class EndpointHandler(server.BaseHTTPRequestHandler):
     port = 9000
     protocol_version = 'HTTP/1.1'
     secured = False
+
 
 def main():
     """

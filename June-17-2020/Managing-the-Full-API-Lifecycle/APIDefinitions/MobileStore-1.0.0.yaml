@@ -8,7 +8,7 @@
     license: 
       name: "Apache 2.0"
       url: "http://www.apache.org/licenses/LICENSE-2.0.html"
-    version: "0.9"
+    version: "1.0.0"
   externalDocs: 
     description: "Find out more about Swagger"
     url: "http://swagger.io"

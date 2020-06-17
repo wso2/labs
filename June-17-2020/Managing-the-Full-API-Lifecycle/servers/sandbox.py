@@ -14,7 +14,29 @@ class EndpointHandler(server.BaseHTTPRequestHandler):
         self.common_handler()
 
     def common_handler(self):
-        response = {"uuid": str(uuid.uuid4()), "time": datetime.datetime.now().strftime("%A, %d. %B %Y %I:%M:%S %p")}
+        response = {
+            "count": 2,
+            "list": [
+                {
+                    "id": str(uuid.uuid4()),
+                    "name": "Handset",
+                    "manufacturer": "Apple Inc",
+                    "model": "iphone 11",
+                    "price": "$1200",
+                    "status": "available"
+                },
+                {
+                    "id": str(uuid.uuid4()),
+                    "name": "Charger",
+                    "manufacturer": "Nokia Inc",
+                    "model": "3310",
+                    "price": "$45",
+                    "status": "out-of-stock"
+                }
+            ]
+        }
+        # response = {"uuid": str(uuid.uuid4()), "time": datetime.datetime.now(
+        # ).strftime("%A, %d. %B %Y %I:%M:%S %p")}
         wire_data_byte = json.dumps(response).encode()
 
         self.send_response(HTTPStatus.OK)
