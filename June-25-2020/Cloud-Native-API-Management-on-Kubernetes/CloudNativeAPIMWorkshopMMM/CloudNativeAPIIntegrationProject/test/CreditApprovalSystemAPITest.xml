@@ -1,0 +1,105 @@
+<unit-test>
+    <artifacts>
+        <test-artifact>
+            <artifact>/CloudNativeAPIIntegrationProject/src/main/synapse-config/api/CreditApprovalSystemAPI.xml</artifact>
+        </test-artifact>
+        <supportive-artifacts>
+            <artifact>/CloudNativeAPIIntegrationProject/src/main/synapse-config/sequences/PreserveRequestValuesSQ.xml</artifact>
+            <artifact>/CloudNativeAPIIntegrationProject/src/main/synapse-config/endpoints/CreditBureauServiceEP.xml</artifact>
+            <artifact>/CloudNativeAPIIntegrationProject/src/main/synapse-config/sequences/PreserveCreditApplicationDataSQ.xml</artifact>
+            <artifact>/CloudNativeAPIIntegrationProject/src/main/synapse-config/endpoints/CreditApplicationSystemEP.xml</artifact>
+            <artifact>/CloudNativeAPIIntegrationProject/src/main/synapse-config/endpoints/AccountsServiceEP.xml</artifact>
+        </supportive-artifacts>
+        <registry-resources>
+            <registry-resource>
+                <file-name>AccountServicePayloadMapping.dmc</file-name>
+                <artifact>/CNAGovernance/AccountServicePayloadMapping.dmc</artifact>
+                <registry-path>/_system/governance/datamapper</registry-path>
+                <media-type>text/plain</media-type>
+            </registry-resource>
+            <registry-resource>
+                <file-name>AccountServicePayloadMapping_xsltStyleSheet.xml</file-name>
+                <artifact>/CNAGovernance/AccountServicePayloadMapping_xsltStyleSheet.xml</artifact>
+                <registry-path>/_system/governance/datamapper</registry-path>
+                <media-type>text/plain</media-type>
+            </registry-resource>
+            <registry-resource>
+                <file-name>AccountServicePayloadMapping_outputSchema.json</file-name>
+                <artifact>/CNAGovernance/AccountServicePayloadMapping_outputSchema.json</artifact>
+                <registry-path>/_system/governance/datamapper</registry-path>
+                <media-type>text/plain</media-type>
+            </registry-resource>
+            <registry-resource>
+                <file-name>AccountServicePayloadMapping_inputSchema.json</file-name>
+                <artifact>/CNAGovernance/AccountServicePayloadMapping_inputSchema.json</artifact>
+                <registry-path>/_system/governance/datamapper</registry-path>
+                <media-type>text/plain</media-type>
+            </registry-resource>
+            <registry-resource>
+                <file-name>CreditApplicationMapper.dmc</file-name>
+                <artifact>/CNAGovernance/CreditApplicationMapper.dmc</artifact>
+                <registry-path>/_system/governance/datamapper</registry-path>
+                <media-type>text/plain</media-type>
+            </registry-resource>
+            <registry-resource>
+                <file-name>CreditApplicationMapper_inputSchema.json</file-name>
+                <artifact>/CNAGovernance/CreditApplicationMapper_inputSchema.json</artifact>
+                <registry-path>/_system/governance/datamapper</registry-path>
+                <media-type>text/plain</media-type>
+            </registry-resource>
+            <registry-resource>
+                <file-name>CreditApplicationMapper_outputSchema.json</file-name>
+                <artifact>/CNAGovernance/CreditApplicationMapper_outputSchema.json</artifact>
+                <registry-path>/_system/governance/datamapper</registry-path>
+                <media-type>text/plain</media-type>
+            </registry-resource>
+        </registry-resources>
+        <connector-resources/>
+    </artifacts>
+    <test-cases>
+        <test-case name="SubmitCreditApplicationNotEmpty">
+            <input>
+                <request-path>/application</request-path>
+                <request-method>POST</request-method>
+                <payload><![CDATA[{
+			    "customer":"301088231",
+			    "amount":2000,
+			    "type":"OVERDRAUGHT",
+			    "residenceHistory":3
+			    }]]></payload>
+                <properties>
+                    <property name="Content-Type" scope="transport" value="application/json"/>
+                </properties>
+            </input>
+            <assertions>
+                <assertNotNull>
+                    <actual>$body</actual>
+                    <message>Response is null</message>
+                </assertNotNull>
+            </assertions>
+        </test-case>
+        <test-case name="SubmitCreditApplicationMatch">
+            <input>
+                <request-path>/application</request-path>
+                <request-method>POST</request-method>
+                <payload><![CDATA[{
+			    "customer":"301088231",
+			    "amount":2000,
+			    "type":"OVERDRAUGHT",
+			    "residenceHistory":3
+			    }]]></payload>
+                <properties>
+                    <property name="Content-Type" scope="transport" value="application/json"/>
+                </properties>
+            </input>
+            <assertions>
+                <assertEquals>
+                    <actual>$body</actual>
+                    <expected><![CDATA[{"application":{"reference":"RWR1YXJKBW","requestedAmount":2000,"creditType":"OVERDRAUGHT","customer":{"firstName":"Eduardo","lastName":"Salamanca","id":"301088231","contact":{"phone":"+447823348282","address":"102 Blackbird Rd, Corby NN18 8EF","email":"lalo@gmail.com"}}},"decision":{"creditApplicationReference":"RWR1YXJKBW","status":"Approved","requestedAmount":2000,"outstanding":0,"approvedAmount":2000}}]]></expected>
+                    <message>Error getting expected response</message>
+                </assertEquals>
+            </assertions>
+        </test-case>
+    </test-cases>
+    <mock-services/>
+</unit-test>

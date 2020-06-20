@@ -1,0 +1,156 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<datamapper:DataMapperRoot xmi:version="2.0" xmlns:xmi="http://www.omg.org/XMI" xmlns:datamapper="http:///org/wso2/developerstudio/eclipse/gmf/datamapper">
+  <input>
+    <treeNode name="root" schemaDataType="OBJECT" level="1">
+      <node name="reference" schemaDataType="STRING" level="2">
+        <properties key="type" value="string"/>
+        <properties key="id" value="http://wso2jsonschema.org/reference"/>
+        <properties key="nullable" value="false"/>
+        <outNode>
+          <outgoingLink inNode="//@output/@treeNode.0/@node.0/@inNode"/>
+        </outNode>
+        <inNode/>
+      </node>
+      <node name="requestedAmount" schemaDataType="NUMBER" level="2">
+        <properties key="type" value="number"/>
+        <properties key="id" value="http://wso2jsonschema.org/requestedAmount"/>
+        <properties key="nullable" value="false"/>
+        <outNode>
+          <outgoingLink inNode="//@output/@treeNode.0/@node.4/@inNode"/>
+        </outNode>
+        <inNode/>
+      </node>
+      <node name="creditType" schemaDataType="STRING" level="2">
+        <properties key="type" value="string"/>
+        <properties key="id" value="http://wso2jsonschema.org/creditType"/>
+        <properties key="nullable" value="false"/>
+        <outNode/>
+        <inNode/>
+      </node>
+      <node name="customer" schemaDataType="OBJECT" level="2">
+        <node name="firstName" schemaDataType="STRING" level="3">
+          <properties key="type" value="string"/>
+          <properties key="id" value="http://wso2jsonschema.org/customer/firstName"/>
+          <properties key="nullable" value="false"/>
+          <outNode>
+            <outgoingLink inNode="//@output/@treeNode.0/@node.1/@inNode"/>
+          </outNode>
+          <inNode/>
+        </node>
+        <node name="lastName" schemaDataType="STRING" level="3">
+          <properties key="type" value="string"/>
+          <properties key="id" value="http://wso2jsonschema.org/customer/lastName"/>
+          <properties key="nullable" value="false"/>
+          <outNode>
+            <outgoingLink inNode="//@output/@treeNode.0/@node.2/@inNode"/>
+          </outNode>
+          <inNode/>
+        </node>
+        <node name="id" schemaDataType="STRING" level="3">
+          <properties key="type" value="string"/>
+          <properties key="id" value="http://wso2jsonschema.org/customer/id"/>
+          <properties key="nullable" value="false"/>
+          <outNode>
+            <outgoingLink inNode="//@output/@treeNode.0/@node.5/@inNode"/>
+          </outNode>
+          <inNode/>
+        </node>
+        <node name="contact" schemaDataType="OBJECT" level="3">
+          <node name="phone" schemaDataType="STRING" level="4">
+            <properties key="type" value="string"/>
+            <properties key="id" value="http://wso2jsonschema.org/customer/contact/phone"/>
+            <properties key="nullable" value="false"/>
+            <outNode>
+              <outgoingLink inNode="//@output/@treeNode.0/@node.3/@inNode"/>
+            </outNode>
+            <inNode/>
+          </node>
+          <node name="address" schemaDataType="STRING" level="4">
+            <properties key="type" value="string"/>
+            <properties key="id" value="http://wso2jsonschema.org/customer/contact/address"/>
+            <properties key="nullable" value="false"/>
+            <outNode/>
+            <inNode/>
+          </node>
+          <node name="email" schemaDataType="STRING" level="4">
+            <properties key="type" value="string"/>
+            <properties key="id" value="http://wso2jsonschema.org/customer/contact/email"/>
+            <properties key="nullable" value="false"/>
+            <outNode/>
+            <inNode/>
+          </node>
+          <properties key="type" value="object"/>
+          <properties key="id" value="http://wso2jsonschema.org/customer/contact"/>
+          <properties key="nullable" value="false"/>
+          <properties key="properties_id" value="{phone={id=http://wso2jsonschema.org/customer/contact/phone, type=string}, address={id=http://wso2jsonschema.org/customer/contact/address, type=string}, email={id=http://wso2jsonschema.org/customer/contact/email, type=string}}"/>
+          <outNode/>
+          <inNode/>
+        </node>
+        <properties key="type" value="object"/>
+        <properties key="id" value="http://wso2jsonschema.org/customer"/>
+        <properties key="nullable" value="false"/>
+        <properties key="properties_id" value="{firstName={id=http://wso2jsonschema.org/customer/firstName, type=string}, lastName={id=http://wso2jsonschema.org/customer/lastName, type=string}, id={id=http://wso2jsonschema.org/customer/id, type=string}, contact={id=http://wso2jsonschema.org/customer/contact, type=object, properties={phone={id=http://wso2jsonschema.org/customer/contact/phone, type=string}, address={id=http://wso2jsonschema.org/customer/contact/address, type=string}, email={id=http://wso2jsonschema.org/customer/contact/email, type=string}}}}"/>
+        <outNode/>
+        <inNode/>
+      </node>
+      <properties key="type" value="object"/>
+      <properties key="$schema" value="http://wso2.org/json-schema/wso2-data-mapper-v5.0.0/schema#"/>
+      <properties key="id" value="http://wso2jsonschema.org"/>
+      <properties key="nullable" value="false"/>
+      <outNode/>
+      <inNode/>
+    </treeNode>
+  </input>
+  <output>
+    <treeNode name="root" schemaDataType="OBJECT" level="1">
+      <node name="creditApplicationReference" schemaDataType="STRING" level="2">
+        <properties key="type" value="string"/>
+        <properties key="id" value="http://wso2jsonschema.org/creditApplicationReference"/>
+        <properties key="nullable" value="false"/>
+        <outNode/>
+        <inNode incomingLink="//@input/@treeNode.0/@node.0/@outNode/@outgoingLink.0"/>
+      </node>
+      <node name="customerFisrtName" schemaDataType="STRING" level="2">
+        <properties key="type" value="string"/>
+        <properties key="id" value="http://wso2jsonschema.org/customerFisrtName"/>
+        <properties key="nullable" value="false"/>
+        <outNode/>
+        <inNode incomingLink="//@input/@treeNode.0/@node.3/@node.0/@outNode/@outgoingLink.0"/>
+      </node>
+      <node name="customerLastName" schemaDataType="STRING" level="2">
+        <properties key="type" value="string"/>
+        <properties key="id" value="http://wso2jsonschema.org/customerLastName"/>
+        <properties key="nullable" value="false"/>
+        <outNode/>
+        <inNode incomingLink="//@input/@treeNode.0/@node.3/@node.1/@outNode/@outgoingLink.0"/>
+      </node>
+      <node name="phoneNumber" schemaDataType="STRING" level="2">
+        <properties key="type" value="string"/>
+        <properties key="id" value="http://wso2jsonschema.org/phoneNumber"/>
+        <properties key="nullable" value="false"/>
+        <outNode/>
+        <inNode incomingLink="//@input/@treeNode.0/@node.3/@node.3/@node.0/@outNode/@outgoingLink.0"/>
+      </node>
+      <node name="requestedAmount" schemaDataType="NUMBER" level="2">
+        <properties key="type" value="number"/>
+        <properties key="id" value="http://wso2jsonschema.org/requestedAmount"/>
+        <properties key="nullable" value="false"/>
+        <outNode/>
+        <inNode incomingLink="//@input/@treeNode.0/@node.1/@outNode/@outgoingLink.0"/>
+      </node>
+      <node name="customerId" schemaDataType="STRING" level="2">
+        <properties key="type" value="string"/>
+        <properties key="id" value="http://wso2jsonschema.org/customerId"/>
+        <properties key="nullable" value="false"/>
+        <outNode/>
+        <inNode incomingLink="//@input/@treeNode.0/@node.3/@node.2/@outNode/@outgoingLink.0"/>
+      </node>
+      <properties key="type" value="object"/>
+      <properties key="$schema" value="http://wso2.org/json-schema/wso2-data-mapper-v5.0.0/schema#"/>
+      <properties key="id" value="http://wso2jsonschema.org"/>
+      <properties key="nullable" value="false"/>
+      <outNode/>
+      <inNode/>
+    </treeNode>
+  </output>
+</datamapper:DataMapperRoot>

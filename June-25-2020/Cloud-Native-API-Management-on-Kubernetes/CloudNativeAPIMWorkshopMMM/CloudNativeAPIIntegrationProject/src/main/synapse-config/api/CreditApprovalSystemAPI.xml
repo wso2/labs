@@ -1,0 +1,84 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<api context="/credit-approvals" name="CreditApprovalSystemAPI" xmlns="http://ws.apache.org/ns/synapse">
+    <resource methods="POST" url-mapping="/application">
+        <inSequence>
+            <sequence key="PreserveRequestValuesSQ"/>
+            <datamapper config="gov:datamapper/CreditApplicationMapper.dmc" inputSchema="gov:datamapper/CreditApplicationMapper_inputSchema.json" inputType="JSON" outputSchema="gov:datamapper/CreditApplicationMapper_outputSchema.json" outputType="JSON" xsltStyleSheet="gov:datamapper/CreditApplicationMapper_xsltStyleSheet.xml"/>
+            <log level="custom">
+                <property expression="$body" name="TransformedBody"/>
+            </log>
+            <call>
+                <endpoint key="CreditApplicationSystemEP"/>
+            </call>
+            <sequence key="PreserveCreditApplicationDataSQ"/>
+            <log level="custom">
+                <property expression="$ctx:creditApplication" name="CreditApplicationSystemResponse"/>
+            </log>
+            <switch source="$ctx:creditType">
+                <case regex="TERM_LOAN">
+                    <log level="custom">
+                        <property name="Handling" value="Term Loan"/>
+                    </log>
+                    <payloadFactory media-type="json">
+                        <format>
+							{
+							"id":"$1",
+							"firstName": "$2",
+							"lastName": "$3",
+							"address": "$4",
+							"requestedLoanAmount":$5,
+							"yearsLivedInUK":$6
+							}
+						</format>
+                        <args>
+                            <arg evaluator="xml" expression="$ctx:creditApplicationReference"/>
+                            <arg evaluator="xml" expression="$ctx:customerFirstName"/>
+                            <arg evaluator="xml" expression="$ctx:customerLastName"/>
+                            <arg evaluator="xml" expression="$ctx:customerAddress"/>
+                            <arg evaluator="xml" expression="$ctx:requestedAmount"/>
+                            <arg evaluator="xml" expression="$ctx:yearsLivedInUK"/>
+                        </args>
+                    </payloadFactory>
+                    <call>
+                        <endpoint key="CreditBureauServiceEP"/>
+                    </call>
+                </case>
+                <case regex="OVERDRAUGHT">
+                    <log level="custom">
+                        <property name="Handling" value="Overdraught"/>
+                    </log>
+                    <datamapper config="gov:datamapper/AccountServicePayloadMapping.dmc" inputSchema="gov:datamapper/AccountServicePayloadMapping_inputSchema.json" inputType="JSON" outputSchema="gov:datamapper/AccountServicePayloadMapping_outputSchema.json" outputType="JSON" xsltStyleSheet="gov:datamapper/AccountServicePayloadMapping_xsltStyleSheet.xml"/>
+                    <call>
+                        <endpoint key="AccountsServiceEP"/>
+                    </call>
+                </case>
+                <default>
+                    <log level="custom">
+                        <property name="Undefined" value="Credit Type"/>
+                    </log>
+                    <makefault description="Undefined Credit Category Detected" version="pox">
+                        <reason value="Undefined Credit Category Detected"/>
+                        <detail expression="fn:concat('Invalid Credit Category - ', get-property('creditType'))"/>
+                    </makefault>
+                    <respond/>
+                </default>
+            </switch>
+            <property expression="json-eval($)" name="DecisionResponse" scope="default" type="STRING"/>
+            <log level="custom">
+                <property expression="$ctx:DecisionResponse" name="DecisionResponse"/>
+            </log>
+            <payloadFactory media-type="json">
+                <format>
+					{"application":$1,"decision":$2}
+				</format>
+                <args>
+                    <arg evaluator="xml" expression="$ctx:creditApplication"/>
+                    <arg evaluator="xml" expression="$ctx:DecisionResponse"/>
+                </args>
+            </payloadFactory>
+            <respond/>
+        </inSequence>
+        <outSequence/>
+        <faultSequence/>
+    </resource>
+</api>
