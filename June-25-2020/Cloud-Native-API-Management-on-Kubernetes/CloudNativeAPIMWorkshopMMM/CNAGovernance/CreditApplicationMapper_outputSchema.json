@@ -1,0 +1,21 @@
+{
+  "$schema" : "http://wso2.org/json-schema/wso2-data-mapper-v5.0.0/schema#",
+  "outputType" : "JSON",
+  "id" : "http://wso2jsonschema.org",
+  "title" : "root",
+  "type" : "object",
+  "properties" : {
+    "customerId" : {
+      "id" : "http://wso2jsonschema.org/customerId",
+      "type" : "string"
+    },
+    "requestedAmount" : {
+      "id" : "http://wso2jsonschema.org/requestedAmount",
+      "type" : "number"
+    },
+    "creditType" : {
+      "id" : "http://wso2jsonschema.org/creditType",
+      "type" : "string"
+    }
+  }
+}

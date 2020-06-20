@@ -1,0 +1,8 @@
+---
+apiVersion: "integration.wso2.com/v1alpha1"
+kind: "Integration"
+metadata:
+  name: "cna-integration"
+spec:
+  replicas: 1
+  image: "knightbeat/cna-integration:1.1.0"

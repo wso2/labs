@@ -1,0 +1,86 @@
+### @serviceHost = 10.100.179.236
+@serviceHost = banksvc
+### @integratorHost = 10.99.172.20 
+@integratorHost = 127.0.0.1
+
+### Proxy API API to get customers
+GET http://{{integratorHost}}:8290/credit-records/applicants
+
+### Proxy API API to get customer by ID
+GET http://{{integratorHost}}:8290/credit-records/applicants/301088231
+
+### Fetch File from Amazon S3 bucket (Currency Exchange rates)
+POST http://{{integratorHost}}:8290/forex-documents/exchange-rates
+Content-Type: application/xml
+
+<getObject>
+    <objectName>TodayRates.json</objectName>
+    <bucketName>forex-sales</bucketName>
+</getObject>
+
+### SERVICE ORCHESTRATION/CHAINING
+
+### Get all credit customers
+GET http://{{serviceHost}}:8080/core-banking/customers
+
+### Get credit customer by ID
+GET http://{{serviceHost}}:8080/core-banking/customers/301091723
+
+###
+POST http://{{serviceHost}}:8080/credit-service/applications
+Content-Type: application/json
+
+{
+    "customerId":"301083909",
+    "requestedAmount":2000,
+    "creditType":"TERM_LOAN"
+}
+
+###
+POST http://{{serviceHost}}:8080/bureau/credit/proposals
+Content-Type: application/json
+
+{
+    "id":"SMVZC2V5",
+    "firstName": "Jessey",
+    "lastName": "Pinkman",
+    "address": "Sample Address 1",
+    "requestedLoanAmount":2000,
+    "yearsLivedInUK":3
+}
+
+###
+POST http://{{serviceHost}}:8080/accounts-credit-service/overdraught
+Content-Type: application/json
+
+{
+    "creditApplicationReference":"SMVZC2V5",
+    "customerFisrtName": "Jessey",
+    "customerLastName": "Pinkman",
+    "phoneNumber": "+447720821292",
+    "requestedAmount":2000,
+    "customerId":"301083909"
+}
+
+### Submit Term Loan Application
+POST http://{{integratorHost}}:8290/credit-approvals/application
+Content-Type: application/json
+
+{
+    "customer":"301083909",
+    "amount":2000,
+    "type":"TERM_LOAN",
+    "residenceHistory":3
+}
+
+### Submit Overdraught Application
+POST http://{{integratorHost}}:8290/credit-approvals/application
+Content-Type: application/json
+
+{
+    "customer":"301088231",
+    "amount":2000,
+    "type":"OVERDRAUGHT",
+    "residenceHistory":3
+}
+

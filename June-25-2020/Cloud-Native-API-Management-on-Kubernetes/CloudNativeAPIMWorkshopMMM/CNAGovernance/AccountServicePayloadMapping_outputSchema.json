@@ -1,0 +1,33 @@
+{
+  "$schema" : "http://wso2.org/json-schema/wso2-data-mapper-v5.0.0/schema#",
+  "outputType" : "JSON",
+  "id" : "http://wso2jsonschema.org",
+  "title" : "root",
+  "type" : "object",
+  "properties" : {
+    "creditApplicationReference" : {
+      "id" : "http://wso2jsonschema.org/creditApplicationReference",
+      "type" : "string"
+    },
+    "customerFisrtName" : {
+      "id" : "http://wso2jsonschema.org/customerFisrtName",
+      "type" : "string"
+    },
+    "customerLastName" : {
+      "id" : "http://wso2jsonschema.org/customerLastName",
+      "type" : "string"
+    },
+    "phoneNumber" : {
+      "id" : "http://wso2jsonschema.org/phoneNumber",
+      "type" : "string"
+    },
+    "requestedAmount" : {
+      "id" : "http://wso2jsonschema.org/requestedAmount",
+      "type" : "number"
+    },
+    "customerId" : {
+      "id" : "http://wso2jsonschema.org/customerId",
+      "type" : "string"
+    }
+  }
+}
