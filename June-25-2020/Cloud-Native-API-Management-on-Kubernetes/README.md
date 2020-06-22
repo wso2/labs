@@ -1,6 +1,6 @@
 # Cloud-native API Management on Kubernetes
 
-[Companion repo for workshop](https://wso2.com/events/workshops/2020-june-cloud-native-api-management-on-kubernetes/)
+This is the companion repository for the [Cloud-Native API Management on Kubernetes (workshop) - EMEA/BST](https://wso2.com/events/workshops/2020-june-emea-cloud-native-api-management-on-kubernetes/)
 
 ## Pre-requisites
 
