@@ -1,33 +1,15 @@
-### @serviceHost = 10.100.179.236
-@serviceHost = banksvc
-### @integratorHost = 10.99.172.20 
-@integratorHost = 127.0.0.1
+@minikubeip = 192.168.99.100
 
-### Proxy API API to get customers
-GET http://{{integratorHost}}:8290/credit-records/applicants
-
-### Proxy API API to get customer by ID
-GET http://{{integratorHost}}:8290/credit-records/applicants/301088231
-
-### Fetch File from Amazon S3 bucket (Currency Exchange rates)
-POST http://{{integratorHost}}:8290/forex-documents/exchange-rates
-Content-Type: application/xml
-
-<getObject>
-    <objectName>TodayRates.json</objectName>
-    <bucketName>forex-sales</bucketName>
-</getObject>
-
-### SERVICE ORCHESTRATION/CHAINING
-
+### PART 1 → TRY 'BANKSVC' on K8S
+@BANKSVC_HOST = 10.109.161.253
 ### Get all credit customers
-GET http://{{serviceHost}}:8080/core-banking/customers
+GET http://{{BANKSVC_HOST}}:8080/core-banking/customers
 
 ### Get credit customer by ID
-GET http://{{serviceHost}}:8080/core-banking/customers/301091723
+GET http://{{BANKSVC_HOST}}:8080/core-banking/customers/301091723
 
 ###
-POST http://{{serviceHost}}:8080/credit-service/applications
+POST http://{{BANKSVC_HOST}}:8080/credit-service/applications
 Content-Type: application/json
 
 {
@@ -37,7 +19,7 @@ Content-Type: application/json
 }
 
 ###
-POST http://{{serviceHost}}:8080/bureau/credit/proposals
+POST http://{{BANKSVC_HOST}}:8080/bureau/credit/proposals
 Content-Type: application/json
 
 {
@@ -50,7 +32,7 @@ Content-Type: application/json
 }
 
 ###
-POST http://{{serviceHost}}:8080/accounts-credit-service/overdraught
+POST http://{{BANKSVC_HOST}}:8080/accounts-credit-service/overdraught
 Content-Type: application/json
 
 {
@@ -62,8 +44,34 @@ Content-Type: application/json
     "customerId":"301083909"
 }
 
+### PART 2 → INTEGRATION SERVICE on DEVELOPMENT MACHINE
+@INT_DEV_HOST = banksvc
+
+### PART 2 → DEMO 1: PROXY API
+    
+### Proxy API API to get customers
+GET http://{{INT_DEV_HOST}}:8290/credit-records/applicants
+
+### Proxy API API to get customer by ID
+GET http://{{INT_DEV_HOST}}:8290/credit-records/applicants/301088231
+
+
+### PART 2 → DEMO 2: CONNECTOR/FILE-FETCH
+    
+### Fetch File from Amazon S3 bucket (Currency Exchange rates)
+POST http://{{INT_DEV_HOST}}:8290/forex-documents/exchange-rates
+Content-Type: application/xml
+
+<getObject>
+    <objectName>TodayRates.json</objectName>
+    <bucketName>forex-sales</bucketName>
+</getObject>
+
+
+### PART 2 → DEMO 3: SERVICE ORCHESTRATION/CHAINING
+
 ### Submit Term Loan Application
-POST http://{{integratorHost}}:8290/credit-approvals/application
+POST http://{{INT_DEV_HOST}}:8290/credit-approvals/application
 Content-Type: application/json
 
 {
@@ -74,7 +82,7 @@ Content-Type: application/json
 }
 
 ### Submit Overdraught Application
-POST http://{{integratorHost}}:8290/credit-approvals/application
+POST http://{{INT_DEV_HOST}}:8290/credit-approvals/application
 Content-Type: application/json
 
 {
@@ -84,3 +92,48 @@ Content-Type: application/json
     "residenceHistory":3
 }
 
+
+### PART 4 → INTEGRATION SERVICE on K8S
+@INT_K8S_HOST = 10.111.21.1
+
+### Submit Term Loan Application
+POST http://{{INT_K8S_HOST}}:8290/credit-approvals/application
+Content-Type: application/json
+
+{
+    "customer":"301083909",
+    "amount":2000,
+    "type":"TERM_LOAN",
+    "residenceHistory":3
+}
+
+### Submit Overdraught Application
+POST http://{{INT_K8S_HOST}}:8290/credit-approvals/application
+Content-Type: application/json
+
+{
+    "customer":"301088231",
+    "amount":2000,
+    "type":"OVERDRAUGHT",
+    "residenceHistory":3
+}
+
+
+### API MANAGEMENT DEMO
+
+### Product Service on K8S (Example Backend service)
+@PRODUCT_SVC_HOST = 10.103.176.252
+
+GET http://{{PRODUCT_SVC_HOST}}:80/products/301
+###
+GET http://{{PRODUCT_SVC_HOST}}:80/products
+
+### Products Service through WSO2 API Microgateway
+@MICROGATEWAY_HOST = 10.105.10.218
+
+### Without Access-Token
+GET https://{{MICROGATEWAY_HOST}}:9095/store/v1.0.0/products
+
+### With Access-Token
+GET https://{{MICROGATEWAY_HOST}}:9095/store/v1.0.0/products
+Authorization: Bearer eyJ0eXAiOiJKV1QiLCJhbGciOiJSUzI1NiIsIng1dCI6Ik5UZG1aak00WkRrM05qWTBZemM1TW1abU9EZ3dNVEUzTVdZd05ERTVNV1JsWkRnNE56YzRaQT09In0.eyJhdWQiOiJodHRwOlwvXC9vcmcud3NvMi5hcGltZ3RcL2dhdGV3YXkiLCJzdWIiOiJhZG1pbkBjYXJib24uc3VwZXIiLCJhcHBsaWNhdGlvbiI6eyJvd25lciI6ImFkbWluIiwidGllclF1b3RhVHlwZSI6InJlcXVlc3RDb3VudCIsInRpZXIiOiIxMFBlck1pbiIsIm5hbWUiOiJkZWZhdWx0LWFwaWN0bC1hcHAiLCJpZCI6MywidXVpZCI6bnVsbH0sInNjb3BlIjoiYW1fYXBwbGljYXRpb25fc2NvcGUgZGVmYXVsdCIsImlzcyI6Imh0dHBzOlwvXC93c28yYXBpbTozMjAwMVwvb2F1dGgyXC90b2tlbiIsInRpZXJJbmZvIjp7IlVubGltaXRlZCI6eyJ0aWVyUXVvdGFUeXBlIjoicmVxdWVzdENvdW50Iiwic3RvcE9uUXVvdGFSZWFjaCI6dHJ1ZSwic3Bpa2VBcnJlc3RMaW1pdCI6MCwic3Bpa2VBcnJlc3RVbml0IjpudWxsfX0sImtleXR5cGUiOiJQUk9EVUNUSU9OIiwic3Vic2NyaWJlZEFQSXMiOlt7InN1YnNjcmliZXJUZW5hbnREb21haW4iOiJjYXJib24uc3VwZXIiLCJuYW1lIjoiT25saW5lLVN0b3JlIiwiY29udGV4dCI6Ilwvc3RvcmVcL3YxLjAuMCIsInB1Ymxpc2hlciI6ImFkbWluIiwidmVyc2lvbiI6InYxLjAuMCIsInN1YnNjcmlwdGlvblRpZXIiOiJVbmxpbWl0ZWQifV0sImNvbnN1bWVyS2V5IjoiMEh3OE15OENsMVdXa3JLU0lZNlA3SU5rdmtzYSIsImV4cCI6MTU5MjgzNzc2NywiaWF0IjoxNTkyODM0MTY3LCJqdGkiOiI2YTExOTk4Mi0wY2RiLTQyN2EtYTg0ZS1iMDJiNjE2OGI5MGQifQ.kwmhBFcBVENpVpqRcf7SKyxsTqa2HBm8bVBd2p2o25ApfSVjMW9-ytwtaGdm52X7UGcjC72_rpQxvcQkbfro2oRJ2BZosO4g6dcdX2fsQQ_rfBTR22poVI7MqqOOHsmob20L2pkuv3ABUi7aBe_yQWGZ9TjDvdgXjvIvNCAFlQw9icSNRlNuewioA0B8QzGTySk3RMTCnrPilHPBS-2Es4emVbAxV6ufid0wC7-hUhUzceYzB1eFufbkIcohjJ6dMsboI7VdX78SQF2GFU66mhpR9pX0JemA1ZT7vbwtcJY_uJecoohm26eOok-7euOPqS7bAXynXROSDnzqPZch_w
