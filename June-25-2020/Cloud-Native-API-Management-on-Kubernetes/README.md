@@ -4,6 +4,8 @@
 
 ## Pre-requisites
 
+### Setting up basic environment
+
 You should have following installed if you're following along the workshop. This is written in June 2020. If you're trying this out later, please be mindful that following links might not work. You might have to get the correct download link from theer respective home pages. If you have a working kubernetes cluster you can go to step #6.
 
 1. Install Docker
@@ -84,19 +86,23 @@ You should have following installed if you're following along the workshop. This
    minikube start --cpus=4 --memory=6144m
    ```
 
-At this point you should have a working kubernetes cluster. Following steps should be executed once you have a working kubernetes cluster. Minikube provide a great, repeatable way to create a kubernetes cluster if you're just starting up. I'll be using WSL 2 in Windows 10 during the demo.
+At this point you should have a working kubernetes cluster. Following steps should be executed once you have a working kubernetes cluster. Minikube provide a great, repeatable way to create a kubernetes cluster if you're just starting up.
 
-1. Install WSO2 Integration Studio - https://wso2.com/integration/integration-studio/. We'll be using Integration Studio to demonstrate building complex integration services
+### Setting up WSO2 Specifics
 
-2. Install EI Kubernetes Operator https://ei.docs.wso2.com/en/latest/micro-integrator/setup/deployment/kubernetes_deployment/
+1. Install WSO2 Integration Studio - [https://wso2.com/integration/integration-studio/](https://wso2.com/integration/integration-studio/). We'll be using Integration Studio to demonstrate building complex integration services
 
-3. Install APIM Kubernetes Operator - https://apim.docs.wso2.com/en/latest/learn/kubernetes-operators/k8s-api-operator/
+2. Install EI Kubernetes Operator [https://ei.docs.wso2.com/en/latest/micro-integrator/setup/deployment/kubernetes_deployment/](https://ei.docs.wso2.com/en/latest/micro-integrator/setup/deployment/kubernetes_deployment/)
+
+3. Install APIM Kubernetes Operator - [https://apim.docs.wso2.com/en/latest/learn/kubernetes-operators/k8s-api-operator/](https://apim.docs.wso2.com/en/latest/learn/kubernetes-operators/k8s-api-operator/)
+
+You will also require a REST Client tool to test the APIs. I am using [VSCode IDE](https://code.visualstudio.com/) having [RESTClient](https://marketplace.visualstudio.com/items?itemName=humao.rest-client) installed on it. You can use the provided `vscode_rest-client.http` with it easily.
 
 ## Part 1 - Deploy sample Backend Service
 
 This workshop excercises consist of a few case where we develop Integration Services by consuming some service endpoints that represent the existing Backend services, APIs and systems. Please follow the given instructions to deploy this and make sure that it is up and running.
 
-1. Go to the [/bank-services](/bank-services) directory of this repository.
+1. Go to the [/bank-services](/June-25-2020/Cloud-Native-API-Management-on-Kubernetes/bank-services) directory of this repository.
 2. Follow the instruction given in the `README.md`
 
 ## Part 2 - Develop Integration services
@@ -114,87 +120,243 @@ We'll be using WSO2 Integration Studio to create some integration services with 
     * Walkthoiugh the complex integration service.
     * Testing a complex integration.
     * For testing to work, setup a hosts entry in your local machine - `banksvc`
+4. To test these, use the provided `vscode_rest-client.http` file with VSCode IDE.
 
-## Part 2 - Deploying services (microservices and integration services) into a kubernetes cluster
+## Part 3 - Buld & Push a Docker Image of Integration Artefacts
 
-1. Deploy backend services into K8S
-   ```
-   $ kubectl apply -f hospital-service-deployment.yaml
-   $ kubectl port-forward svc/hospitalsvc 9091:9091
-   ```
-2. Deploy integration service into K8s (EI Operator)
-   ```
-   $ kubectl apply -f integration_cr.yaml
-   $ kubectl port-forward svc/myintegration-service 8290:8290
+1. Using WSO2 Integration Studio.
+   * Using Kubernetes Exporter project `Build and Push Docker Image` option.
+   * Or, using docker build command in the project directory (../CNAk8sExporter).
+
+      ```sh
+      docker build -t knightbeat/cna-integration:1.1.0 .
+      docker push knightbeat/cna-integration:1.1.0
+      ```
+
+   * Note: `knightbeat` is my dockerhub repository. Change this according to yours.
+
+## Part 4 - Deploying the Integration services into a kubernetes cluster
+
+1. Deploy integration service into K8s (EI Operator)
+
+   ```sh
+   kubectl apply -f integration_cr.yaml
    ```
 
-## Part 3 - Creating a managed API in kubernetes using the CLI
+2. To access the deployment externally you can follow 2 approaches
+   * With Port forward
 
-1. Deploy sample backend service
+      ```sh
+      kubectl port-forward svc/myintegration-service 8290:8290
+      ```
+
+   * OR reexpose the deployment with a Load balancer
+      * Start minikube tunnel if you haven't started it already
+
+         ```sh
+         minikube tunnel
+         ```
+
+      * Re expose the deployment with a LoadBalancer
+
+         ```sh
+         kubectl expose deployment cna-integration-deployment --type=LoadBalancer --port=8290 --name=cna-integration-loadbalancer
+         ```
+
+      * List the services and observe that the deployment exposed with a LoadBalancer
+
+         ```sh
+         kubectl get svc
+         ```
+
+      * Use the listed `EXTERNAL-IP` of "cna-integration-loadbalancer" to access the Integration Service from your machine.
+
+## Part 5 - Creating a managed API in kubernetes using the CLI
+
+When installing the Kubernetes Operator, you downloaded `k8s-api-operator-1.1.0.zip`. The following sample services and swagger files are available in that package. Therefore, please execute these commands of the extracted `k8s-api-operator-1.1.0` directory.
+
+### 5.1 Sample Backend Service
+
+1. Deploy sample backend service on k8s
+
+   ```sh
+   kubectl apply -f scenarios/scenario-1/products_dep.yaml
    ```
-   $ kubectl apply -f scenarios/scenario-1/products_dep.yaml
-   ```
+
 2. Test backend service
-   ```
-   $ curl -X GET http://<EXTERNAL-IP>:80/products
-   ```
-3. Expose sample microservice as managed API
-   ```
-   $ apictl add api -n online-store --from-file=scenarios/scenario-1/products_swagger.yaml --replicas=3
-   ```
-4. Invoke the service
-   ```
-   $ curl -X GET "https://<EXTERNAL-IP>:9095/store/v1.0.0/products" -k
-   ```
-5. Push API to Developer Portal
-   * Add an environment
-     ```
-     $ apictl add-env -e k8s --apim https://wso2apim:32001 --token https://wso2apim:32001/oauth2/token
-     ```
-   * Initialize the project
-     ```
-     $ apictl init online-store --oas=./scenarios/scenario-1/products_swagger.yaml --initial-state=PUBLISHED
-     ```
-   * Import API to API portal
-     ```
-     $ apictl import-api -f online-store/ -e k8s -k
-     ```
- 6. Double check on API Store
- 7. Generate keys
-    ```
-    $ apictl set --token-type JWT
-    ```
- 8. Generate access token
-    ```
-    $ apictl get-keys -n online-store -v v1.0.0 -e k8s --provider admin -k
-    ```
-   
-## Part 4 - CI/CD pipeline considerations / planning
 
-1. Install 2 copies of WSO2 API Manager 3.1.0 with one set to port offset to 1 (so ports wont clash during startup).
-2. Using ```apictl``` add 2 instances as 2 environments
+   ```erlang
+   GET http://<EXTERNAL-IP>:80/products
    ```
-   $ apictl add-env -e dev --apim https://localhost:9443 --token https://localhost:9443/oauth2/token
-   $ apictl add-env -e prod --apim https://localhost:9444 --token https://localhost:9444/oauth2/token
+
+   ```erlang
+   GET http://<EXTERNAL-IP>:80/products/301
    ```
-3. Create and publish an API. Use https://petstore.swagger.io/v2/swagger.json for creating teh API. This represent the dev environment. Any environment with existing APIs (created by developers or by a CI process). Enter a dev endpoint.
-4. Use ```apictl``` export the API, unzip the contents
+
+### 5.2 Expose it as a managed API on k8s
+
+To perform this, we will be using the `apictl` tool.
+
+1. Expose sample microservice as managed API
+
+   ```sh
+   apictl add api -n online-store --from-file=scenarios/scenario-1/products_swagger.yaml --replicas=2
    ```
-   $ apictl export-api -e dev -n SwaggerPetstore -v 1.0.0 --provider admin
+
+2. This will spin up an instance of WSO2 Micro Gateway on k8s proxying the 'products service' above.
+3. Try to invoke the API
+
+   ```erlang
+   GET https://<EXTERNAL-IP>:9095/store/v1.0.0/products
    ```
-5. Initialize the project 
+
+   This should prompt you with an error message as the Managed API is secured.
+
+   ```json
+   {
+      "fault": {
+      "code": 900901,
+      "message": "Invalid Credentials",
+      "description": "Invalid Credentials. Make sure you have given the correct access token"
+      }
+   }
    ```
-   $ apictl init PetstoreAPI --oas path/to/petstore.yaml
+
+   Leave it as is at this point.
+
+### 5.3 Publish the same API on WSO2 API Manager
+
+1. Add an environment called `k8s`
+
+   ```sh
+   apictl add-env -e k8s --apim https://wso2apim:32001 --token https://wso2apim:32001/oauth2/token
    ```
-6. Preparing the project for CI/CD, change endpoints in api_params.yaml
+
+2. Initialize an API project with the same Swagger(OAS) file as Microgateway above.
+
+   ```sh
+   apictl init online-store --oas=./scenarios/scenario-1/products_swagger.yaml --initial-state=PUBLISHED
    ```
-   environments: 
-    - name: dev 
-    endpoints: 
-      production: 
-        url: 'http://dev.wso2.com' 
+
+3. Import the API to WSO2 API Manager - Developer portal
+
+   ```sh
+   apictl import-api -f online-store/ -e k8s -k
+   ```
+
+4. Goto the [API Manager Developer portal](https://wso2apim:32001/devportal) and verfify that the API has been published.
+
+### 5.4 Access the API with Credentials
+
+1. Generate keys with `apictl`
+
+   ```sh
+   apictl set --token-type JWT
+   ```
+
+2. Generate an Access-Token with `apictl` to invoke the API
+
+   ```sh
+   apictl get-keys -n online-store -v v1.0.0 -e k8s --provider admin -k
+   ```
+
+3. Invoke the API with Access-Token.
+
+   ```erlang
+   GET https://<EXTERNAL-IP>:9095/store/v1.0.0/products
+   Authorization: Bearer <ACCESS-TOKEN>
+   ```
+
+   You should get a response like this
+
+   ```http
+   HTTP/1.1 200 OK
+   content-type: application/json
+   date: Mon, 22 Jun 2020 13:05:18 GMT
+   server: ballerina/0.991.0
+   connection: close
+   content-encoding: gzip
+   transfer-encoding: chunked
+
+   {
+      "products": [
+         {
+            "name": "Apples",
+            "id": 101,
+            "price": "$1.49 / lb"
+         },
+         {
+            "name": "Macaroni & Cheese",
+            "id": 151,
+            "price": "$7.69"
+         },
+         {
+            "name": "ABC Smart TV",
+            "id": 301,
+            "price": "$399.99"
+         },
+         {
+            "name": "Motor Oil",
+            "id": 401,
+            "price": "$22.88"
+         },
+         {
+            "name": "Floral Sleeveless Blouse",
+            "id": 501,
+            "price": "$21.50"
+         }
+      ]
+   }
+   ```
+
+Alternatively, you can create an Application on the Developer Portal with Token type `JWT` and generate an Access-Token with that.
+
+## Part 6 - CI/CD pipeline considerations / planning
+
+### 6.1 Setting up two deployment environments
+
+1. Install 2 copies of WSO2 API Manager 3.1.0 with one set to port offset to 1.
+   * (So that ports won't conflict during startup).
+
+2. Using `apictl`, register those instances as two environments
+
+   ```sh
+   apictl add-env -e dev --apim https://localhost:9443 --token https://localhost:9443/oauth2/token
+   apictl add-env -e prod --apim https://localhost:9444 --token https://localhost:9444/oauth2/token
+   ```
+
+### 6.2 Deploy an API on the 'dev' environment
+
+1. Create and publish an API.
+   * Use [https://petstore.swagger.io/v2/swagger.json](https://petstore.swagger.io/v2/swagger.json) to create the API.
+   * Any environment with existing APIs (created by developers or by a CI process). Enter a dev endpoint.
+
+### 6.3 Export API from the 'dev' environment
+
+1. Use `apictl` export the API and unzip the contents
+
+   ```sh
+   apictl export-api -e dev -n SwaggerPetstore -v 1.0.0 --provider admin
+   ```
+
+### 6.4 Create and API project
+
+1. Initialize an API project with the YAML file of the exported API.
+
+   ```sh
+   apictl init PetstoreAPI --oas path/to/petstore.yaml
+   ```
+
+2. Preparing the project for CI/CD, change endpoints in api_params.yaml
+
+   ```yaml
+   environments:
+    - name: dev
+    endpoints:
+      production:
+        url: 'http://dev.wso2.com'
       sandbox:
-        url: 'http://dev.sandbox.wso2.com' 
+        url: 'http://dev.sandbox.wso2.com'
     - name: prod
     endpoints:
       production:
@@ -202,8 +364,10 @@ We'll be using WSO2 Integration Studio to create some integration services with 
       sandbox:
         url: 'http://prod.sandbox.wso2.com'
    ```
+
    What more can we change? Here's another example,
-   ```
+
+   ```yaml
    environments:
      - name: <environment_name>
       endpoints:
@@ -225,13 +389,17 @@ We'll be using WSO2 Integration Studio to create some integration services with 
           username: <endpoint_username>
           password: <endpoint_password>
       gatewayEnvironments:
-         - <gateway_environment_name>           
+         - <gateway_environment_name>
       certs:
          - hostName: <endpoint_url>
           alias: <certificate_alias>
           path: <certificate_file_path>
    ```
-7. Import API
-   ```
-   $ apictl import-api -f ./SwaggerPetstore -e prod --preserve-provider=false --update=true
+
+### 6.5 Import API to the 'prod' environment
+
+1. Use `apictl` import the API
+
+   ```sh
+   apictl import-api -f ./SwaggerPetstore -e prod --preserve-provider=false --update=true
    ```
