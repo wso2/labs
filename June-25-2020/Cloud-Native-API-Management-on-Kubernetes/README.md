@@ -88,24 +88,23 @@ You should have following installed if you're following along the workshop. This
 
 At this point you should have a working kubernetes cluster. Following steps should be executed once you have a working kubernetes cluster. Minikube provide a great, repeatable way to create a kubernetes cluster if you're just starting up.
 
-### Setting up WSO2 Specifics
+### Setting up WSO2 Workshop Specifics
 
-1. Install WSO2 Integration Studio - [https://wso2.com/integration/integration-studio/](https://wso2.com/integration/integration-studio/). We'll be using Integration Studio to demonstrate building complex integration services
+1. Install **WSO2 Integration Studio** - [https://wso2.com/integration/integration-studio/](https://wso2.com/integration/integration-studio/). We'll be using Integration Studio to demonstrate building complex integration services
 
-2. Install EI Kubernetes Operator [https://ei.docs.wso2.com/en/latest/micro-integrator/setup/deployment/kubernetes_deployment/](https://ei.docs.wso2.com/en/latest/micro-integrator/setup/deployment/kubernetes_deployment/)
+2. Install **Kubernetes Operator for WSO2 Enterprise Integrator** (EI) [https://ei.docs.wso2.com/en/latest/micro-integrator/setup/deployment/kubernetes_deployment/](https://ei.docs.wso2.com/en/latest/micro-integrator/setup/deployment/kubernetes_deployment/)
 
-3. Install APIM Kubernetes Operator - [https://apim.docs.wso2.com/en/latest/learn/kubernetes-operators/k8s-api-operator/](https://apim.docs.wso2.com/en/latest/learn/kubernetes-operators/k8s-api-operator/)
+3. Install **Kubernetes Operator for WSO2 API Manager** - [https://apim.docs.wso2.com/en/latest/learn/kubernetes-operators/k8s-api-operator/](https://apim.docs.wso2.com/en/latest/learn/kubernetes-operators/k8s-api-operator/)
 
-You will also require a REST Client tool to test the APIs. I am using [VSCode IDE](https://code.visualstudio.com/) having [RESTClient](https://marketplace.visualstudio.com/items?itemName=humao.rest-client) installed on it. You can use the provided `vscode_rest-client.http` with it easily.
+4. Deploy sample Backend Service
 
-## Part 1 - Deploy sample Backend Service
+   _This workshop excercises consist of a few case where we develop Integration Services by consuming some service endpoints that represent the existing Backend services, APIs and systems. Please follow the given instructions to deploy this and make sure that it is up and running._
 
-This workshop excercises consist of a few case where we develop Integration Services by consuming some service endpoints that represent the existing Backend services, APIs and systems. Please follow the given instructions to deploy this and make sure that it is up and running.
+   * Go to the [/bank-services](/June-25-2020/Cloud-Native-API-Management-on-Kubernetes/bank-services) directory of this repository.
+   * Follow the instruction given in the `README.md`
+   * You will also require a REST Client tool to test the APIs. I am using [VSCode IDE](https://code.visualstudio.com/) having [RESTClient](https://marketplace.visualstudio.com/items?itemName=humao.rest-client) installed on it. You can use the provided `vscode_rest-client.http` with it easily.
 
-1. Go to the [/bank-services](/June-25-2020/Cloud-Native-API-Management-on-Kubernetes/bank-services) directory of this repository.
-2. Follow the instruction given in the `README.md`
-
-## Part 2 - Develop Integration services
+## Part 1 - Develop Integration services
 
 We'll be using WSO2 Integration Studio to create some integration services with the below given 3 scenarios to demonstrate development, testing & debug cycle.
 
@@ -115,14 +114,15 @@ We'll be using WSO2 Integration Studio to create some integration services with 
     * This will fetch a File from an Amazon S3 bucket.
     * If you want to try this out, you may can create a **free-tier account** on Amazon.
 3. Complex integration service that orchestrates a several service endpoints.
-    * Use the provided backend service call [Bank Services](/bank-services) on this repository.
+    * Use the provided backend service call [Bank Services](/June-25-2020/Cloud-Native-API-Management-on-Kubernetes/bank-services) on this repository.
     * Invoke the bank services endppints.
     * Walkthoiugh the complex integration service.
     * Testing a complex integration.
     * For testing to work, setup a hosts entry in your local machine - `banksvc`
-4. To test these, use the provided `vscode_rest-client.http` file with VSCode IDE.
 
-## Part 3 - Buld & Push a Docker Image of Integration Artefacts
+**Note:** To test these, use the provided [vscode_rest-client.http](/June-25-2020/Cloud-Native-API-Management-on-Kubernetes/vscode_rest-client.http) file with VSCode IDE.
+
+## Part 2 - Buld & Push a Docker Image of Integration Artefacts
 
 1. Using WSO2 Integration Studio.
    * Using Kubernetes Exporter project `Build and Push Docker Image` option.
@@ -135,7 +135,7 @@ We'll be using WSO2 Integration Studio to create some integration services with 
 
    * Note: `knightbeat` is my dockerhub repository. Change this according to yours.
 
-## Part 4 - Deploying the Integration services into a kubernetes cluster
+## Part 3 - Deploy the Integration services into a kubernetes cluster
 
 1. Deploy integration service into K8s (EI Operator)
 
@@ -150,7 +150,7 @@ We'll be using WSO2 Integration Studio to create some integration services with 
       kubectl port-forward svc/myintegration-service 8290:8290
       ```
 
-   * OR reexpose the deployment with a Load balancer
+   * OR re-expose the deployment with a Load balancer
       * Start minikube tunnel if you haven't started it already
 
          ```sh
@@ -171,11 +171,11 @@ We'll be using WSO2 Integration Studio to create some integration services with 
 
       * Use the listed `EXTERNAL-IP` of "cna-integration-loadbalancer" to access the Integration Service from your machine.
 
-## Part 5 - Creating a managed API in kubernetes using the CLI
+## Part 4 - Creating a managed API in kubernetes using the CLI
 
 When installing the Kubernetes Operator, you downloaded `k8s-api-operator-1.1.0.zip`. The following sample services and swagger files are available in that package. Therefore, please execute these commands of the extracted `k8s-api-operator-1.1.0` directory.
 
-### 5.1 Sample Backend Service
+### 4.1 Sample Backend Service
 
 1. Deploy sample backend service on k8s
 
@@ -193,7 +193,7 @@ When installing the Kubernetes Operator, you downloaded `k8s-api-operator-1.1.0.
    GET http://<EXTERNAL-IP>:80/products/301
    ```
 
-### 5.2 Expose it as a managed API on k8s
+### 4.2 Expose it as a managed API on k8s
 
 To perform this, we will be using the `apictl` tool.
 
@@ -203,7 +203,7 @@ To perform this, we will be using the `apictl` tool.
    apictl add api -n online-store --from-file=scenarios/scenario-1/products_swagger.yaml --replicas=2
    ```
 
-2. This will spin up an instance of WSO2 Micro Gateway on k8s proxying the 'products service' above.
+2. This will spin up an instances of WSO2 Micro Gateway on k8s, proxying the 'products service' above.
 3. Try to invoke the API
 
    ```erlang
@@ -224,7 +224,7 @@ To perform this, we will be using the `apictl` tool.
 
    Leave it as is at this point.
 
-### 5.3 Publish the same API on WSO2 API Manager
+### 4.3 Publish the same API on WSO2 API Manager
 
 1. Add an environment called `k8s`
 
@@ -246,7 +246,7 @@ To perform this, we will be using the `apictl` tool.
 
 4. Goto the [API Manager Developer portal](https://wso2apim:32001/devportal) and verfify that the API has been published.
 
-### 5.4 Access the API with Credentials
+### 4.4 Access the API with Credentials
 
 1. Generate keys with `apictl`
 
@@ -311,9 +311,9 @@ To perform this, we will be using the `apictl` tool.
 
 Alternatively, you can create an Application on the Developer Portal with Token type `JWT` and generate an Access-Token with that.
 
-## Part 6 - CI/CD pipeline considerations / planning
+## Part 5 - CI/CD pipeline considerations / planning
 
-### 6.1 Setting up two deployment environments
+### 5.1 Setting up two deployment environments
 
 1. Install 2 copies of WSO2 API Manager 3.1.0 with one set to port offset to 1.
    * (So that ports won't conflict during startup).
@@ -325,13 +325,13 @@ Alternatively, you can create an Application on the Developer Portal with Token 
    apictl add-env -e prod --apim https://localhost:9444 --token https://localhost:9444/oauth2/token
    ```
 
-### 6.2 Deploy an API on the 'dev' environment
+### 5.2 Deploy an API on the 'dev' environment
 
 1. Create and publish an API.
    * Use [https://petstore.swagger.io/v2/swagger.json](https://petstore.swagger.io/v2/swagger.json) to create the API.
    * Any environment with existing APIs (created by developers or by a CI process). Enter a dev endpoint.
 
-### 6.3 Export API from the 'dev' environment
+### 5.3 Export API from the 'dev' environment
 
 1. Use `apictl` export the API and unzip the contents
 
@@ -339,7 +339,7 @@ Alternatively, you can create an Application on the Developer Portal with Token 
    apictl export-api -e dev -n SwaggerPetstore -v 1.0.0 --provider admin
    ```
 
-### 6.4 Create and API project
+### 5.4 Create and API project
 
 1. Initialize an API project with the YAML file of the exported API.
 
@@ -396,7 +396,7 @@ Alternatively, you can create an Application on the Developer Portal with Token 
           path: <certificate_file_path>
    ```
 
-### 6.5 Import API to the 'prod' environment
+### 5.5 Import API to the 'prod' environment
 
 1. Use `apictl` import the API
 
