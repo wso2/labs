@@ -102,7 +102,7 @@ At this point you should have a working kubernetes cluster. Following steps shou
 
    * Go to the [/bank-services](/June-25-2020/Cloud-Native-API-Management-on-Kubernetes/bank-services) directory of this repository.
    * Follow the instruction given in the `README.md`
-   * You will also require a REST Client tool to test the APIs. I am using [VSCode IDE](https://code.visualstudio.com/) having [RESTClient](https://marketplace.visualstudio.com/items?itemName=humao.rest-client) installed on it. You can use the provided `vscode_rest-client.http` with it easily.
+   * You will also require a REST Client tool to test the APIs. I am using [VSCode IDE](https://code.visualstudio.com/) having [RESTClient](https://marketplace.visualstudio.com/items?itemName=humao.rest-client) installed on it. You can use the provided [vscode_rest-client.http](/June-25-2020/Cloud-Native-API-Management-on-Kubernetes/vscode_rest-client.http) with it easily.
 
 ## Part 1 - Develop Integration services
 
