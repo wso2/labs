@@ -316,7 +316,9 @@ Alternatively, you can create an Application on the Developer Portal with Token 
 ### 5.1 Setting up two deployment environments
 
 1. Install 2 copies of WSO2 API Manager 3.1.0 with one set to port offset to 1.
-   * (So that ports won't conflict during startup).
+   * Modify _wso2am-3.1.0/repository/conf/deployment.toml_
+      * Uncomment offset parameter and set if to 1 `offset=1`
+   * This will allow running 2 WSO2 API Manager instances running on the same machine without port conflicts.
 
 2. Using `apictl`, register those instances as two environments
 
@@ -328,44 +330,46 @@ Alternatively, you can create an Application on the Developer Portal with Token 
 ### 5.2 Deploy an API on the 'dev' environment
 
 1. Create and publish an API.
+   * Load the [Publisher portal](https://localhost:9443/publisher) of the `dev` environment.
    * Use [https://petstore.swagger.io/v2/swagger.json](https://petstore.swagger.io/v2/swagger.json) to create the API.
-   * Any environment with existing APIs (created by developers or by a CI process). Enter a dev endpoint.
 
 ### 5.3 Export API from the 'dev' environment
 
-1. Use `apictl` export the API and unzip the contents
+1. Use `apictl` export the `SwaggerPetstore` API.
 
    ```sh
-   apictl export-api -e dev -n SwaggerPetstore -v 1.0.0 --provider admin
+   apictl export-api -e dev -n SwaggerPetstore -v 1.0.5 --provider admin
    ```
+
+2. Unzip the contents of the downloaded _SwaggerPetstore-1.0.5.zip_ file.
 
 ### 5.4 Create and API project
 
-1. Initialize an API project with the YAML file of the exported API.
+1. Initialize an API project called `PetstoreAPI` with the _Swagger YAML_ file of the exported API.
 
    ```sh
-   apictl init PetstoreAPI --oas path/to/petstore.yaml
+   apictl init PetstoreAPI --oas SwaggerPetstore-1.0.5/Meta-information/swagger.yaml
    ```
 
-2. Preparing the project for CI/CD, change endpoints in api_params.yaml
+2. Prepare the project for CI/CD, with endpoints in `api_params.yaml` in the _PetstoreAPI_ project.
 
    ```yaml
    environments:
-    - name: dev
-    endpoints:
-      production:
-        url: 'http://dev.wso2.com'
-      sandbox:
-        url: 'http://dev.sandbox.wso2.com'
-    - name: prod
-    endpoints:
-      production:
-        url: 'http://prod.wso2.com'
-      sandbox:
-        url: 'http://prod.sandbox.wso2.com'
+   - name: dev
+      endpoints:
+         production:
+            url: 'https://petstore.swagger.io/v2'
+         sandbox:
+            url: 'https://sandbox.petstore.swagger.io/v2'
+   - name: prod
+      endpoints:
+         production:
+            url: 'https://dev.petstore.swagger.io/v2'
+         sandbox:
+            url: 'https://dev.sandbox.petstore.swagger.io/v2'
    ```
 
-   What more can we change? Here's another example,
+   Other paramneters that you can change. (An example is given below)
 
    ```yaml
    environments:
@@ -398,8 +402,14 @@ Alternatively, you can create an Application on the Developer Portal with Token 
 
 ### 5.5 Import API to the 'prod' environment
 
-1. Use `apictl` import the API
+1. Load the [Publisher portal](https://localhost:9444/publisher) of the `prod` environment.
+   * Observe that the SwaggerPetstore API is not there.
+
+2. Use `apictl` import the API to the `prod` environment
 
    ```sh
-   apictl import-api -f ./SwaggerPetstore -e prod --preserve-provider=false --update=true
+   apictl import-api -f ./PetstoreAPI -e prod --preserve-provider=false --update=true
    ```
+
+3. Go back tp the [Publisher portal](https://localhost:9444/publisher) of the `prod` environment.
+   * Now you will see that the SwaggerPetstore API is created.
