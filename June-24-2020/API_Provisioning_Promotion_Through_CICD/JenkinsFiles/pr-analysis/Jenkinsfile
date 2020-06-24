@@ -1,0 +1,54 @@
+pipeline {
+
+    agent {
+        node {
+            label 'master'
+        }
+    }
+    environment { 
+        PATH = "/root/apictl:/root/.nvm/versions/node/v12.18.1/bin:$PATH"
+    }
+    options {
+        buildDiscarder logRotator( 
+                    daysToKeepStr: '16', 
+                    numToKeepStr: '10'
+            )
+    }
+
+    stages {
+        stage('Deploy MobileStore API') {
+            steps {
+                sh """
+                apictl login pr-test -u admin -p admin -k
+                apictl import-api -e pr-test -f MobileStore-v1.0  -k --update -k
+                sleep 6
+                """
+            }
+        }
+
+        stage('Testing MobileStore API') {
+            steps {
+                sh """
+                export TOKEN=\$(apictl get-keys -n MobileStore -v 1.0 -e pr-test -k)
+                echo \$(envsubst < Testing/envs/pr-test.json) > Testing/envs/env.tmp.json
+                newman run Testing/TestAPI.postman_collection.json -e Testing/envs/env.tmp.json --insecure
+                """
+            }
+        }
+
+        stage('Cleanup') {
+            steps {
+                sh """
+                rm Testing/envs/env.tmp.json
+                echo "Removed temporary files"
+
+                apictl change-status api -a Deprecate -n MobileStore -v 1.0 -e pr-test -k
+                apictl change-status api -a Retire -n MobileStore -v 1.0 -e pr-test -k
+                apictl delete api -n MobileStore -v 1.0 -e pr-test -k
+                echo "Removed MobileStore API"
+                """
+            }
+        }
+
+    }   
+}
