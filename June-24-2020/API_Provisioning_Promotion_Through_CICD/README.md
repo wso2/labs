@@ -1,6 +1,65 @@
 
 # Automated API Provisioning and Promotion Through CI/CD
 
+## CLI Commands
+
+### Add environment
+```
+apictl add-env -e ctl-demo --apim https://apim.demo.altonica.com:9443 --token https://apim.demo.altonica.com:8243/token
+```
+
+### Init project
+```
+apictl init MobileStore --oas https://raw.githubusercontent.com/altonica-ci/mobile-store-cicd/master/APIDefinitions/MobileStore-1.0.yaml --initial-state=PUBLISHED
+```
+
+Production
+
+```
+url: http://mobilestore.dev.altonica.com:9000
+```
+
+Sandbox
+
+```
+url: http://mobilestore.dev.altonica.com:9000
+```
+
+### Import API
+```
+apictl import-api -e ctl-demo -f MobileStore/  -k --update
+```
+https://apim.demo.altonica.com:9443/publisher
+
+
+→ goes directly into the published state
+
+### Get keys
+```
+apictl get-keys -n MobileStore -v 1.0 -e ctl-demo -k
+```
+We can use below to invoke the API
+
+
+```
+curl -kX GET "https://apim.demo.altonica.com:8243/mobile-store/1.0/mobile-devices" -H "accept: application/json" -H "Authorization: Bearer “
+```
+
+### Deprecate API
+```
+apictl change-status api -a Deprecate -n MobileStore -v 1.0 -e ctl-demo -k
+```
+
+### Retire API
+```
+apictl change-status api -a Retire -n MobileStore -v 1.0 -e ctl-demo -k
+```
+
+### Delete API
+```
+apictl delete api -n MobileStore -v 1.0 -e ctl-demo -k
+```
+
 ## DEMO (CICD)
 
 ### Deployment
@@ -44,9 +103,6 @@ https://builder.altonica.com:8080
 *   In the next page - General Settings
     *   Setup Branch Sources as [https://github.com/altonica-ci/mobile-store-cicd](https://github.com/altonica-ci/mobile-store-cicd)
     *   JenkinsFile: JenkinsFiles/Jenkinsfile
-    *   _Show JenkinsFile and go through it and explain it_
-        *   _API CTL commands that are used_
-        *   _Running tests_
     *   Under behaviours:
         *   Set Discover All Branches
         *   Regular expression: master
@@ -72,9 +128,6 @@ https://builder.altonica.com:8080
 *   In the next page - General Settings
     *   Add Branch source as [https://github.com/altonica-ci/mobile-store-cicd](https://github.com/altonica-ci/mobile-store-cicd)
     *   JenkinsFile: JenkinsFiles/pr-analysis/Jenkinsfile
-    *   _Show JenkinsFile and go through it and explain it_
-        *   _API CTL commands that are used_
-        *   _Running tests_
     *   Under behaviours:
         *   Set Discover All Branches
         *   Regular expression: master
