@@ -1,6 +1,7 @@
 
 # Automated API Provisioning and Promotion Through CI/CD
 
+Download tooling from https://wso2.com/api-management/tooling/
 ## CLI Commands
 
 ### Add environment
