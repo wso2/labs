@@ -1,0 +1,21 @@
+environments:
+  - name: pr-test
+    endpoints:
+      production:
+        url: http://mobilestore.dev.altonica.com:9000
+      sandbox:
+        url: http://mobilestore.dev.altonica.com:9000
+  - name: dev
+    endpoints:
+      production:
+        url: http://mobilestore.dev.altonica.com:9000
+      sandbox:
+        url: http://mobilestore.dev.altonica.com:9000
+  - name: prod
+    endpoints:
+      production:
+        url: http://mobilestore.prod.altonica.com:9000
+      sandbox:
+        url: http://mobilestore.prod.altonica.com:9000
+
+        
