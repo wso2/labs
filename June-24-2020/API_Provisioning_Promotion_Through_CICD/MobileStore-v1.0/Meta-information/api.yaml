@@ -1,0 +1,35 @@
+id:
+  providerName: admin
+  apiName: MobileStore
+  version: "1.0"
+description: This is the API used for Altronica Inc ....
+type: HTTP
+context: /mobile-store/1.0
+contextTemplate: /mobile-store/{version}
+tags:
+- devices
+- orders
+availableTiers:
+- name: Unlimited
+status: PUBLISHED
+visibility: public
+transports: http,https
+corsConfiguration:
+  corsConfigurationEnabled: true
+  accessControlAllowOrigins:
+  - '*'
+  accessControlAllowHeaders:
+  - authorization
+  - Access-Control-Allow-Origin
+  - Content-Type
+  - SOAPAction
+  - apikey
+  accessControlAllowMethods:
+  - GET
+  - PUT
+  - POST
+  - DELETE
+  - PATCH
+  - OPTIONS
+productionUrl: http://localhost:8080
+sandboxUrl: http://localhost:8081
