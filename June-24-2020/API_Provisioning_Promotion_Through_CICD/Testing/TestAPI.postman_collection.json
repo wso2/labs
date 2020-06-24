@@ -1,0 +1,90 @@
+{
+	"info": {
+		"_postman_id": "3d24b48b-69be-4644-b1b1-e44c33769af0",
+		"name": "TestAPI",
+		"schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json"
+	},
+	"item": [
+		{
+			"name": "Invoke Get Mobile Devices With Token",
+			"event": [
+				{
+					"listen": "test",
+					"script": {
+						"id": "65075fa9-1499-4b67-93a8-8794f6b4edb5",
+						"exec": [
+							"pm.test(\"Body matches string\", function () {",
+							"    pm.expect(pm.response.text()).to.include(\"Handset\");",
+							"    pm.expect(pm.response.text()).to.include(\"QQAR1266\");",
+							"});"
+						],
+						"type": "text/javascript"
+					}
+				}
+			],
+			"request": {
+				"auth": {
+					"type": "bearer",
+					"bearer": [
+						{
+							"key": "token",
+							"value": "{{token}}",
+							"type": "string"
+						}
+					]
+				},
+				"method": "GET",
+				"header": [],
+				"url": {
+					"raw": "{{gatewayURL}}/mobile-store/1.0/mobile-devices",
+					"host": [
+						"{{gatewayURL}}"
+					],
+					"path": [
+						"mobile-store",
+						"1.0",
+						"mobile-devices"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Invoke Get Mobile Devices Without Token",
+			"event": [
+				{
+					"listen": "test",
+					"script": {
+						"id": "a352726c-95fb-4242-bc8d-11d1474a9bf1",
+						"exec": [
+							"pm.test(\"Response Body Has 'Missing Credentials' Error\", function () {",
+							"    pm.expect(pm.response.text()).to.include(\"Missing Credentials\");",
+							"});",
+							"pm.test(\"Response Status Code is 401\", function () {",
+							"    pm.response.to.have.status(401);",
+							"});"
+						],
+						"type": "text/javascript"
+					}
+				}
+			],
+			"request": {
+				"method": "GET",
+				"header": [],
+				"url": {
+					"raw": "{{gatewayURL}}/mobile-store/1.0/mobile-devices",
+					"host": [
+						"{{gatewayURL}}"
+					],
+					"path": [
+						"mobile-store",
+						"1.0",
+						"mobile-devices"
+					]
+				}
+			},
+			"response": []
+		}
+	],
+	"protocolProfileBehavior": {}
+}
