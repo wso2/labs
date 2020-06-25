@@ -226,7 +226,7 @@ To perform this, we will be using the `apictl` tool.
 
 ### 4.3 Publish the same API on WSO2 API Manager
 
-1. Add an environment called `k8s`
+1. Add an environment called `k8s`. You have already installed this running instance of WSO2 API Manager when setting up `api-operator` on k8s earlier.
 
    ```sh
    apictl add-env -e k8s --apim https://wso2apim:32001 --token https://wso2apim:32001/oauth2/token
