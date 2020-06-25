@@ -147,7 +147,7 @@ We'll be using WSO2 Integration Studio to create some integration services with 
    * With Port forward
 
       ```sh
-      kubectl port-forward svc/myintegration-service 8290:8290
+      kubectl port-forward svc/cna-integration 8290:8290
       ```
 
    * OR re-expose the deployment with a Load balancer
