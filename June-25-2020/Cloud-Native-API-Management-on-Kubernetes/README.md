@@ -112,11 +112,11 @@ We'll be using WSO2 Integration Studio to create some integration services with 
     * This will proxy an existing service endpoint.
 2. Using a **Connector**
     * This will fetch a File from an Amazon S3 bucket.
-    * If you want to try this out, you may can create a **free-tier account** on Amazon.
+    * If you want to try this out, you can create a **free-tier account** on Amazon.
 3. Complex integration service that orchestrates a several service endpoints.
     * Use the provided backend service call [Bank Services](/June-25-2020/Cloud-Native-API-Management-on-Kubernetes/bank-services) on this repository.
-    * Invoke the bank services endppints.
-    * Walkthoiugh the complex integration service.
+    * Invoke the bank services endpoints.
+    * Walkthrough the complex integration service.
     * Testing a complex integration.
     * For testing to work, setup a hosts entry in your local machine - `banksvc`
 
