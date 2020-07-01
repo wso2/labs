@@ -1,0 +1,12 @@
+map_S_root_S_root = function(){ 
+var outputroot={};
+
+outputroot =  {};
+outputroot.customerId = inputroot.customer;
+outputroot.requestedAmount = inputroot.amount;
+outputroot.creditType = inputroot.type;
+return outputroot;
+};
+
+
+

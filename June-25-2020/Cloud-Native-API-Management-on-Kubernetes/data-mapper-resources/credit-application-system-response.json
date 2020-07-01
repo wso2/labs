@@ -1,0 +1,15 @@
+{
+    "reference": "SMVZC2V5",
+    "requestedAmount": 2000.0,
+    "creditType": "TERM_LOAN",
+    "customer": {
+      "firstName": "Jessey",
+      "lastName": "Pinkman",
+      "id": "301083909",
+      "contact": {
+        "phone": "+447720821292",
+        "address": "Sample Address 1",
+        "email": "jessey@gmail.com"
+      }
+    }
+  }

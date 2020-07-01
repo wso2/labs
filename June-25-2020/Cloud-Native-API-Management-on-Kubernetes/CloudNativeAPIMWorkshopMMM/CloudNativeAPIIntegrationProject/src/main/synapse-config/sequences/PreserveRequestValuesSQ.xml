@@ -1,0 +1,13 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<sequence name="PreserveRequestValuesSQ" trace="disable" xmlns="http://ws.apache.org/ns/synapse">
+    <log level="custom">
+        <property expression="$body" name="request"/>
+    </log>
+    <property expression="json-eval($.customer)" name="customerId" scope="default" type="STRING"/>
+    <property expression="json-eval($.amount)" name="requestedAmount" scope="default" type="STRING"/>
+    <property expression="json-eval($.type)" name="creditType" scope="default" type="STRING"/>
+    <property expression="json-eval($.residenceHistory)" name="yearsLivedInUK" scope="default" type="STRING"/>
+    <log level="custom">
+        <property expression="$ctx:customerId" name="customerID"/>
+    </log>
+</sequence>

@@ -1,0 +1,143 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<notation:Diagram xmi:version="2.0" xmlns:xmi="http://www.omg.org/XMI" xmlns:datamapper="http:///org/wso2/developerstudio/eclipse/gmf/datamapper" xmlns:notation="http://www.eclipse.org/gmf/runtime/1.0.2/notation" xmi:id="_XHFRQLJmEeqcQqdItpJjdw" type="DataMapper" name="CreditApplicationMapper.datamapper_diagram" measurementUnit="Pixel">
+  <children xmi:type="notation:Shape" xmi:id="_XNk60LJmEeqcQqdItpJjdw" type="2002" fontName=".AppleSystemUIFont">
+    <children xmi:type="notation:Shape" xmi:id="_aF8PELJmEeqcQqdItpJjdw" type="3002" fontName=".AppleSystemUIFont">
+      <children xmi:type="notation:DecorationNode" xmi:id="_aF8PErJmEeqcQqdItpJjdw" type="5002"/>
+      <children xmi:type="notation:Shape" xmi:id="_aGGAELJmEeqcQqdItpJjdw" type="3003" fontName=".AppleSystemUIFont">
+        <children xmi:type="notation:DecorationNode" xmi:id="_aGGAErJmEeqcQqdItpJjdw" type="5001"/>
+        <children xmi:type="notation:Shape" xmi:id="_aGMGsLJmEeqcQqdItpJjdw" type="3020" fontName=".AppleSystemUIFont">
+          <element xmi:type="datamapper:InNode" href="CreditApplicationMapper.datamapper#//@input/@treeNode.0/@node.0/@inNode"/>
+          <layoutConstraint xmi:type="notation:Bounds" xmi:id="_aGMGsbJmEeqcQqdItpJjdw" x="-1" y="1"/>
+        </children>
+        <children xmi:type="notation:Shape" xmi:id="_aGMtwLJmEeqcQqdItpJjdw" type="3019" fontName=".AppleSystemUIFont">
+          <element xmi:type="datamapper:OutNode" href="CreditApplicationMapper.datamapper#//@input/@treeNode.0/@node.0/@outNode"/>
+          <layoutConstraint xmi:type="notation:Bounds" xmi:id="_aGMtwbJmEeqcQqdItpJjdw"/>
+        </children>
+        <element xmi:type="datamapper:TreeNode" href="CreditApplicationMapper.datamapper#//@input/@treeNode.0/@node.0"/>
+        <layoutConstraint xmi:type="notation:Bounds" xmi:id="_aGGAEbJmEeqcQqdItpJjdw"/>
+      </children>
+      <children xmi:type="notation:Shape" xmi:id="_aGGAE7JmEeqcQqdItpJjdw" type="3003" fontName=".AppleSystemUIFont">
+        <children xmi:type="notation:DecorationNode" xmi:id="_aGGAFbJmEeqcQqdItpJjdw" type="5001"/>
+        <children xmi:type="notation:Shape" xmi:id="_aGXs4LJmEeqcQqdItpJjdw" type="3020" fontName=".AppleSystemUIFont">
+          <element xmi:type="datamapper:InNode" href="CreditApplicationMapper.datamapper#//@input/@treeNode.0/@node.1/@inNode"/>
+          <layoutConstraint xmi:type="notation:Bounds" xmi:id="_aGXs4bJmEeqcQqdItpJjdw" x="-1" y="1"/>
+        </children>
+        <children xmi:type="notation:Shape" xmi:id="_aGXs4rJmEeqcQqdItpJjdw" type="3019" fontName=".AppleSystemUIFont">
+          <element xmi:type="datamapper:OutNode" href="CreditApplicationMapper.datamapper#//@input/@treeNode.0/@node.1/@outNode"/>
+          <layoutConstraint xmi:type="notation:Bounds" xmi:id="_aGXs47JmEeqcQqdItpJjdw"/>
+        </children>
+        <element xmi:type="datamapper:TreeNode" href="CreditApplicationMapper.datamapper#//@input/@treeNode.0/@node.1"/>
+        <layoutConstraint xmi:type="notation:Bounds" xmi:id="_aGGAFLJmEeqcQqdItpJjdw"/>
+      </children>
+      <children xmi:type="notation:Shape" xmi:id="_aGGAFrJmEeqcQqdItpJjdw" type="3003" fontName=".AppleSystemUIFont">
+        <children xmi:type="notation:DecorationNode" xmi:id="_aGGnILJmEeqcQqdItpJjdw" type="5001"/>
+        <children xmi:type="notation:Shape" xmi:id="_aGaJILJmEeqcQqdItpJjdw" type="3020" fontName=".AppleSystemUIFont">
+          <element xmi:type="datamapper:InNode" href="CreditApplicationMapper.datamapper#//@input/@treeNode.0/@node.2/@inNode"/>
+          <layoutConstraint xmi:type="notation:Bounds" xmi:id="_aGaJIbJmEeqcQqdItpJjdw" x="-1" y="1"/>
+        </children>
+        <children xmi:type="notation:Shape" xmi:id="_aGawMLJmEeqcQqdItpJjdw" type="3019" fontName=".AppleSystemUIFont">
+          <element xmi:type="datamapper:OutNode" href="CreditApplicationMapper.datamapper#//@input/@treeNode.0/@node.2/@outNode"/>
+          <layoutConstraint xmi:type="notation:Bounds" xmi:id="_aGawMbJmEeqcQqdItpJjdw"/>
+        </children>
+        <element xmi:type="datamapper:TreeNode" href="CreditApplicationMapper.datamapper#//@input/@treeNode.0/@node.2"/>
+        <layoutConstraint xmi:type="notation:Bounds" xmi:id="_aGGAF7JmEeqcQqdItpJjdw"/>
+      </children>
+      <children xmi:type="notation:Shape" xmi:id="_aGGnIbJmEeqcQqdItpJjdw" type="3003" fontName=".AppleSystemUIFont">
+        <children xmi:type="notation:DecorationNode" xmi:id="_aGGnI7JmEeqcQqdItpJjdw" type="5001"/>
+        <element xmi:type="datamapper:TreeNode" href="CreditApplicationMapper.datamapper#//@input/@treeNode.0/@node.3"/>
+        <layoutConstraint xmi:type="notation:Bounds" xmi:id="_aGGnIrJmEeqcQqdItpJjdw"/>
+      </children>
+      <children xmi:type="notation:Shape" xmi:id="_aGGnJLJmEeqcQqdItpJjdw" type="3020" fontName=".AppleSystemUIFont">
+        <element xmi:type="datamapper:InNode" href="CreditApplicationMapper.datamapper#//@input/@treeNode.0/@inNode"/>
+        <layoutConstraint xmi:type="notation:Bounds" xmi:id="_aGGnJbJmEeqcQqdItpJjdw" x="-1" y="-11"/>
+      </children>
+      <children xmi:type="notation:Shape" xmi:id="_aGGnJrJmEeqcQqdItpJjdw" type="3019" fontName=".AppleSystemUIFont">
+        <element xmi:type="datamapper:OutNode" href="CreditApplicationMapper.datamapper#//@input/@treeNode.0/@outNode"/>
+        <layoutConstraint xmi:type="notation:Bounds" xmi:id="_aGGnJ7JmEeqcQqdItpJjdw"/>
+      </children>
+      <element xmi:type="datamapper:TreeNode" href="CreditApplicationMapper.datamapper#//@input/@treeNode.0"/>
+      <layoutConstraint xmi:type="notation:Bounds" xmi:id="_aF8PEbJmEeqcQqdItpJjdw"/>
+    </children>
+    <element xmi:type="datamapper:Input" href="CreditApplicationMapper.datamapper#//@input"/>
+    <layoutConstraint xmi:type="notation:Bounds" xmi:id="_XNk60bJmEeqcQqdItpJjdw" x="185" y="-200" width="250" height="160"/>
+  </children>
+  <children xmi:type="notation:Shape" xmi:id="_XNk60rJmEeqcQqdItpJjdw" type="2003" fontName=".AppleSystemUIFont">
+    <children xmi:type="notation:Shape" xmi:id="_dTNcULJmEeqcQqdItpJjdw" type="3011" fontName=".AppleSystemUIFont">
+      <children xmi:type="notation:DecorationNode" xmi:id="_dTODYLJmEeqcQqdItpJjdw" type="5003"/>
+      <children xmi:type="notation:Shape" xmi:id="_dTS74LJmEeqcQqdItpJjdw" type="3003" fontName=".AppleSystemUIFont">
+        <children xmi:type="notation:DecorationNode" xmi:id="_dTS74rJmEeqcQqdItpJjdw" type="5001"/>
+        <children xmi:type="notation:Shape" xmi:id="_dTUxELJmEeqcQqdItpJjdw" type="3020" fontName=".AppleSystemUIFont">
+          <element xmi:type="datamapper:InNode" href="CreditApplicationMapper.datamapper#//@output/@treeNode.0/@node.0/@inNode"/>
+          <layoutConstraint xmi:type="notation:Bounds" xmi:id="_dTUxEbJmEeqcQqdItpJjdw" x="-10" y="4"/>
+        </children>
+        <children xmi:type="notation:Shape" xmi:id="_dTUxErJmEeqcQqdItpJjdw" type="3019" fontName=".AppleSystemUIFont">
+          <element xmi:type="datamapper:OutNode" href="CreditApplicationMapper.datamapper#//@output/@treeNode.0/@node.0/@outNode"/>
+          <layoutConstraint xmi:type="notation:Bounds" xmi:id="_dTUxE7JmEeqcQqdItpJjdw"/>
+        </children>
+        <element xmi:type="datamapper:TreeNode" href="CreditApplicationMapper.datamapper#//@output/@treeNode.0/@node.0"/>
+        <layoutConstraint xmi:type="notation:Bounds" xmi:id="_dTS74bJmEeqcQqdItpJjdw"/>
+      </children>
+      <children xmi:type="notation:Shape" xmi:id="_dTTi8LJmEeqcQqdItpJjdw" type="3003" fontName=".AppleSystemUIFont">
+        <children xmi:type="notation:DecorationNode" xmi:id="_dTTi8rJmEeqcQqdItpJjdw" type="5001"/>
+        <children xmi:type="notation:Shape" xmi:id="_dTXNULJmEeqcQqdItpJjdw" type="3020" fontName=".AppleSystemUIFont">
+          <element xmi:type="datamapper:InNode" href="CreditApplicationMapper.datamapper#//@output/@treeNode.0/@node.1/@inNode"/>
+          <layoutConstraint xmi:type="notation:Bounds" xmi:id="_dTXNUbJmEeqcQqdItpJjdw" x="-10" y="4"/>
+        </children>
+        <children xmi:type="notation:Shape" xmi:id="_dTX0YLJmEeqcQqdItpJjdw" type="3019" fontName=".AppleSystemUIFont">
+          <element xmi:type="datamapper:OutNode" href="CreditApplicationMapper.datamapper#//@output/@treeNode.0/@node.1/@outNode"/>
+          <layoutConstraint xmi:type="notation:Bounds" xmi:id="_dTX0YbJmEeqcQqdItpJjdw"/>
+        </children>
+        <element xmi:type="datamapper:TreeNode" href="CreditApplicationMapper.datamapper#//@output/@treeNode.0/@node.1"/>
+        <layoutConstraint xmi:type="notation:Bounds" xmi:id="_dTTi8bJmEeqcQqdItpJjdw"/>
+      </children>
+      <children xmi:type="notation:Shape" xmi:id="_dTTi87JmEeqcQqdItpJjdw" type="3003" fontName=".AppleSystemUIFont">
+        <children xmi:type="notation:DecorationNode" xmi:id="_dTTi9bJmEeqcQqdItpJjdw" type="5001"/>
+        <children xmi:type="notation:Shape" xmi:id="_dTZpkLJmEeqcQqdItpJjdw" type="3020" fontName=".AppleSystemUIFont">
+          <element xmi:type="datamapper:InNode" href="CreditApplicationMapper.datamapper#//@output/@treeNode.0/@node.2/@inNode"/>
+          <layoutConstraint xmi:type="notation:Bounds" xmi:id="_dTZpkbJmEeqcQqdItpJjdw" x="-10" y="4"/>
+        </children>
+        <children xmi:type="notation:Shape" xmi:id="_dTZpkrJmEeqcQqdItpJjdw" type="3019" fontName=".AppleSystemUIFont">
+          <element xmi:type="datamapper:OutNode" href="CreditApplicationMapper.datamapper#//@output/@treeNode.0/@node.2/@outNode"/>
+          <layoutConstraint xmi:type="notation:Bounds" xmi:id="_dTZpk7JmEeqcQqdItpJjdw"/>
+        </children>
+        <element xmi:type="datamapper:TreeNode" href="CreditApplicationMapper.datamapper#//@output/@treeNode.0/@node.2"/>
+        <layoutConstraint xmi:type="notation:Bounds" xmi:id="_dTTi9LJmEeqcQqdItpJjdw"/>
+      </children>
+      <children xmi:type="notation:Shape" xmi:id="_dTTi9rJmEeqcQqdItpJjdw" type="3020" fontName=".AppleSystemUIFont">
+        <element xmi:type="datamapper:InNode" href="CreditApplicationMapper.datamapper#//@output/@treeNode.0/@inNode"/>
+        <layoutConstraint xmi:type="notation:Bounds" xmi:id="_dTTi97JmEeqcQqdItpJjdw" x="-1" y="-11"/>
+      </children>
+      <children xmi:type="notation:Shape" xmi:id="_dTTi-LJmEeqcQqdItpJjdw" type="3019" fontName=".AppleSystemUIFont">
+        <element xmi:type="datamapper:OutNode" href="CreditApplicationMapper.datamapper#//@output/@treeNode.0/@outNode"/>
+        <layoutConstraint xmi:type="notation:Bounds" xmi:id="_dTTi-bJmEeqcQqdItpJjdw"/>
+      </children>
+      <element xmi:type="datamapper:TreeNode" href="CreditApplicationMapper.datamapper#//@output/@treeNode.0"/>
+      <layoutConstraint xmi:type="notation:Bounds" xmi:id="_dTNcUbJmEeqcQqdItpJjdw"/>
+    </children>
+    <element xmi:type="datamapper:Output" href="CreditApplicationMapper.datamapper#//@output"/>
+    <layoutConstraint xmi:type="notation:Bounds" xmi:id="_XNk607JmEeqcQqdItpJjdw" x="568" y="-248" width="250" height="160"/>
+  </children>
+  <styles xmi:type="notation:DiagramStyle" xmi:id="_XHFRQbJmEeqcQqdItpJjdw"/>
+  <element xmi:type="datamapper:DataMapperRoot" href="CreditApplicationMapper.datamapper#/"/>
+  <edges xmi:type="notation:Connector" xmi:id="_ejh0sLJmEeqcQqdItpJjdw" type="4001" source="_aGMtwLJmEeqcQqdItpJjdw" target="_dTUxELJmEeqcQqdItpJjdw">
+    <styles xmi:type="notation:FontStyle" xmi:id="_ejh0sbJmEeqcQqdItpJjdw" fontName=".AppleSystemUIFont"/>
+    <element xmi:type="datamapper:DataMapperLink" href="CreditApplicationMapper.datamapper#//@input/@treeNode.0/@node.0/@outNode/@outgoingLink.0"/>
+    <bendpoints xmi:type="notation:RelativeBendpoints" xmi:id="_ejh0srJmEeqcQqdItpJjdw" points="[-2, 0, -62, -22]$[58, 22, -2, 0]"/>
+    <sourceAnchor xmi:type="notation:IdentityAnchor" xmi:id="_ejsMwLJmEeqcQqdItpJjdw" id="CENTER"/>
+    <targetAnchor xmi:type="notation:IdentityAnchor" xmi:id="_ejsMwbJmEeqcQqdItpJjdw" id="CENTER"/>
+  </edges>
+  <edges xmi:type="notation:Connector" xmi:id="_fHigsLJmEeqcQqdItpJjdw" type="4001" source="_aGXs4rJmEeqcQqdItpJjdw" target="_dTXNULJmEeqcQqdItpJjdw">
+    <styles xmi:type="notation:FontStyle" xmi:id="_fHigsbJmEeqcQqdItpJjdw" fontName=".AppleSystemUIFont"/>
+    <element xmi:type="datamapper:DataMapperLink" href="CreditApplicationMapper.datamapper#//@input/@treeNode.0/@node.1/@outNode/@outgoingLink.0"/>
+    <bendpoints xmi:type="notation:RelativeBendpoints" xmi:id="_fHigsrJmEeqcQqdItpJjdw" points="[-2, 0, -62, -27]$[58, 27, -2, 0]"/>
+    <sourceAnchor xmi:type="notation:IdentityAnchor" xmi:id="_fHjHwLJmEeqcQqdItpJjdw" id="CENTER"/>
+    <targetAnchor xmi:type="notation:IdentityAnchor" xmi:id="_fHjHwbJmEeqcQqdItpJjdw" id="CENTER"/>
+  </edges>
+  <edges xmi:type="notation:Connector" xmi:id="_fvQoALJmEeqcQqdItpJjdw" type="4001" source="_aGawMLJmEeqcQqdItpJjdw" target="_dTZpkLJmEeqcQqdItpJjdw">
+    <styles xmi:type="notation:FontStyle" xmi:id="_fvQoAbJmEeqcQqdItpJjdw" fontName=".AppleSystemUIFont"/>
+    <element xmi:type="datamapper:DataMapperLink" href="CreditApplicationMapper.datamapper#//@input/@treeNode.0/@node.2/@outNode/@outgoingLink.0"/>
+    <bendpoints xmi:type="notation:RelativeBendpoints" xmi:id="_fvQoArJmEeqcQqdItpJjdw" points="[-2, 0, -62, -32]$[58, 32, -2, 0]"/>
+    <sourceAnchor xmi:type="notation:IdentityAnchor" xmi:id="_fvR2ILJmEeqcQqdItpJjdw" id="CENTER"/>
+    <targetAnchor xmi:type="notation:IdentityAnchor" xmi:id="_fvR2IbJmEeqcQqdItpJjdw" id="CENTER"/>
+  </edges>
+</notation:Diagram>

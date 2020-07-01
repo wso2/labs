@@ -1,0 +1,57 @@
+{
+  "$schema" : "http://wso2.org/json-schema/wso2-data-mapper-v5.0.0/schema#",
+  "inputType" : "JSON",
+  "id" : "http://wso2jsonschema.org",
+  "title" : "root",
+  "type" : "object",
+  "properties" : {
+    "reference" : {
+      "id" : "http://wso2jsonschema.org/reference",
+      "type" : "string"
+    },
+    "requestedAmount" : {
+      "id" : "http://wso2jsonschema.org/requestedAmount",
+      "type" : "number"
+    },
+    "creditType" : {
+      "id" : "http://wso2jsonschema.org/creditType",
+      "type" : "string"
+    },
+    "customer" : {
+      "id" : "http://wso2jsonschema.org/customer",
+      "type" : "object",
+      "properties" : {
+        "firstName" : {
+          "id" : "http://wso2jsonschema.org/customer/firstName",
+          "type" : "string"
+        },
+        "lastName" : {
+          "id" : "http://wso2jsonschema.org/customer/lastName",
+          "type" : "string"
+        },
+        "id" : {
+          "id" : "http://wso2jsonschema.org/customer/id",
+          "type" : "string"
+        },
+        "contact" : {
+          "id" : "http://wso2jsonschema.org/customer/contact",
+          "type" : "object",
+          "properties" : {
+            "phone" : {
+              "id" : "http://wso2jsonschema.org/customer/contact/phone",
+              "type" : "string"
+            },
+            "address" : {
+              "id" : "http://wso2jsonschema.org/customer/contact/address",
+              "type" : "string"
+            },
+            "email" : {
+              "id" : "http://wso2jsonschema.org/customer/contact/email",
+              "type" : "string"
+            }
+          }
+        }
+      }
+    }
+  }
+}
