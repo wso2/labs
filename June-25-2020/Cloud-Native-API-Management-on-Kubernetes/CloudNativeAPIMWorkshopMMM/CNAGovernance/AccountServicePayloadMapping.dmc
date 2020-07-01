@@ -1,0 +1,18 @@
+map_S_root_S_root = function(){ 
+var outputroot={};
+
+outputroot =  {};
+outputroot.creditApplicationReference = inputroot.reference;
+outputroot.customerFisrtName = inputroot.customer.firstName;
+outputroot.customerLastName = inputroot.customer.lastName;
+outputroot.phoneNumber = inputroot.customer.contact.phone;
+outputroot.requestedAmount = inputroot.requestedAmount;
+outputroot.customerId = inputroot.customer.id;
+return outputroot;
+};
+
+
+
+
+
+

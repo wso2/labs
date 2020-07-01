@@ -1,0 +1,9 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<sequence name="PreserveCreditApplicationDataSQ" trace="disable" xmlns="http://ws.apache.org/ns/synapse">
+    <property expression="json-eval($.customer.firstName)" name="customerFirstName" scope="default" type="STRING"/>
+    <property expression="json-eval($.customer.lastName)" name="customerLastName" scope="default" type="STRING"/>
+    <property expression="json-eval($.reference)" name="creditApplicationReference" scope="default" type="STRING"/>
+    <property expression="json-eval($.customer.contact.address)" name="customerAddress" scope="default" type="STRING"/>
+    <property expression="json-eval($.customer.contact.phone)" name="customerPhoneNumber" scope="default" type="STRING"/>
+    <property expression="json-eval($)" name="creditApplication" scope="default" type="STRING"/>
+</sequence>
