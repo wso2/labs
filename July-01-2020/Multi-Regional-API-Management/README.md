@@ -136,7 +136,7 @@ Thereafter, run the following command.
 6. In the same way follow above 1-6 steps to create a Microgateway project (US-Region-Project) to the other label ``US-Region`` and to 
 build a microgateway executable .jar (US-Region-Project.jar) for the label. 
 
-    Projects and executable jar files which were used in this demo are uploaded into [Microgateway-Projects](/July-01-2020/Multi-Regional-API-Management/Microgateway-Projects).
+    Projects and executable jar files which were used in this demo are uploaded into [Microgateway-Projects](/July-01-2020/Multi-Regional-API-Management/Microgateway-Projects) and [Microgateway-Executables](/July-01-2020/Multi-Regional-API-Management/Microgateway-Executables)
 
 7.  Start Microgateways
 
