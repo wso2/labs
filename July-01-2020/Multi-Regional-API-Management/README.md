@@ -33,7 +33,7 @@ The guide to setup a sample setup similar to the demo is described below.
         - Keystore, Trustore and the Certificate file used in the webinar are uploaded into (APIM-Keystore-Trustore)[/July-01-2020/Multi-Regional-API-Management/APIM-Keystore-Trustore]. A key-pair was generated
          in the keystore with CN=*.apim.com and the related public key certificate is self signed and installed into the Truststore 
          client-truststore.jks
-    - The deployment.toml files are uploaded into (Config-Files)[/July-01-2020/Multi-Regional-API-Management/Config-Files]
+    - The deployment.toml files are uploaded into [Config-Files](/July-01-2020/Multi-Regional-API-Management/Config-Files)
     
     ###### Region : APAC
      - **2 WSO2 API-M 3.1.0 instances**
@@ -114,28 +114,28 @@ Thereafter, run the following command.
 
     (command format : micro-gw init <project-name>)
     
-         micro-gw init APAC-Region-Project
+         micro-gw init APAC_Project
 
 4. Import the APIs, which are published in WSO2 API Manager, that correspond to specific Microgateway label.
 
     (command format ``micro-gw import -l <label> <project-name>`` )
     
-        micro-gw import -l APAC-Region APAC-Region-Project
+        micro-gw import -l APAC-Region APAC_Project
 
     This command will import the 2 APIs ExchangeRatesAPI and LoanDetailsAPI into the project.
     After the APIs are imported, you can find the auto-generated OpenAPI definitions in the <MGW-project>/gen folder.
 
-5. Build the WSO2 API Microgateway project ``APAC-Region-Project``
+5. Build the WSO2 API Microgateway project ``APAC_Project``
 
    (Command format : ``micro-gw build <project-name>``)
 
-        micro-gw build APAC-Region-Project
+        micro-gw build APAC_Project
 
-    This creates an executable file (/APAC-Region-Project/target/APAC-Region-Project.jar) that you can use to expose the 
+    This creates an executable file (/APAC_Project/target/APAC_Project.jar) that you can use to expose the 
     group of APIs via WSO2 API Microgateway.
 
-6. In the same way follow above 1-6 steps to create a Microgateway project (US-Region-Project) to the other label ``US-Region`` and to 
-build a microgateway executable .jar (US-Region-Project.jar) for the label. 
+6. In the same way follow above 1-6 steps to create a Microgateway project (US_Project) to the other label ``US-Region`` and to 
+build a microgateway executable .jar (US_Project.jar) for the label. 
 
     Projects and executable jar files which were used in this demo are uploaded into [Microgateway-Projects](/July-01-2020/Multi-Regional-API-Management/Microgateway-Projects) and [Microgateway-Executables](/July-01-2020/Multi-Regional-API-Management/Microgateway-Executables)
 
@@ -151,7 +151,7 @@ build a microgateway executable .jar (US-Region-Project.jar) for the label.
             A sample command is given below.
             
                 keytool -export -alias apimwebinar -storepass wso2carbon -file apim.com.cer -keystore wso2carbon.jks
-                
+
        - Import the certificate using the command given below, to the trust store in the Microgateway runtime.
 
                 keytool -import -v -trustcacerts -alias apimwebinar -file apim.com.cer -keystore <MGW_RUNTIME_HOME>/runtime/bre/security/ballerinaTruststore.p12 -keypass wso2carbon -storepass wso2carbon
@@ -171,15 +171,15 @@ build a microgateway executable .jar (US-Region-Project.jar) for the label.
     
     7.4  Login to the APAC-MG1 and run below command to start Microgateway instance in this server.
         (command format : gateway <path-to-MGW-executable-file>)
-        ``gateway APAC-Region-Project.jar``
+        ``gateway APAC_Project.jar``
     7.5  In the same way, start Microgateways in the dedicated servers using the related executables you built.
         
         | Server        | Used executable           | 
         | ------------- |:-------------------------:|
-        | APAC-MG1      | APAC-Region-Project.jar   | 
-        | APAC-MG1      | APAC-Region-Project.jar   | 
-        | US-MG1        | US-Region-Project.jar     | 
-        | US-MG2        | US-Region-Project.jar     | 
+        | APAC-MG1      | APAC_Project.jar   | 
+        | APAC-MG1      | APAC_Project.jar   | 
+        | US-MG1        | US_Project.jar     | 
+        | US-MG2        | US_Project.jar     | 
 
 8.  Now you have started the 4 Microgateways as expected and you can invoke APIs these Microgateways using a valid 
 token.
