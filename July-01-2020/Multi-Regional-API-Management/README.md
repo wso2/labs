@@ -17,7 +17,7 @@ The guide to setup a sample setup similar to the demo is described below.
     - Please note that this deployment is used to demonstrate the multi-regional concept of API Management only. 
     - For more information on how to configure an active-active deployment please follow [Configuring an Active-Active Deployment](https://apim.docs.wso2.com/en/latest/install-and-setup/setup/single-node/configuring-an-active-active-deployment/#configuring-an-active-active-deployment)
     - NginX Load balancer is used to,
-        - load balance the traffic to API-M-1 and APIM-2
+        - load balance the traffic to APIM-1 and APIM-2
         - load balance the traffic to each Region for API invocation calls (on Micro Gateway)
             - APAC region: abc-bank-rg1mg.apim.com
             - USA region: abc-bank-rg2mg.apim.com
@@ -33,6 +33,7 @@ The guide to setup a sample setup similar to the demo is described below.
         - Keystore, Trustore and the Certificate file used in the webinar are uploaded into (APIM-Keystore-Trustore)[/July-01-2020/Multi-Regional-API-Management/APIM-Keystore-Trustore]. A key-pair was generated
          in the keystore with CN=*.apim.com and the related public key certificate is self signed and installed into the Truststore 
          client-truststore.jks
+    - The deployment.toml files are uploaded into (Config-Files)[/July-01-2020/Multi-Regional-API-Management/Config-Files]
     
     ###### Region : APAC
      - **2 WSO2 API-M 3.1.0 instances**
@@ -149,29 +150,29 @@ build a microgateway executable .jar (US-Region-Project.jar) for the label.
        
             A sample command is given below.
             
-                keytool -export -alias wso2carbon -file wso2carbon.crt -keystore <API-M_HOME>/repository/resources/security/wso2carbon.jks
-    
-       - Import the certificate using the command given below, to the trust store in the Microgateway runtime.
+                keytool -export -alias apimwebinar -storepass wso2carbon -file apim.com.cer -keystore wso2carbon.jks
                 
-                keytool -import -trustcacerts -alias wso2carbon2 -file wso2carbon.crt -keystore <MGW_RUNTIME_HOME>/runtime/bre/security/ballerinaTruststore.p12
+       - Import the certificate using the command given below, to the trust store in the Microgateway runtime.
+
+                keytool -import -v -trustcacerts -alias apimwebinar -file apim.com.cer -keystore <MGW_RUNTIME_HOME>/runtime/bre/security/ballerinaTruststore.p12 -keypass wso2carbon -storepass wso2carbon
     
        - Open the <MGW_RUNTIME_HOME>/conf/micro-gw.conf file. Add the alias (e.g. wso2carbon2) to the truststore to corresponding configurations.
           For example, to configure the JWT authentication for API Manager JWTs, add the following JWT issuer configuration to the micro-gw.conf.
           
                 [[jwtTokenConfig]]
-                issuer = "https://aio.apim.com:443/oauth2/token"
+                issuer = "https://abc-bank.apim.com:443/oauth2/token"
                 audience = "http://org.wso2.apimgt/gateway"
                 certificateAlias = "wso2apim310"
                 validateSubscription = false
                 
        Please follow, [Configuring the Microgateway 3.1.x Runtime](https://docs.wso2.com/display/MG310/Configuration+for+WSO2+API+Manager#ConfigurationforWSO2APIManager-ConfiguringtheMicrogateway3.1.xRuntime) for more information on how to configure the Microgateway 3.1.0 Runtime.
        
-    7.2  Transfer the built executables into the related Microgateway server instances.
+    7.3  Transfer the built executables into the related Microgateway server instances.
     
-    7.3  Login to the APAC-MG1 and run below command to start Microgateway instance in this server.
+    7.4  Login to the APAC-MG1 and run below command to start Microgateway instance in this server.
         (command format : gateway <path-to-MGW-executable-file>)
         ``gateway APAC-Region-Project.jar``
-    7.4  In the same way, start Microgateways in the dedicated servers using the related executables you built.
+    7.5  In the same way, start Microgateways in the dedicated servers using the related executables you built.
         
         | Server        | Used executable           | 
         | ------------- |:-------------------------:|
