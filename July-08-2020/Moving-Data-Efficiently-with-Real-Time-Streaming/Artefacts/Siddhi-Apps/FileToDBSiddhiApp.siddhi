@@ -1,0 +1,21 @@
+@App:name('FileToDBSiddhiApp')
+@App:description('Description of the plan')
+
+@source(type = 'file', dir.uri = "file:/Users/ramindu/Desktop/Demo/ReceiveEventsFromFile/files/new", mode = "line", tailing = "false", action.after.process = "move", action.after.failure = "move", move.after.process = "file:/Users/ramindu/Desktop/Demo/ReceiveEventsFromFile/files/processed", move.after.failure = "file:/Users/ramindu/Desktop/Demo/ReceiveEventsFromFile/files/failure",
+	@map(type = 'json', enclosing.element = "$.event"))
+define stream SweetProductionStream (symbol string, price int, volume int);
+
+@store(type = 'rdbms', jdbc.url = "jdbc:mysql://localhost:3306/etl_demo?useSSL=false", username = "root", password = "rootroot", jdbc.driver.name = "com.mysql.cj.jdbc.Driver")
+define table SweetProductionTable (symbol string, price int, volume int);
+
+@store(type = 'rdbms', jdbc.url = "jdbc:mysql://localhost:3306/etl_demo?useSSL=false", username = "root", password = "rootroot", jdbc.driver.name = "com.mysql.cj.jdbc.Driver")
+define aggregation SweetProductionAggregation
+from SweetProductionStream
+select symbol, count() as totalCount
+	group by symbol
+	aggregate every seconds, minutes, hours;
+
+@info(name = 'InsertQuery')
+from SweetProductionStream#log('inserted: ')
+select *
+insert into SweetProductionTable;

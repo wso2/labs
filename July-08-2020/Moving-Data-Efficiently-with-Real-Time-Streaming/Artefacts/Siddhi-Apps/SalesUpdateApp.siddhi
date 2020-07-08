@@ -1,0 +1,79 @@
+@App:name("SalesUpdateApp")
+
+@source(type="cdc",
+    url ="jdbc:sqlserver://localhost:1433;databaseName=sales",
+    username ="sa",
+    password ="test@123",
+    table.name ="dbo.products",
+    operation ="insert",
+    connector.properties ="snapshot.mode=initial_schema_only",
+    database.server.name ="localhost",
+    @map(type= "keyvalue", fail.on.missing.attribute ="false"))
+define stream InsertedProductInputStream (id int, name string, category_id int, quantity int);
+
+@source(type="cdc",
+    url ="jdbc:sqlserver://localhost:1433;databaseName=sales",
+    username ="sa",
+    password ="test@123",
+    table.name ="dbo.products",
+    operation ="update",
+    connector.properties ="snapshot.mode=initial_schema_only",
+    database.server.name ="localhost",
+    @map(type= "keyvalue", fail.on.missing.attribute ="false"))
+define stream UpdatedProductInputStream (id int, name string, category_id int, quantity int, before_id int, before_name string, before_category_id int, before_quantity int);
+
+@source(type="cdc",
+    url ="jdbc:sqlserver://localhost:1433;databaseName=sales",
+    username ="sa",
+    password ="test@123",
+    table.name ="dbo.products",
+    operation ="delete",
+    connector.properties ="snapshot.mode=initial_schema_only",
+    database.server.name ="localhost",
+    @map(type= "keyvalue", fail.on.missing.attribute ="false"))
+define stream DeletedProductInputStream (before_id int, before_name string, before_category_id int, before_quantity int);
+
+@sink(type="file",
+    file.uri ="/Users/lasanthas/WSO2/Webinars/output/inserted.csv",
+    append ="true",
+    @map(type= "csv"))
+define stream InsertedProductOutputStream(id int, name string, category string, quantity int);
+
+@sink(type="file",
+    file.uri ="/Users/lasanthas/WSO2/Webinars/output/updated.csv",
+    append ="true",
+    @map(type= "csv"))
+define stream UpdatedProductOutputStream(id int, name string, category string, quantity int);
+
+@sink(type="file",
+    file.uri ="/Users/lasanthas/WSO2/Webinars/output/deleted.csv",
+    append ="true",
+    @map(type= "csv"))
+define stream DeletedProductOutputStream(id int, name string, category string, quantity int);
+
+@store(type="rdbms",
+    jdbc.url ="jdbc:sqlserver://localhost:1433;databaseName=sales",
+    username ="sa",
+    password ="test@123",
+    jdbc.driver.name ="com.microsoft.sqlserver.jdbc.SQLServerDriver",
+    table.name ="categories")
+define table CategoryTable (id int, category string);
+
+@info(name='insertQuery')
+from InsertedProductInputStream as p
+    join CategoryTable as c on p.category_id == c.id
+select p.id, p.name, c.category, p.quantity
+insert into InsertedProductOutputStream;
+
+
+@info(name='updateQuery')
+from UpdatedProductInputStream as p
+    join CategoryTable as c on p.category_id == c.id
+select p.id, p.name, c.category, p.quantity
+insert into UpdatedProductOutputStream;
+
+@info(name='deleteQuery')
+from DeletedProductInputStream as p
+    join CategoryTable as c on p.before_category_id == c.id
+select p.before_id as id, p.before_name as name, c.category as category, p.before_quantity as quantity
+insert into DeletedProductOutputStream;
