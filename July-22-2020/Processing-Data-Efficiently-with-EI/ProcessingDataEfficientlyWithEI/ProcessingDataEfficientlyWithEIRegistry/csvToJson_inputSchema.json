@@ -1,0 +1,29 @@
+{
+  "$schema" : "http://wso2.org/json-schema/wso2-data-mapper-v5.0.0/schema#",
+  "inputType" : "CSV",
+  "id" : "http://wso2jsonschema.org",
+  "title" : "root",
+  "type" : "array",
+  "items" : [ {
+    "properties" : {
+      "referenceId" : {
+        "id" : "http://wso2jsonschema.org/0/referenceId",
+        "type" : "string"
+      },
+      "name" : {
+        "id" : "http://wso2jsonschema.org/0/name",
+        "type" : "string"
+      },
+      "phone" : {
+        "id" : "http://wso2jsonschema.org/0/phone",
+        "type" : "string"
+      },
+      "website" : {
+        "id" : "http://wso2jsonschema.org/0/website",
+        "type" : "string"
+      }
+    },
+    "id" : "http://wso2jsonschema.org/0",
+    "type" : "object"
+  } ]
+}

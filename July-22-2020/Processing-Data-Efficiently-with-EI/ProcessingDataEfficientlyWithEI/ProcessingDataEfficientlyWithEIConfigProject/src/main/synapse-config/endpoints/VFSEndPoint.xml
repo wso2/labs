@@ -1,0 +1,12 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<endpoint name="VFSEndPoint" xmlns="http://ws.apache.org/ns/synapse">
+    <address uri="vfs:ftp://admin:admin@192.168.8.100:2121/home/nirothipan/demo?vfs.passive=true&amp;sftpPathFromRoot=true">
+        <suspendOnFailure>
+            <initialDuration>-1</initialDuration>
+            <progressionFactor>1.0</progressionFactor>
+        </suspendOnFailure>
+        <markForSuspension>
+            <retriesBeforeSuspension>0</retriesBeforeSuspension>
+        </markForSuspension>
+    </address>
+</endpoint>

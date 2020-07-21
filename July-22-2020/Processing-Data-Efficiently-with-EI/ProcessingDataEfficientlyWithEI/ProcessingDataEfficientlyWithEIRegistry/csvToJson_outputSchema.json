@@ -1,0 +1,55 @@
+{
+  "$schema" : "http://wso2.org/json-schema/wso2-data-mapper-v5.0.0/schema#",
+  "outputType" : "JSON",
+  "id" : "http://wso2jsonschema.org",
+  "title" : "root",
+  "type" : "object",
+  "properties" : {
+    "sObject" : {
+      "id" : "http://wso2jsonschema.org/sObject",
+      "type" : "string"
+    },
+    "fieldAndValue" : {
+      "id" : "http://wso2jsonschema.org/fieldAndValue",
+      "type" : "object",
+      "properties" : {
+        "records" : {
+          "id" : "http://wso2jsonschema.org/fieldAndValue/records",
+          "type" : "array",
+          "items" : [ {
+            "id" : "http://wso2jsonschema.org/fieldAndValue/records/0",
+            "type" : "object",
+            "properties" : {
+              "attributes" : {
+                "id" : "http://wso2jsonschema.org/fieldAndValue/records/0/attributes",
+                "type" : "object",
+                "properties" : {
+                  "type" : {
+                    "id" : "http://wso2jsonschema.org/fieldAndValue/records/0/attributes/type",
+                    "type" : "string"
+                  },
+                  "referenceId" : {
+                    "id" : "http://wso2jsonschema.org/fieldAndValue/records/0/attributes/referenceId",
+                    "type" : "string"
+                  }
+                }
+              },
+              "name" : {
+                "id" : "http://wso2jsonschema.org/fieldAndValue/records/0/name",
+                "type" : "string"
+              },
+              "phone" : {
+                "id" : "http://wso2jsonschema.org/fieldAndValue/records/0/phone",
+                "type" : "string"
+              },
+              "website" : {
+                "id" : "http://wso2jsonschema.org/fieldAndValue/records/0/website",
+                "type" : "string"
+              }
+            }
+          } ]
+        }
+      }
+    }
+  }
+}

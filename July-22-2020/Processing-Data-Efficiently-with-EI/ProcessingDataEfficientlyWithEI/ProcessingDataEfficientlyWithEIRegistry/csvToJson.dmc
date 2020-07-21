@@ -1,0 +1,33 @@
+map_S_root_S_root = function(){ 
+var outputroot={};
+
+var count_i_inputroot_a3bf596f_53bb_4c43_8660_787643185ab9 = 0;
+outputroot =  {};
+outputroot.fieldAndValue =  {};
+outputroot.fieldAndValue.records =  [];
+
+for(i_inputroot_a3bf596f_53bb_4c43_8660_787643185ab9 in inputroot){
+outputroot.sObject = 'Account';
+outputroot.fieldAndValue.records[count_i_inputroot_a3bf596f_53bb_4c43_8660_787643185ab9] =  {};
+outputroot.fieldAndValue.records[count_i_inputroot_a3bf596f_53bb_4c43_8660_787643185ab9].attributes =  {};
+outputroot.fieldAndValue.records[count_i_inputroot_a3bf596f_53bb_4c43_8660_787643185ab9].attributes.type = 'Account';
+outputroot.fieldAndValue.records[count_i_inputroot_a3bf596f_53bb_4c43_8660_787643185ab9].attributes.referenceId = inputroot[i_inputroot_a3bf596f_53bb_4c43_8660_787643185ab9].referenceId;
+outputroot.fieldAndValue.records[count_i_inputroot_a3bf596f_53bb_4c43_8660_787643185ab9].name = inputroot[i_inputroot_a3bf596f_53bb_4c43_8660_787643185ab9].name;
+outputroot.fieldAndValue.records[count_i_inputroot_a3bf596f_53bb_4c43_8660_787643185ab9].phone = inputroot[i_inputroot_a3bf596f_53bb_4c43_8660_787643185ab9].phone;
+outputroot.fieldAndValue.records[count_i_inputroot_a3bf596f_53bb_4c43_8660_787643185ab9].website = inputroot[i_inputroot_a3bf596f_53bb_4c43_8660_787643185ab9].website;
+
+count_i_inputroot_a3bf596f_53bb_4c43_8660_787643185ab9++;
+}
+return outputroot;
+};
+
+
+
+
+
+
+
+
+
+
+
