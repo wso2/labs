@@ -1,0 +1,20 @@
+<?xml version="1.0" encoding="UTF-8"?><artifacts>
+    <artifact name="StreamFilesToFTP" groupId="com.example.ProcessingDataEfficientlyWithEIConfigProject.proxy-service" version="1.0.0" type="synapse/proxy-service" serverRole="EnterpriseServiceBus">
+        <file>src/main/synapse-config/proxy-services/StreamFilesToFTP.xml</file>
+    </artifact>
+    <artifact name="VFSEndPoint" groupId="com.example.ProcessingDataEfficientlyWithEIConfigProject.endpoint" version="1.0.0" type="synapse/endpoint" serverRole="EnterpriseServiceBus">
+        <file>src/main/synapse-config/endpoints/VFSEndPoint.xml</file>
+    </artifact>
+    <artifact name="SalesForceUpdateSeq" groupId="com.example.ProcessingDataEfficientlyWithEIConfigProject.sequence" version="1.0.0" type="synapse/sequence" serverRole="EnterpriseServiceBus">
+        <file>src/main/synapse-config/sequences/SalesForceUpdateSeq.xml</file>
+    </artifact>
+    <artifact name="TransformPaloadSeq" groupId="com.example.ProcessingDataEfficientlyWithEIConfigProject.sequence" version="1.0.0" type="synapse/sequence" serverRole="EnterpriseServiceBus">
+        <file>src/main/synapse-config/sequences/TransformPaloadSeq.xml</file>
+    </artifact>
+    <artifact name="CSVToSalesForce" groupId="com.example.ProcessingDataEfficientlyWithEIConfigProject.proxy-service" version="1.0.0" type="synapse/proxy-service" serverRole="EnterpriseServiceBus">
+        <file>src/main/synapse-config/proxy-services/CSVToSalesForce.xml</file>
+    </artifact>
+    <artifact name="FileSplitApi" groupId="com.example.ProcessingDataEfficientlyWithEIConfigProject.api" version="1.0.0" type="synapse/api" serverRole="EnterpriseServiceBus">
+        <file>src/main/synapse-config/api/FileSplitApi.xml</file>
+    </artifact>
+</artifacts>

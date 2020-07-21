@@ -1,0 +1,274 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<notation:Diagram xmi:version="2.0" xmlns:xmi="http://www.omg.org/XMI" xmlns:datamapper="http:///org/wso2/developerstudio/eclipse/gmf/datamapper" xmlns:notation="http://www.eclipse.org/gmf/runtime/1.0.2/notation" xmi:id="_ZgGtAMqiEeqQwukAITIhJg" type="DataMapper" name="csvToJson.datamapper_diagram" measurementUnit="Pixel">
+  <children xmi:type="notation:Shape" xmi:id="_aG1V0MqiEeqQwukAITIhJg" type="2002" fontName="Ubuntu">
+    <children xmi:type="notation:Shape" xmi:id="_flQtYMqiEeqQwukAITIhJg" type="3002" fontName="Ubuntu">
+      <children xmi:type="notation:DecorationNode" xmi:id="_flRUcMqiEeqQwukAITIhJg" type="5002"/>
+      <children xmi:type="notation:Shape" xmi:id="_flvOgMqiEeqQwukAITIhJg" type="3003" fontName="Ubuntu">
+        <children xmi:type="notation:DecorationNode" xmi:id="_flvOgsqiEeqQwukAITIhJg" type="5001"/>
+        <children xmi:type="notation:Shape" xmi:id="_fmBiYMqiEeqQwukAITIhJg" type="3020" fontName="Ubuntu">
+          <element xmi:type="datamapper:InNode" href="csvToJson.datamapper#//@input/@treeNode.0/@node.0/@inNode"/>
+          <layoutConstraint xmi:type="notation:Bounds" xmi:id="_fmBiYcqiEeqQwukAITIhJg" x="-11" y="-9"/>
+        </children>
+        <children xmi:type="notation:Shape" xmi:id="_fmBiYsqiEeqQwukAITIhJg" type="3019" fontName="Ubuntu">
+          <element xmi:type="datamapper:OutNode" href="csvToJson.datamapper#//@input/@treeNode.0/@node.0/@outNode"/>
+          <layoutConstraint xmi:type="notation:Bounds" xmi:id="_fmBiY8qiEeqQwukAITIhJg"/>
+        </children>
+        <element xmi:type="datamapper:TreeNode" href="csvToJson.datamapper#//@input/@treeNode.0/@node.0"/>
+        <layoutConstraint xmi:type="notation:Bounds" xmi:id="_flvOgcqiEeqQwukAITIhJg"/>
+      </children>
+      <children xmi:type="notation:Shape" xmi:id="_flvOg8qiEeqQwukAITIhJg" type="3003" fontName="Ubuntu">
+        <children xmi:type="notation:DecorationNode" xmi:id="_flvOhcqiEeqQwukAITIhJg" type="5001"/>
+        <children xmi:type="notation:Shape" xmi:id="_fmhRoMqiEeqQwukAITIhJg" type="3020" fontName="Ubuntu">
+          <element xmi:type="datamapper:InNode" href="csvToJson.datamapper#//@input/@treeNode.0/@node.1/@inNode"/>
+          <layoutConstraint xmi:type="notation:Bounds" xmi:id="_fmhRocqiEeqQwukAITIhJg" x="-11" y="-9"/>
+        </children>
+        <children xmi:type="notation:Shape" xmi:id="_fmhRosqiEeqQwukAITIhJg" type="3019" fontName="Ubuntu">
+          <element xmi:type="datamapper:OutNode" href="csvToJson.datamapper#//@input/@treeNode.0/@node.1/@outNode"/>
+          <layoutConstraint xmi:type="notation:Bounds" xmi:id="_fmhRo8qiEeqQwukAITIhJg"/>
+        </children>
+        <element xmi:type="datamapper:TreeNode" href="csvToJson.datamapper#//@input/@treeNode.0/@node.1"/>
+        <layoutConstraint xmi:type="notation:Bounds" xmi:id="_flvOhMqiEeqQwukAITIhJg"/>
+      </children>
+      <children xmi:type="notation:Shape" xmi:id="_flvOhsqiEeqQwukAITIhJg" type="3003" fontName="Ubuntu">
+        <children xmi:type="notation:DecorationNode" xmi:id="_flv1kMqiEeqQwukAITIhJg" type="5001"/>
+        <children xmi:type="notation:Shape" xmi:id="_fmomYMqiEeqQwukAITIhJg" type="3020" fontName="Ubuntu">
+          <element xmi:type="datamapper:InNode" href="csvToJson.datamapper#//@input/@treeNode.0/@node.2/@inNode"/>
+          <layoutConstraint xmi:type="notation:Bounds" xmi:id="_fmomYcqiEeqQwukAITIhJg" x="-11" y="-9"/>
+        </children>
+        <children xmi:type="notation:Shape" xmi:id="_fmomYsqiEeqQwukAITIhJg" type="3019" fontName="Ubuntu">
+          <element xmi:type="datamapper:OutNode" href="csvToJson.datamapper#//@input/@treeNode.0/@node.2/@outNode"/>
+          <layoutConstraint xmi:type="notation:Bounds" xmi:id="_fmomY8qiEeqQwukAITIhJg"/>
+        </children>
+        <element xmi:type="datamapper:TreeNode" href="csvToJson.datamapper#//@input/@treeNode.0/@node.2"/>
+        <layoutConstraint xmi:type="notation:Bounds" xmi:id="_flvOh8qiEeqQwukAITIhJg"/>
+      </children>
+      <children xmi:type="notation:Shape" xmi:id="_flv1kcqiEeqQwukAITIhJg" type="3003" fontName="Ubuntu">
+        <children xmi:type="notation:DecorationNode" xmi:id="_flv1k8qiEeqQwukAITIhJg" type="5001"/>
+        <children xmi:type="notation:Shape" xmi:id="_fmxJQMqiEeqQwukAITIhJg" type="3020" fontName="Ubuntu">
+          <element xmi:type="datamapper:InNode" href="csvToJson.datamapper#//@input/@treeNode.0/@node.3/@inNode"/>
+          <layoutConstraint xmi:type="notation:Bounds" xmi:id="_fmxJQcqiEeqQwukAITIhJg" x="-11" y="-9"/>
+        </children>
+        <children xmi:type="notation:Shape" xmi:id="_fmxJQsqiEeqQwukAITIhJg" type="3019" fontName="Ubuntu">
+          <element xmi:type="datamapper:OutNode" href="csvToJson.datamapper#//@input/@treeNode.0/@node.3/@outNode"/>
+          <layoutConstraint xmi:type="notation:Bounds" xmi:id="_fmxJQ8qiEeqQwukAITIhJg"/>
+        </children>
+        <element xmi:type="datamapper:TreeNode" href="csvToJson.datamapper#//@input/@treeNode.0/@node.3"/>
+        <layoutConstraint xmi:type="notation:Bounds" xmi:id="_flv1ksqiEeqQwukAITIhJg"/>
+      </children>
+      <children xmi:type="notation:Shape" xmi:id="_flv1lMqiEeqQwukAITIhJg" type="3020" fontName="Ubuntu">
+        <element xmi:type="datamapper:InNode" href="csvToJson.datamapper#//@input/@treeNode.0/@inNode"/>
+        <layoutConstraint xmi:type="notation:Bounds" xmi:id="_flv1lcqiEeqQwukAITIhJg" x="-1" y="-11"/>
+      </children>
+      <children xmi:type="notation:Shape" xmi:id="_flwcoMqiEeqQwukAITIhJg" type="3019" fontName="Ubuntu">
+        <element xmi:type="datamapper:OutNode" href="csvToJson.datamapper#//@input/@treeNode.0/@outNode"/>
+        <layoutConstraint xmi:type="notation:Bounds" xmi:id="_flwcocqiEeqQwukAITIhJg"/>
+      </children>
+      <element xmi:type="datamapper:TreeNode" href="csvToJson.datamapper#//@input/@treeNode.0"/>
+      <layoutConstraint xmi:type="notation:Bounds" xmi:id="_flQtYcqiEeqQwukAITIhJg"/>
+    </children>
+    <element xmi:type="datamapper:Input" href="csvToJson.datamapper#//@input"/>
+    <layoutConstraint xmi:type="notation:Bounds" xmi:id="_aG1V0cqiEeqQwukAITIhJg" width="250" height="160"/>
+  </children>
+  <children xmi:type="notation:Shape" xmi:id="_aG2j8MqiEeqQwukAITIhJg" type="2003" fontName="Ubuntu">
+    <children xmi:type="notation:Shape" xmi:id="_jH4fkMqiEeqQwukAITIhJg" type="3011" fontName="Ubuntu">
+      <children xmi:type="notation:DecorationNode" xmi:id="_jH5tsMqiEeqQwukAITIhJg" type="5003"/>
+      <children xmi:type="notation:Shape" xmi:id="_jIJlUMqiEeqQwukAITIhJg" type="3003" fontName="Ubuntu">
+        <children xmi:type="notation:DecorationNode" xmi:id="_jIKMYMqiEeqQwukAITIhJg" type="5001"/>
+        <children xmi:type="notation:Shape" xmi:id="_jIOd0MqiEeqQwukAITIhJg" type="3020" fontName="Ubuntu">
+          <element xmi:type="datamapper:InNode" href="csvToJson.datamapper#//@output/@treeNode.0/@node.0/@inNode"/>
+          <layoutConstraint xmi:type="notation:Bounds" xmi:id="_jIOd0cqiEeqQwukAITIhJg" x="-10" y="4"/>
+        </children>
+        <children xmi:type="notation:Shape" xmi:id="_jIOd0sqiEeqQwukAITIhJg" type="3019" fontName="Ubuntu">
+          <element xmi:type="datamapper:OutNode" href="csvToJson.datamapper#//@output/@treeNode.0/@node.0/@outNode"/>
+          <layoutConstraint xmi:type="notation:Bounds" xmi:id="_jIOd08qiEeqQwukAITIhJg"/>
+        </children>
+        <element xmi:type="datamapper:TreeNode" href="csvToJson.datamapper#//@output/@treeNode.0/@node.0"/>
+        <layoutConstraint xmi:type="notation:Bounds" xmi:id="_jIJlUcqiEeqQwukAITIhJg"/>
+      </children>
+      <children xmi:type="notation:Shape" xmi:id="_jIKMYcqiEeqQwukAITIhJg" type="3003" fontName="Ubuntu">
+        <children xmi:type="notation:DecorationNode" xmi:id="_jIKMY8qiEeqQwukAITIhJg" type="5001"/>
+        <children xmi:type="notation:Shape" xmi:id="_jIVLgMqiEeqQwukAITIhJg" type="3003" fontName="Ubuntu">
+          <children xmi:type="notation:DecorationNode" xmi:id="_jIVLgsqiEeqQwukAITIhJg" type="5001"/>
+          <children xmi:type="notation:Shape" xmi:id="_jIZc8MqiEeqQwukAITIhJg" type="3003" fontName="Ubuntu">
+            <children xmi:type="notation:DecorationNode" xmi:id="_jIZc8sqiEeqQwukAITIhJg" type="5001"/>
+            <children xmi:type="notation:Shape" xmi:id="_jIduYMqiEeqQwukAITIhJg" type="3003" fontName="Ubuntu">
+              <children xmi:type="notation:DecorationNode" xmi:id="_jIduYsqiEeqQwukAITIhJg" type="5001"/>
+              <children xmi:type="notation:Shape" xmi:id="_jIjN8MqiEeqQwukAITIhJg" type="3020" fontName="Ubuntu">
+                <element xmi:type="datamapper:InNode" href="csvToJson.datamapper#//@output/@treeNode.0/@node.1/@node.0/@node.0/@node.0/@inNode"/>
+                <layoutConstraint xmi:type="notation:Bounds" xmi:id="_jIjN8cqiEeqQwukAITIhJg" x="-10" y="4"/>
+              </children>
+              <children xmi:type="notation:Shape" xmi:id="_jIj1AMqiEeqQwukAITIhJg" type="3019" fontName="Ubuntu">
+                <element xmi:type="datamapper:OutNode" href="csvToJson.datamapper#//@output/@treeNode.0/@node.1/@node.0/@node.0/@node.0/@outNode"/>
+                <layoutConstraint xmi:type="notation:Bounds" xmi:id="_jIj1AcqiEeqQwukAITIhJg"/>
+              </children>
+              <element xmi:type="datamapper:TreeNode" href="csvToJson.datamapper#//@output/@treeNode.0/@node.1/@node.0/@node.0/@node.0"/>
+              <layoutConstraint xmi:type="notation:Bounds" xmi:id="_jIduYcqiEeqQwukAITIhJg"/>
+            </children>
+            <children xmi:type="notation:Shape" xmi:id="_jIduY8qiEeqQwukAITIhJg" type="3003" fontName="Ubuntu">
+              <children xmi:type="notation:DecorationNode" xmi:id="_jIeVcMqiEeqQwukAITIhJg" type="5001"/>
+              <children xmi:type="notation:Shape" xmi:id="_jIrJwMqiEeqQwukAITIhJg" type="3020" fontName="Ubuntu">
+                <element xmi:type="datamapper:InNode" href="csvToJson.datamapper#//@output/@treeNode.0/@node.1/@node.0/@node.0/@node.1/@inNode"/>
+                <layoutConstraint xmi:type="notation:Bounds" xmi:id="_jIrJwcqiEeqQwukAITIhJg" x="-10" y="4"/>
+              </children>
+              <children xmi:type="notation:Shape" xmi:id="_jIrJwsqiEeqQwukAITIhJg" type="3019" fontName="Ubuntu">
+                <element xmi:type="datamapper:OutNode" href="csvToJson.datamapper#//@output/@treeNode.0/@node.1/@node.0/@node.0/@node.1/@outNode"/>
+                <layoutConstraint xmi:type="notation:Bounds" xmi:id="_jIrJw8qiEeqQwukAITIhJg"/>
+              </children>
+              <element xmi:type="datamapper:TreeNode" href="csvToJson.datamapper#//@output/@treeNode.0/@node.1/@node.0/@node.0/@node.1"/>
+              <layoutConstraint xmi:type="notation:Bounds" xmi:id="_jIduZMqiEeqQwukAITIhJg"/>
+            </children>
+            <children xmi:type="notation:Shape" xmi:id="_jIeVccqiEeqQwukAITIhJg" type="3020" fontName="Ubuntu">
+              <element xmi:type="datamapper:InNode" href="csvToJson.datamapper#//@output/@treeNode.0/@node.1/@node.0/@node.0/@inNode"/>
+              <layoutConstraint xmi:type="notation:Bounds" xmi:id="_jIeVcsqiEeqQwukAITIhJg" x="-1" y="-11"/>
+            </children>
+            <children xmi:type="notation:Shape" xmi:id="_jIeVc8qiEeqQwukAITIhJg" type="3019" fontName="Ubuntu">
+              <element xmi:type="datamapper:OutNode" href="csvToJson.datamapper#//@output/@treeNode.0/@node.1/@node.0/@node.0/@outNode"/>
+              <layoutConstraint xmi:type="notation:Bounds" xmi:id="_jIeVdMqiEeqQwukAITIhJg"/>
+            </children>
+            <element xmi:type="datamapper:TreeNode" href="csvToJson.datamapper#//@output/@treeNode.0/@node.1/@node.0/@node.0"/>
+            <layoutConstraint xmi:type="notation:Bounds" xmi:id="_jIZc8cqiEeqQwukAITIhJg"/>
+          </children>
+          <children xmi:type="notation:Shape" xmi:id="_jIZc88qiEeqQwukAITIhJg" type="3003" fontName="Ubuntu">
+            <children xmi:type="notation:DecorationNode" xmi:id="_jIZc9cqiEeqQwukAITIhJg" type="5001"/>
+            <children xmi:type="notation:Shape" xmi:id="_jJCWIMqiEeqQwukAITIhJg" type="3020" fontName="Ubuntu">
+              <element xmi:type="datamapper:InNode" href="csvToJson.datamapper#//@output/@treeNode.0/@node.1/@node.0/@node.1/@inNode"/>
+              <layoutConstraint xmi:type="notation:Bounds" xmi:id="_jJCWIcqiEeqQwukAITIhJg" x="-10" y="4"/>
+            </children>
+            <children xmi:type="notation:Shape" xmi:id="_jJDkQMqiEeqQwukAITIhJg" type="3019" fontName="Ubuntu">
+              <element xmi:type="datamapper:OutNode" href="csvToJson.datamapper#//@output/@treeNode.0/@node.1/@node.0/@node.1/@outNode"/>
+              <layoutConstraint xmi:type="notation:Bounds" xmi:id="_jJDkQcqiEeqQwukAITIhJg"/>
+            </children>
+            <element xmi:type="datamapper:TreeNode" href="csvToJson.datamapper#//@output/@treeNode.0/@node.1/@node.0/@node.1"/>
+            <layoutConstraint xmi:type="notation:Bounds" xmi:id="_jIZc9MqiEeqQwukAITIhJg"/>
+          </children>
+          <children xmi:type="notation:Shape" xmi:id="_jIZc9sqiEeqQwukAITIhJg" type="3003" fontName="Ubuntu">
+            <children xmi:type="notation:DecorationNode" xmi:id="_jIZc-MqiEeqQwukAITIhJg" type="5001"/>
+            <children xmi:type="notation:Shape" xmi:id="_jJQ_oMqiEeqQwukAITIhJg" type="3020" fontName="Ubuntu">
+              <element xmi:type="datamapper:InNode" href="csvToJson.datamapper#//@output/@treeNode.0/@node.1/@node.0/@node.2/@inNode"/>
+              <layoutConstraint xmi:type="notation:Bounds" xmi:id="_jJQ_ocqiEeqQwukAITIhJg" x="-10" y="4"/>
+            </children>
+            <children xmi:type="notation:Shape" xmi:id="_jJQ_osqiEeqQwukAITIhJg" type="3019" fontName="Ubuntu">
+              <element xmi:type="datamapper:OutNode" href="csvToJson.datamapper#//@output/@treeNode.0/@node.1/@node.0/@node.2/@outNode"/>
+              <layoutConstraint xmi:type="notation:Bounds" xmi:id="_jJQ_o8qiEeqQwukAITIhJg"/>
+            </children>
+            <element xmi:type="datamapper:TreeNode" href="csvToJson.datamapper#//@output/@treeNode.0/@node.1/@node.0/@node.2"/>
+            <layoutConstraint xmi:type="notation:Bounds" xmi:id="_jIZc98qiEeqQwukAITIhJg"/>
+          </children>
+          <children xmi:type="notation:Shape" xmi:id="_jIZc-cqiEeqQwukAITIhJg" type="3003" fontName="Ubuntu">
+            <children xmi:type="notation:DecorationNode" xmi:id="_jIaEAcqiEeqQwukAITIhJg" type="5001"/>
+            <children xmi:type="notation:Shape" xmi:id="_jJXtUMqiEeqQwukAITIhJg" type="3020" fontName="Ubuntu">
+              <element xmi:type="datamapper:InNode" href="csvToJson.datamapper#//@output/@treeNode.0/@node.1/@node.0/@node.3/@inNode"/>
+              <layoutConstraint xmi:type="notation:Bounds" xmi:id="_jJXtUcqiEeqQwukAITIhJg" x="-10" y="4"/>
+            </children>
+            <children xmi:type="notation:Shape" xmi:id="_jJXtUsqiEeqQwukAITIhJg" type="3019" fontName="Ubuntu">
+              <element xmi:type="datamapper:OutNode" href="csvToJson.datamapper#//@output/@treeNode.0/@node.1/@node.0/@node.3/@outNode"/>
+              <layoutConstraint xmi:type="notation:Bounds" xmi:id="_jJXtU8qiEeqQwukAITIhJg"/>
+            </children>
+            <element xmi:type="datamapper:TreeNode" href="csvToJson.datamapper#//@output/@treeNode.0/@node.1/@node.0/@node.3"/>
+            <layoutConstraint xmi:type="notation:Bounds" xmi:id="_jIaEAMqiEeqQwukAITIhJg"/>
+          </children>
+          <children xmi:type="notation:Shape" xmi:id="_jIaEAsqiEeqQwukAITIhJg" type="3020" fontName="Ubuntu">
+            <element xmi:type="datamapper:InNode" href="csvToJson.datamapper#//@output/@treeNode.0/@node.1/@node.0/@inNode"/>
+            <layoutConstraint xmi:type="notation:Bounds" xmi:id="_jIaEA8qiEeqQwukAITIhJg" x="-1" y="-11"/>
+          </children>
+          <children xmi:type="notation:Shape" xmi:id="_jIaEBMqiEeqQwukAITIhJg" type="3019" fontName="Ubuntu">
+            <element xmi:type="datamapper:OutNode" href="csvToJson.datamapper#//@output/@treeNode.0/@node.1/@node.0/@outNode"/>
+            <layoutConstraint xmi:type="notation:Bounds" xmi:id="_jIaEBcqiEeqQwukAITIhJg"/>
+          </children>
+          <element xmi:type="datamapper:TreeNode" href="csvToJson.datamapper#//@output/@treeNode.0/@node.1/@node.0"/>
+          <layoutConstraint xmi:type="notation:Bounds" xmi:id="_jIVLgcqiEeqQwukAITIhJg"/>
+        </children>
+        <children xmi:type="notation:Shape" xmi:id="_jIVLg8qiEeqQwukAITIhJg" type="3020" fontName="Ubuntu">
+          <element xmi:type="datamapper:InNode" href="csvToJson.datamapper#//@output/@treeNode.0/@node.1/@inNode"/>
+          <layoutConstraint xmi:type="notation:Bounds" xmi:id="_jIVLhMqiEeqQwukAITIhJg" x="-1" y="-11"/>
+        </children>
+        <children xmi:type="notation:Shape" xmi:id="_jIVykMqiEeqQwukAITIhJg" type="3019" fontName="Ubuntu">
+          <element xmi:type="datamapper:OutNode" href="csvToJson.datamapper#//@output/@treeNode.0/@node.1/@outNode"/>
+          <layoutConstraint xmi:type="notation:Bounds" xmi:id="_jIVykcqiEeqQwukAITIhJg"/>
+        </children>
+        <element xmi:type="datamapper:TreeNode" href="csvToJson.datamapper#//@output/@treeNode.0/@node.1"/>
+        <layoutConstraint xmi:type="notation:Bounds" xmi:id="_jIKMYsqiEeqQwukAITIhJg"/>
+      </children>
+      <children xmi:type="notation:Shape" xmi:id="_jIKMZMqiEeqQwukAITIhJg" type="3020" fontName="Ubuntu">
+        <element xmi:type="datamapper:InNode" href="csvToJson.datamapper#//@output/@treeNode.0/@inNode"/>
+        <layoutConstraint xmi:type="notation:Bounds" xmi:id="_jIKMZcqiEeqQwukAITIhJg" x="-1" y="-11"/>
+      </children>
+      <children xmi:type="notation:Shape" xmi:id="_jIKMZsqiEeqQwukAITIhJg" type="3019" fontName="Ubuntu">
+        <element xmi:type="datamapper:OutNode" href="csvToJson.datamapper#//@output/@treeNode.0/@outNode"/>
+        <layoutConstraint xmi:type="notation:Bounds" xmi:id="_jIKMZ8qiEeqQwukAITIhJg"/>
+      </children>
+      <element xmi:type="datamapper:TreeNode" href="csvToJson.datamapper#//@output/@treeNode.0"/>
+      <layoutConstraint xmi:type="notation:Bounds" xmi:id="_jH4fkcqiEeqQwukAITIhJg"/>
+    </children>
+    <element xmi:type="datamapper:Output" href="csvToJson.datamapper#//@output"/>
+    <layoutConstraint xmi:type="notation:Bounds" xmi:id="_aG2j8cqiEeqQwukAITIhJg" x="804" y="120" width="258" height="200"/>
+  </children>
+  <children xmi:type="notation:Shape" xmi:id="__vNsYMqiEeqQwukAITIhJg" type="2008" fontName="Ubuntu">
+    <children xmi:type="notation:Shape" xmi:id="__vZ5oMqiEeqQwukAITIhJg" type="3012" fontName="Ubuntu">
+      <children xmi:type="notation:Shape" xmi:id="__vgnUMqiEeqQwukAITIhJg" type="3013" fontName="Ubuntu">
+        <element xmi:type="datamapper:OperatorLeftContainer" href="csvToJson.datamapper#//@operators.0/@basicContainer/@leftContainer"/>
+        <layoutConstraint xmi:type="notation:Bounds" xmi:id="__vgnUcqiEeqQwukAITIhJg"/>
+      </children>
+      <children xmi:type="notation:Shape" xmi:id="__vhOYMqiEeqQwukAITIhJg" type="3016" fontName="Ubuntu">
+        <children xmi:type="notation:Shape" xmi:id="__w4gUMqiEeqQwukAITIhJg" type="3017" fontName="Ubuntu">
+          <children xmi:type="notation:Shape" xmi:id="__w-m8MqiEeqQwukAITIhJg" type="3018" fontName="Ubuntu">
+            <element xmi:type="datamapper:OutNode" href="csvToJson.datamapper#//@operators.0/@basicContainer/@rightContainer/@rightConnectors.0/@outNode"/>
+            <layoutConstraint xmi:type="notation:Bounds" xmi:id="__w-m8cqiEeqQwukAITIhJg"/>
+          </children>
+          <element xmi:type="datamapper:OperatorRightConnector" href="csvToJson.datamapper#//@operators.0/@basicContainer/@rightContainer/@rightConnectors.0"/>
+          <layoutConstraint xmi:type="notation:Bounds" xmi:id="__w4gUcqiEeqQwukAITIhJg"/>
+        </children>
+        <element xmi:type="datamapper:OperatorRightContainer" href="csvToJson.datamapper#//@operators.0/@basicContainer/@rightContainer"/>
+        <layoutConstraint xmi:type="notation:Bounds" xmi:id="__vhOYcqiEeqQwukAITIhJg"/>
+      </children>
+      <element xmi:type="datamapper:OperatorBasicContainer" href="csvToJson.datamapper#//@operators.0/@basicContainer"/>
+      <layoutConstraint xmi:type="notation:Bounds" xmi:id="__vZ5ocqiEeqQwukAITIhJg"/>
+    </children>
+    <element xmi:type="datamapper:Constant" href="csvToJson.datamapper#//@operators.0"/>
+    <layoutConstraint xmi:type="notation:Bounds" xmi:id="__vNsYcqiEeqQwukAITIhJg" x="360" y="132"/>
+  </children>
+  <styles xmi:type="notation:DiagramStyle" xmi:id="_ZgGtAcqiEeqQwukAITIhJg"/>
+  <element xmi:type="datamapper:DataMapperRoot" href="csvToJson.datamapper#/"/>
+  <edges xmi:type="notation:Connector" xmi:id="_mGSKYMqiEeqQwukAITIhJg" type="4001" source="_fmBiYsqiEeqQwukAITIhJg" target="_jIrJwMqiEeqQwukAITIhJg">
+    <styles xmi:type="notation:FontStyle" xmi:id="_mGSKYcqiEeqQwukAITIhJg" fontName="Ubuntu"/>
+    <element xmi:type="datamapper:DataMapperLink" href="csvToJson.datamapper#//@input/@treeNode.0/@node.0/@outNode/@outgoingLink.0"/>
+    <bendpoints xmi:type="notation:RelativeBendpoints" xmi:id="_mGSKYsqiEeqQwukAITIhJg" points="[-2, 0, -252, -92]$[248, 92, -2, 0]"/>
+    <sourceAnchor xmi:type="notation:IdentityAnchor" xmi:id="_mGb7YMqiEeqQwukAITIhJg" id="CENTER"/>
+    <targetAnchor xmi:type="notation:IdentityAnchor" xmi:id="_mGb7YcqiEeqQwukAITIhJg" id="CENTER"/>
+  </edges>
+  <edges xmi:type="notation:Connector" xmi:id="_mG0V4MqiEeqQwukAITIhJg" type="4001" source="_fmhRosqiEeqQwukAITIhJg" target="_jJCWIMqiEeqQwukAITIhJg">
+    <styles xmi:type="notation:FontStyle" xmi:id="_mG0V4cqiEeqQwukAITIhJg" fontName="Ubuntu"/>
+    <element xmi:type="datamapper:DataMapperLink" href="csvToJson.datamapper#//@input/@treeNode.0/@node.1/@outNode/@outgoingLink.0"/>
+    <bendpoints xmi:type="notation:RelativeBendpoints" xmi:id="_mG0V4sqiEeqQwukAITIhJg" points="[-2, 0, -252, -93]$[248, 93, -2, 0]"/>
+    <sourceAnchor xmi:type="notation:IdentityAnchor" xmi:id="_mG0V48qiEeqQwukAITIhJg" id="CENTER"/>
+    <targetAnchor xmi:type="notation:IdentityAnchor" xmi:id="_mG0V5MqiEeqQwukAITIhJg" id="CENTER"/>
+  </edges>
+  <edges xmi:type="notation:Connector" xmi:id="_mG088MqiEeqQwukAITIhJg" type="4001" source="_fmomYsqiEeqQwukAITIhJg" target="_jJQ_oMqiEeqQwukAITIhJg">
+    <styles xmi:type="notation:FontStyle" xmi:id="_mG088cqiEeqQwukAITIhJg" fontName="Ubuntu"/>
+    <element xmi:type="datamapper:DataMapperLink" href="csvToJson.datamapper#//@input/@treeNode.0/@node.2/@outNode/@outgoingLink.0"/>
+    <bendpoints xmi:type="notation:RelativeBendpoints" xmi:id="_mG088sqiEeqQwukAITIhJg" points="[-2, 0, -252, -95]$[248, 95, -2, 0]"/>
+    <sourceAnchor xmi:type="notation:IdentityAnchor" xmi:id="_mG1kAMqiEeqQwukAITIhJg" id="CENTER"/>
+    <targetAnchor xmi:type="notation:IdentityAnchor" xmi:id="_mG1kAcqiEeqQwukAITIhJg" id="CENTER"/>
+  </edges>
+  <edges xmi:type="notation:Connector" xmi:id="_mG2LEMqiEeqQwukAITIhJg" type="4001" source="_fmxJQsqiEeqQwukAITIhJg" target="_jJXtUMqiEeqQwukAITIhJg">
+    <styles xmi:type="notation:FontStyle" xmi:id="_mG2LEcqiEeqQwukAITIhJg" fontName="Ubuntu"/>
+    <element xmi:type="datamapper:DataMapperLink" href="csvToJson.datamapper#//@input/@treeNode.0/@node.3/@outNode/@outgoingLink.0"/>
+    <bendpoints xmi:type="notation:RelativeBendpoints" xmi:id="_mG2LEsqiEeqQwukAITIhJg" points="[-2, 0, -252, -96]$[248, 96, -2, 0]"/>
+    <sourceAnchor xmi:type="notation:IdentityAnchor" xmi:id="_mG2LE8qiEeqQwukAITIhJg" id="CENTER"/>
+    <targetAnchor xmi:type="notation:IdentityAnchor" xmi:id="_mG2LFMqiEeqQwukAITIhJg" id="CENTER"/>
+  </edges>
+  <edges xmi:type="notation:Connector" xmi:id="_Fw7-QMqjEeqQwukAITIhJg" type="4001" source="__w-m8MqiEeqQwukAITIhJg" target="_jIjN8MqiEeqQwukAITIhJg">
+    <styles xmi:type="notation:FontStyle" xmi:id="_Fw8lUMqjEeqQwukAITIhJg" fontName="Ubuntu"/>
+    <element xmi:type="datamapper:DataMapperLink" href="csvToJson.datamapper#//@operators.0/@basicContainer/@rightContainer/@rightConnectors.0/@outNode/@outgoingLink.0"/>
+    <bendpoints xmi:type="notation:RelativeBendpoints" xmi:id="_Fw8lUcqjEeqQwukAITIhJg" points="[-1, 0, -231, -94]$[29, 0, -201, -94]$[198, 94, -32, 0]$[228, 94, -2, 0]"/>
+    <sourceAnchor xmi:type="notation:IdentityAnchor" xmi:id="_Fw_ooMqjEeqQwukAITIhJg" id="CENTER"/>
+    <targetAnchor xmi:type="notation:IdentityAnchor" xmi:id="_Fw_oocqjEeqQwukAITIhJg" id="CENTER"/>
+  </edges>
+  <edges xmi:type="notation:Connector" xmi:id="_nb6ZMMqlEeqQwukAITIhJg" type="4001" source="__w-m8MqiEeqQwukAITIhJg" target="_jIOd0MqiEeqQwukAITIhJg">
+    <styles xmi:type="notation:FontStyle" xmi:id="_nb6ZMcqlEeqQwukAITIhJg" fontName="Ubuntu"/>
+    <element xmi:type="datamapper:DataMapperLink" href="csvToJson.datamapper#//@operators.0/@basicContainer/@rightContainer/@rightConnectors.0/@outNode/@outgoingLink.1"/>
+    <bendpoints xmi:type="notation:RelativeBendpoints" xmi:id="_nb6ZMsqlEeqQwukAITIhJg" points="[-1, 0, -303, -2]$[300, 2, -2, 0]"/>
+    <sourceAnchor xmi:type="notation:IdentityAnchor" xmi:id="_nb7AQMqlEeqQwukAITIhJg" id="CENTER"/>
+    <targetAnchor xmi:type="notation:IdentityAnchor" xmi:id="_nb7AQcqlEeqQwukAITIhJg" id="CENTER"/>
+  </edges>
+</notation:Diagram>

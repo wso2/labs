@@ -1,0 +1,20 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<sequence name="SalesForceUpdateSeq" trace="disable" xmlns="http://ws.apache.org/ns/synapse">
+    <property expression="json-eval($.fieldAndValue)" name="fieldAndValue" scope="default" type="STRING"/>
+    <property expression="json-eval($.sObject)" name="sObject" scope="default" type="STRING"/>
+    <property expression="get-property('env','SalesforceAccessToken')" name="AccessToken" scope="default" type="STRING"/>
+    <property expression="get-property('env','SalesforceRefreshToken')" name="RefreshToken" scope="default" type="STRING"/>
+    <salesforcerest.init>
+        <accessToken>{get-property('env','SalesforceAccessToken')}</accessToken>
+        <apiVersion>v44.0</apiVersion>
+        <hostName>https://login.salesforce.com</hostName>
+        <refreshToken>{get-property('env','SalesforceRefreshToken')}</refreshToken>
+        <clientSecret>{get-property('env','SalesforceClientSecret')}</clientSecret>
+        <clientId>{get-property('env','SalesforceClientID')}</clientId>
+        <apiUrl>https://ap16.salesforce.com</apiUrl>
+    </salesforcerest.init>
+    <salesforcerest.createMultipleRecords>
+        <sObjectName>{$ctx:sObject}</sObjectName>
+        <fieldAndValue>{$ctx:fieldAndValue}</fieldAndValue>
+    </salesforcerest.createMultipleRecords>
+</sequence>
