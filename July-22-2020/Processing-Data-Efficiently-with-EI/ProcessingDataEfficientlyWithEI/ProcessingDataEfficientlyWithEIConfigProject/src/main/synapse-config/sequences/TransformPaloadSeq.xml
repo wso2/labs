@@ -1,0 +1,4 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<sequence name="TransformPaloadSeq" trace="disable" xmlns="http://ws.apache.org/ns/synapse">
+    <datamapper config="gov:datamapper/csvToJson.dmc" inputSchema="gov:datamapper/csvToJson_inputSchema.json" inputType="CSV" outputSchema="gov:datamapper/csvToJson_outputSchema.json" outputType="JSON" xsltStyleSheet="gov:datamapper/csvToJson_xsltStyleSheet.xml"/>
+</sequence>

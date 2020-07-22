@@ -1,0 +1,17 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<api context="/split" name="FileSplitApi" xmlns="http://ws.apache.org/ns/synapse">
+    <resource methods="POST">
+        <inSequence>
+            <property name="FORCE_SC_ACCEPTED" scope="axis2" type="STRING" value="true"/>
+            <property expression="json-eval($.targetFolder)" name="destinationFolder" scope="default" type="STRING"/>
+            <property expression="json-eval($.csv)" name="sourceCSV" scope="default" type="STRING"/>
+            <fileconnector.splitFile>
+                <source>{$ctx:sourceCSV}</source>
+                <destination>{$ctx:destinationFolder}</destination>
+                <numberOfLines>3</numberOfLines>
+            </fileconnector.splitFile>
+        </inSequence>
+        <outSequence/>
+        <faultSequence/>
+    </resource>
+</api>
