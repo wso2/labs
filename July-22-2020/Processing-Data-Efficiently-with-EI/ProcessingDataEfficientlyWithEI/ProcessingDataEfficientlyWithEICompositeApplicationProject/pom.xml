@@ -20,8 +20,8 @@
     <com.example.ProcessingDataEfficientlyWithEIConfigProject.proxy-service_._StreamFilesToFTP>capp/EnterpriseServiceBus</com.example.ProcessingDataEfficientlyWithEIConfigProject.proxy-service_._StreamFilesToFTP>
     <com.example.ProcessingDataEfficientlyWithEIConfigProject.proxy-service_._CSVToSalesForce>capp/EnterpriseServiceBus</com.example.ProcessingDataEfficientlyWithEIConfigProject.proxy-service_._CSVToSalesForce>
     <com.example.resource_._csvToJson_xsltStyleSheet>capp/EnterpriseServiceBus</com.example.resource_._csvToJson_xsltStyleSheet>
-    <com.example.lib_._fileconnector-connector>capp/EnterpriseServiceBus</com.example.lib_._fileconnector-connector>
     <com.example.ProcessingDataEfficientlyWithEIConfigProject.sequence_._SalesForceUpdateSeq>capp/EnterpriseServiceBus</com.example.ProcessingDataEfficientlyWithEIConfigProject.sequence_._SalesForceUpdateSeq>
+    <com.example.lib_._fileconnector-connector>capp/EnterpriseServiceBus</com.example.lib_._fileconnector-connector>
   </properties>
   <dependencies>
     <dependency>
@@ -31,40 +31,16 @@
       <type>zip</type>
     </dependency>
     <dependency>
-      <groupId>com.example.ProcessingDataEfficientlyWithEIConfigProject.proxy-service</groupId>
-      <artifactId>CSVToSalesForce</artifactId>
-      <version>1.0.0</version>
-      <type>xml</type>
-    </dependency>
-    <dependency>
       <groupId>com.example.resource</groupId>
       <artifactId>csvToJson</artifactId>
       <version>1.0.0</version>
       <type>zip</type>
     </dependency>
     <dependency>
-      <groupId>com.example.ProcessingDataEfficientlyWithEIConfigProject.api</groupId>
-      <artifactId>FileSplitApi</artifactId>
-      <version>1.0.0</version>
-      <type>xml</type>
-    </dependency>
-    <dependency>
       <groupId>com.example.lib</groupId>
       <artifactId>salesforcerest-connector</artifactId>
       <version>1.1.0</version>
       <type>zip</type>
-    </dependency>
-    <dependency>
-      <groupId>com.example.ProcessingDataEfficientlyWithEIConfigProject.sequence</groupId>
-      <artifactId>SalesForceUpdateSeq</artifactId>
-      <version>1.0.0</version>
-      <type>xml</type>
-    </dependency>
-    <dependency>
-      <groupId>com.example.ProcessingDataEfficientlyWithEIConfigProject.sequence</groupId>
-      <artifactId>TransformPaloadSeq</artifactId>
-      <version>1.0.0</version>
-      <type>xml</type>
     </dependency>
     <dependency>
       <groupId>com.example.resource</groupId>
@@ -79,20 +55,44 @@
       <type>zip</type>
     </dependency>
     <dependency>
-      <groupId>com.example.ProcessingDataEfficientlyWithEIConfigProject.endpoint</groupId>
-      <artifactId>VFSEndPoint</artifactId>
-      <version>1.0.0</version>
-      <type>xml</type>
-    </dependency>
-    <dependency>
       <groupId>com.example.resource</groupId>
       <artifactId>csvToJson_inputSchema</artifactId>
       <version>1.0.0</version>
       <type>zip</type>
     </dependency>
     <dependency>
+      <groupId>com.example.ProcessingDataEfficientlyWithEIConfigProject.api</groupId>
+      <artifactId>FileSplitApi</artifactId>
+      <version>1.0.0</version>
+      <type>xml</type>
+    </dependency>
+    <dependency>
+      <groupId>com.example.ProcessingDataEfficientlyWithEIConfigProject.endpoint</groupId>
+      <artifactId>VFSEndPoint</artifactId>
+      <version>1.0.0</version>
+      <type>xml</type>
+    </dependency>
+    <dependency>
+      <groupId>com.example.ProcessingDataEfficientlyWithEIConfigProject.proxy-service</groupId>
+      <artifactId>CSVToSalesForce</artifactId>
+      <version>1.0.0</version>
+      <type>xml</type>
+    </dependency>
+    <dependency>
       <groupId>com.example.ProcessingDataEfficientlyWithEIConfigProject.proxy-service</groupId>
       <artifactId>StreamFilesToFTP</artifactId>
+      <version>1.0.0</version>
+      <type>xml</type>
+    </dependency>
+    <dependency>
+      <groupId>com.example.ProcessingDataEfficientlyWithEIConfigProject.sequence</groupId>
+      <artifactId>SalesForceUpdateSeq</artifactId>
+      <version>1.0.0</version>
+      <type>xml</type>
+    </dependency>
+    <dependency>
+      <groupId>com.example.ProcessingDataEfficientlyWithEIConfigProject.sequence</groupId>
+      <artifactId>TransformPaloadSeq</artifactId>
       <version>1.0.0</version>
       <type>xml</type>
     </dependency>

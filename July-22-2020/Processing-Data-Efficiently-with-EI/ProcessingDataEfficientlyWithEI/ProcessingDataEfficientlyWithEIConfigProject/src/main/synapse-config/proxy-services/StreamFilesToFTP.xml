@@ -5,9 +5,11 @@
             <log level="custom">
                 <property expression="fn:concat('Transferring file named: ' , $trp:FILE_NAME, ', to ftp location.')" name="Message"/>
             </log>
-            <property action="remove" name="ClientApiNonBlocking" scope="axis2"/>
-            <property name="OUT_ONLY" scope="default" type="STRING" value="true"/>
-            <property expression="$trp:FILE_NAME" name="transport.vfs.ReplyFileName" scope="transport" type="STRING"/>
+            <propertyGroup>
+                <property action="remove" name="ClientApiNonBlocking" scope="axis2"/>
+                <property name="OUT_ONLY" scope="default" type="STRING" value="true"/>
+                <property expression="$trp:FILE_NAME" name="transport.vfs.ReplyFileName" scope="transport" type="STRING"/>
+            </propertyGroup>
             <call>
                 <endpoint key="VFSEndPoint"/>
             </call>

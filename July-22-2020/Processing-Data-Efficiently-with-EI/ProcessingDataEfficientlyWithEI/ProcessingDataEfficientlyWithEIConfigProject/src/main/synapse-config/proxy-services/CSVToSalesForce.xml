@@ -1,6 +1,6 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <proxy name="CSVToSalesForce" startOnLoad="true" transports="vfs" xmlns="http://ws.apache.org/ns/synapse">
-    <target>
+    <target endpoint="">
         <inSequence>
             <log level="custom">
                 <property expression="fn:concat('Uploading records from : ' , $trp:FILE_NAME, ', file to salesforce.')" name="Message"/>
@@ -16,11 +16,11 @@
     </target>
     <parameter name="transport.PollInterval">5</parameter>
     <parameter name="transport.vfs.ContentType">text/plain</parameter>
-    <parameter name="transport.vfs.FileURI">file:///home/nirothipan/Desktop/trash/salesforce</parameter>
+    <parameter name="transport.vfs.FileURI">file:///home/nirothipan/Desktop/webinars/vfs/SalesForece</parameter>
     <parameter name="transport.vfs.ActionAfterProcess">MOVE</parameter>
-    <parameter name="transport.vfs.MoveAfterFailure">file:///home/nirothipan/Desktop/trash/processed</parameter>
+    <parameter name="transport.vfs.MoveAfterFailure">file:///home/nirothipan/Desktop/webinars/vfs/processFiles</parameter>
     <parameter name="transport.vfs.ActionAfterFailure">MOVE</parameter>
     <parameter name="transport.vfs.FileProcessCount">1</parameter>
     <parameter name="transport.vfs.FileNamePattern">.*</parameter>
-    <parameter name="transport.vfs.MoveAfterProcess">file:///home/nirothipan/Desktop/trash/processed</parameter>
+    <parameter name="transport.vfs.MoveAfterProcess">file:///home/nirothipan/Desktop/webinars/vfs/processFiles</parameter>
 </proxy>
