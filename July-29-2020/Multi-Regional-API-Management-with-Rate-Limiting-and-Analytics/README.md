@@ -30,7 +30,7 @@ The guide to setup a sample setup similar to the demo is described below.
     - It is required to configure and install appropriate SSL certificates, in API-M Keystore and Trustore, since you will 
     be using custom hostnames (other than localhost) to access API-M endpoints. Please follow [Changing the Hostname](https://apim.docs.wso2.com/en/3.1.0/install-and-setup/setup/deployment-best-practices/changing-the-hostname/) for more 
     information.
-        - Keystore, Trustore and the Certificate file used in the webinar are uploaded into [APIM-Keystore-Trustore]{/July-29-2020/Multi-Regional-API-Management-with-Rate-Limiting-and-Analytics/APIM-Keystore-Trustore). A key-pair was generated
+        - Keystore, Trustore and the Certificate file used in the webinar are uploaded into [APIM-Keystore-Trustore](/July-29-2020/Multi-Regional-API-Management-with-Rate-Limiting-and-Analytics/APIM-Keystore-Trustore). A key-pair was generated
          in the keystore with CN=*.apim.com and the related public key certificate is self signed and installed into the Truststore 
          client-truststore.jks
     - The deployment.toml files are uploaded into [Config-Files](/July-29-2020/Multi-Regional-API-Management-with-Rate-Limiting-and-Analytics/Config-Files)
