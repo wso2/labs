@@ -11,7 +11,7 @@ The guide to setup a sample setup similar to the demo is described below.
  
  1. Configure a 2 node active-active all in one WSO2 API-M deployment.
  
-    ![Deplyment Diagram](/July-29-2020/Multi-Regional-API-Management/docs-artifacts/deployment-diagram.png)
+    ![Deplyment Diagram](/July-29-2020/Multi-Regional-API-Management-with-Rate-Limiting-and-Analytics/docs-artifacts/deployment-diagram.png)
     
     - According to the diagram there are multiple instances used for each server.
     - Please note that this deployment is used to demonstrate the multi-regional concept of API Management only. 
@@ -30,10 +30,10 @@ The guide to setup a sample setup similar to the demo is described below.
     - It is required to configure and install appropriate SSL certificates, in API-M Keystore and Trustore, since you will 
     be using custom hostnames (other than localhost) to access API-M endpoints. Please follow [Changing the Hostname](https://apim.docs.wso2.com/en/3.1.0/install-and-setup/setup/deployment-best-practices/changing-the-hostname/) for more 
     information.
-        - Keystore, Trustore and the Certificate file used in the webinar are uploaded into (APIM-Keystore-Trustore)[/July-29-2020/Multi-Regional-API-Management/APIM-Keystore-Trustore]. A key-pair was generated
+        - Keystore, Trustore and the Certificate file used in the webinar are uploaded into (APIM-Keystore-Trustore)[/July-29-2020/Multi-Regional-API-Management-with-Rate-Limiting-and-Analytics/APIM-Keystore-Trustore]. A key-pair was generated
          in the keystore with CN=*.apim.com and the related public key certificate is self signed and installed into the Truststore 
          client-truststore.jks
-    - The deployment.toml files are uploaded into [Config-Files](/July-29-2020/Multi-Regional-API-Management/Config-Files)
+    - The deployment.toml files are uploaded into [Config-Files](/July-29-2020/Multi-Regional-API-Management-with-Rate-Limiting-and-Analytics-with-Rate-Limiting-and-Analytics/Config-Files)
     
     ###### Region : APAC
      - **2 WSO2 API-M 3.1.0 instances**
@@ -86,7 +86,7 @@ The guide to setup a sample setup similar to the demo is described below.
     - We have created 2 APIs in this demo.
         1. ExchangeRatesAPI
         2. LoanDetailsAPI
-    - Swagger files of the APIs we have created can be found in [API-Definitions](/July-29-2020/Multi-Regional-API-Management/API-Definitions)  
+    - Swagger files of the APIs we have created can be found in [API-Definitions](/July-29-2020/Multi-Regional-API-Management-with-Rate-Limiting-and-Analytics/API-Definitions)
 
 4. Assign the Microgateway label to an APIs created
     
@@ -147,7 +147,7 @@ Thereafter, run the following command.
 6. In the same way follow above 1-6 steps to create a Microgateway project (US_Project) to the other label ``US-Region`` and to 
 build a microgateway executable .jar (US_Project.jar) for the label. 
 
-    Projects and executable jar files which were used in this demo are uploaded into [Microgateway-Projects](/July-29-2020/Multi-Regional-API-Management/Microgateway-Projects) and [Microgateway-Executables](/July-29-2020/Multi-Regional-API-Management/Microgateway-Executables)
+    Projects and executable jar files which were used in this demo are uploaded into [Microgateway-Projects](/July-29-2020/Multi-Regional-API-Management-with-Rate-Limiting-and-Analytics/Microgateway-Projects) and [Microgateway-Executables](/July-29-2020/Multi-Regional-API-Management-with-Rate-Limiting-and-Analytics/Microgateway-Executables)
 
 7.  Start Microgateways
 
