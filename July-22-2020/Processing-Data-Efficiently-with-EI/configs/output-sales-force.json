@@ -1,0 +1,25 @@
+{
+    "sObject": "Account",
+    "fieldAndValue": {
+        "records": [
+            {
+                "attributes": {
+                    "type": "Account",
+                    "referenceId": "ref1"
+                },
+                "name": "wso2",
+                "phone": "02122212121",
+                "website": "www.salesforce1.com"
+            },
+            {
+                "attributes": {
+                    "type": "Account",
+                    "referenceId": "ref2"
+                },
+                "name": "slwso2",
+                "phone": "0112321212",
+                "website": "www.salesforce2.com"
+            }
+        ]
+    }
+}
