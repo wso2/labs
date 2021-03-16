@@ -11,8 +11,8 @@
             <property expression="fn:concat('http://',get-property('targetBucketName'),'.s3-eu-west-1.amazonaws.com')" name="bucketUrl" scope="default" type="STRING"/>
             <property expression="fn:concat(get-property('targetBucketName'),'.s3-eu-west-1.amazonaws.com')" name="host" scope="default" type="STRING"/>
             <amazons3.init>
-                <accessKeyId>AKIAJ5H4DUFA3O2VJMLA</accessKeyId>
-                <secretAccessKey>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</secretAccessKey>
+                <accessKeyId>***REMOVED***</accessKeyId>
+                <secretAccessKey>***REMOVED***</secretAccessKey>
                 <region>eu-west-1</region>
                 <methodType>GET</methodType>
                 <contentType>{$ctx:contentType}</contentType>

@@ -1,0 +1,29 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<proxy name="StreamFilesToFTP" startOnLoad="true" transports="vfs" xmlns="http://ws.apache.org/ns/synapse">
+    <target>
+        <inSequence>
+            <log level="custom">
+                <property expression="fn:concat('Transferring file named: ' , $trp:FILE_NAME, ', to ftp location.')" name="Message"/>
+            </log>
+            <propertyGroup>
+                <property action="remove" name="ClientApiNonBlocking" scope="axis2"/>
+                <property name="OUT_ONLY" scope="default" type="STRING" value="true"/>
+                <property expression="$trp:FILE_NAME" name="transport.vfs.ReplyFileName" scope="transport" type="STRING"/>
+            </propertyGroup>
+            <call>
+                <endpoint key="VFSEndPoint"/>
+            </call>
+        </inSequence>
+        <outSequence/>
+        <faultSequence/>
+    </target>
+    <parameter name="transport.vfs.Streaming">true</parameter>
+    <parameter name="transport.PollInterval">15</parameter>
+    <parameter name="transport.vfs.ContentType">application/octet-stream</parameter>
+    <parameter name="transport.vfs.FileURI">file:///home/nirothipan/Desktop/trash/source</parameter>
+    <parameter name="transport.vfs.ActionAfterProcess">MOVE</parameter>
+    <parameter name="transport.vfs.MoveAfterFailure">file:///home/nirothipan/Desktop/trash/processed</parameter>
+    <parameter name="transport.vfs.ActionAfterFailure">MOVE</parameter>
+    <parameter name="transport.vfs.FileNamePattern">.*\.txt</parameter>
+    <parameter name="transport.vfs.MoveAfterProcess">file:///home/nirothipan/Desktop/trash/processed</parameter>
+</proxy>
