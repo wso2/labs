@@ -285,6 +285,75 @@ service / on new http:Listener(9090) {
 }
 ```
 
+## Optional GraphQL service
+
+Full program,
+
+```
+import chintanawilamuna/mysfapp1;
+import ballerina/graphql;
+import ballerina/io;
+
+configurable string sfAppClientSecret = ?;
+
+configurable string sfAppClientID = ?;
+
+mysfapp1:Client mysfapp1Ep = check new (clientConfig = {
+    auth: {
+        clientId: sfAppClientID,
+        clientSecret: sfAppClientSecret
+    }
+});
+
+service class Summary {
+    private string StartDate;
+    private float ExpectedRevenue;
+    private float ActualCost;
+    private string EndDate;
+    private float BudgetedCost;
+    private string Name;
+
+    function init(string startDate, float expectedRevenue, float actualCost, string endDate, float budegtedCost, string name) {
+        self.StartDate = startDate;
+        self.ExpectedRevenue = expectedRevenue;
+        self.ActualCost = actualCost;
+        self.EndDate = endDate;
+        self.BudgetedCost = budegtedCost;
+        self.Name = name;
+    }
+
+    resource function get StartDate() returns string {
+        return self.StartDate;
+    }
+    resource function get ExpectedRevenue() returns float {
+        return self.ExpectedRevenue;
+    }
+    resource function get ActualCost() returns float {
+        return self.ActualCost;
+    }
+    resource function get EndDate() returns string {
+        return self.EndDate;
+    }
+    resource function get BudgetedCost() returns float {
+        return self.ActualCost;
+    }
+    resource function get Name() returns string {
+        return self.Name;
+    }
+}
+
+# A service representing a network-accessible GraphQL API
+service / on new graphql:Listener(8090) {
+
+    resource function get summary() returns Summary|error? {
+        // Send a response back to the caller.
+        mysfapp1:CompaignSummary summary = check mysfapp1Ep->getGetsummary();
+        io:println(summary.toJsonString());
+        return new(summary.StartDate, summary.ExpectedRevenue, summary.ActualCost, summary.EndDate, summary.BudgetedCost, summary.Name);
+    }
+}
+```
+
 ## Notes
 
 If you're using the trial, make sure to sign up for the developer edition. If you just sign up for the trial it (at the time of this writing) will give you a professional edition trial which doesn't have the API component to connect and work with data remotely
