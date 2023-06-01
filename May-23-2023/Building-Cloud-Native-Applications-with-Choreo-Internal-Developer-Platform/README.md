@@ -1,4 +1,4 @@
-# SF Workshop, April 2023 - Companion Guide
+# Choreo Workshop, April 2023 - Companion Guide
 
 For the SF workshop scheduled in April 2023, this guide serves as a companion to help you set up the services/APIs demonstrated during the event.
   
